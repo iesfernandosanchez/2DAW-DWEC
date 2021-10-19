@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+  <style>
+    pre {
+      background: #cacaca;
+      border: 1px solid;
+      padding: 10px;
+      white-space: unset;
+    }
+
+  </style>
+  <script type="text/javascript" src="bisiestos.js"></script>
+  <script type="text/javascript">
+      var bisiesto = new Bisiestos();
+  </script>
+</head>
+<body>
+
+	<pre>
+		<b>Ejercicio 2</b>
+		<h3>Escribe un programa que permita saber si un año es bisiesto. Para que un año sea bisiesto debe ser divisible por 4 y no debe ser divisible por 100, excepto que también sea divisible por 400.</h3>
+	</pre>
+
+    <input type="text" id="año">
+    <button onclick="document.getElementById('resultado').innerHTML = bisiesto.calcularBisiesto(document.getElementById('año').value)">Calcular bisiesto</button>'
+    <div id="resultado"></div>
+</body>
+</html>
