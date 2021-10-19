@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>usuario escalibur</title>
+
+
+	<script type="text/javascript">
+		function comprobarUser(user, psswd){
+			if (user == 'Gwenevere' && psswd == 'excalibur'){
+				document.getElementById('resultado').innerHTML = "Usuario y contraseña correctos. Puede ingresar a Camelot";
+			} else{
+				document.getElementById('resultado').innerHTML =  "Acceso denegado";
+			}		
+		}		
+
+	</script>
+</head>
+
+<body>
+	<p>Ingrese los datos</p>
+	<label for="nombre">Ususario</label>
+	<input type="text" id="nombre">	
+	<label for="contrasena">Contraseña</label>
+	<input type="password" id="contrasena">	
+
+	<p id="resultado"></p>
+
+	<button onclick="comprobarUser(document.getElementById('nombre').value, document.getElementById('contrasena').value)">Averiguar</button> 
+	Escribí un programa que solicite ingresar un nombre de usuario y una contraseña. Si el nombre es “Gwenevere” y la contraseña es “excalibur”, 
+	mostrar en pantalla “Usuario y contraseña correctos. Puede ingresar a Camelot”. Si el nombre o la contraseña no coinciden, mostrar “Acceso denegado”.
+
+</body>
+</html>

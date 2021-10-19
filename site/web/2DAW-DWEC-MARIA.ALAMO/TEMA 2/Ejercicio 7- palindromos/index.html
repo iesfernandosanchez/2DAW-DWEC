@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+	<style>
+		pre {
+		    background: #cacaca;
+		    border: 1px solid;
+		    padding: 10px;
+		    white-space: unset;
+		}
+		h3, ul{
+			margin:  2px 0px;
+		}
+	</style>
+	<title>Palindromo</title>
+
+	<script type="text/javascript">
+		function calculaPalindromo(palabra){
+            const regex = / /g; //inicio y final de la expresion regular; el espacio es caracter
+            palabra = palabra.toLowerCase().replace(regex, "");
+            console.log(palabra);
+
+            for (var i = 0; i < palabra.length; i++) {
+                if(palabra[i] != palabra[palabra.length - 1 - i]){
+                    document.getElementById('palabra').setAttribute('style','background:red');
+                    return false; //cortas el bucle; sale y lo dejará de rojo
+                }
+            }
+            document.getElementById('palabra').setAttribute('style','background:green');
+        }
+
+	</script>
+</head>
+<body id="body">
+
+	<pre>
+		<b>Ejercicio 7</b>
+		<h3>Definir una función que determine si la cadena de texto que se le pasa como parámetro es un palíndromo, es decir, si se lee de la misma forma desde la 
+            izquierda y desde la derecha. Ejemplo de palíndromo complejo: "La ruta nos aporto otro paso natural". Si es un palindromo el propio input se pondrá en 
+            verde. En caso contrario se pondrá en rojo.</h3></body>
+        </pre>
+
+        <input type="text" value="" id="palabra">
+        <button onclick="calculaPalindromo(document.getElementById('palabra').value)">¿Palindromo?</button>
+        
+                
+</html>

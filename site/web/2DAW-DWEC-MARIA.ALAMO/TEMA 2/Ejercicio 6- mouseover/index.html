@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ejercicio mouseover</title>    
+    <script type="text/javascript">
+        function cambiaFondo(color){
+            document.body.style.backgroundColor = color;
+            //document.getElementById("body").setAttribute('class', ''); //reseteamos el atributo class a vacio
+            //document.getElementById("body").classList.add('' + color);
+        }
+    </script>
+    <style>
+    [class*="cuadro"]{
+        display: inline-block;
+        width: 100px; 
+        height: 100px; 
+    }
+    .blue {
+     background: blue;
+    }
+    .red {
+     background: red;
+    }
+    .green {
+     background: green;
+    }
+    .plum {
+     background: plum;
+    }
+    </style>
+</head>
+<body id="body">
+            <span class="cuadro blue" onmouseover="cambiaFondo('blue');"></span>
+            <span class="cuadro red" onmouseover="cambiaFondo('red');"></span>
+            <span class="cuadro green" onmouseover="cambiaFondo('green');"></span>
+            <span class="cuadro plum" onmouseover="cambiaFondo('plum');"></span>
+</body>
+</html>

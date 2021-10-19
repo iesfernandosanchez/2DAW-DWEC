@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	
+	<script type="text/javascript">
+		function loadXMLDoc() {
+			var xmlhttp = new XMLHttpRequest();
+			
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
+					if (xmlhttp.status == 200) {
+						console.log(string)
+						var string = JSON.parse(xmlhttp.responseText);
+						var body = string["body"];
+						var word = body["Word"];
+						var definition = body["Definition"];
+						
+						
+						document.getElementById("Word").innerHTML = word;
+						document.getElementById("Definition").innerHTML = unescape(definition);
+						
+					}
+					else if (xmlhttp.status == 400) {
+						alert('There was an error 400');
+					}
+					else {
+						alert('something else other than 200 was returned');
+					}
+				}
+			};
+			
+			xmlhttp.open("GET", "https://palabras-aleatorias-public-api.herokuapp.com/random", true);
+			xmlhttp.send();
+		}
+		
+		document.addEventListener("DOMContentLoaded", function(event) { 
+			loadXMLDoc();
+		});
+		
+	</script>
+</head>
+<body>
+	
+	<div id="Word"></div>
+	<div id="Definition"></div>
+<!--
+	definition: "%0D%0A<br>
+	<span class="small1">Diccionario de la lengua española &copy; 2005 Espasa-Calpe:</span>
+	<div onclick='redirectWR(event,"ESdefinicion")' class='trans clickable'>
+		<h3>refrendar<a class='conjugate_link' href='/conj/ESVerbs.aspx?v=refrendar%27'>conjugar ⇒</a></h3>
+			<ol class=%27entry%27><li>tr. Legalizar un documento por medio de la firma de una persona autorizada:<br>
+				<span class="i">refrendar un pasaporte.</span> 
+				<li> Confirmar y corroborar algo:<br><span class="i">refrendar una teoría.</span><br></li>
+			</ol>
+	</div>%0D%0A"-->
+</body>
+</html>

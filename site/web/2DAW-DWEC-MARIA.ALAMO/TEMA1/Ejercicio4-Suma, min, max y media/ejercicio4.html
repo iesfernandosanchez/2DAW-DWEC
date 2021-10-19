@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    
+    <meta charset="utf-8">
+    <title>Ejercicio 4</title>
+
+
+    <script type="text/javascript">
+        //función que devuelve los distintos valores que se solicitan (suma, minimo, maximo y media)
+        function calcularValores(){
+            var numeros = document.getElementById("texto").value.split(";"); //extraemos el valor del input y o dividimos en los ';'
+            //calculamos la suma total
+            var suma = 0;
+            for (let i = 0; i < numeros.length; i++) { //una variable acumula la suma de los valores de todo el array
+                suma += parseInt(numeros[i], 10);
+            }
+            //calculamos la media
+            var media = suma/numeros.length;
+            //obtenemos el minimo y maximo con la siguiente funcion de la clase Math (también se puede hacer con un bucle for; se compara cada valor con todo el array y almacenamos el mayor)
+            var min = Math.min.apply(null, numeros); 
+            var max = Math.max.apply(null, numeros); 
+            
+            return [suma, max, min, media];
+        }
+
+        //Función que, dado un array de valores, rellena las etiquetas HTML correspondientes a su posición en el array
+        function rellenar(valor){   
+            var idHTML = ["resultadoSuma", "resultadoMayor", "resultadoMenor", "resultadoMedia"];
+            for (let i = 0; i < idHTML.length; i++) { //rellenamos las etiquetas dle HTML con los valores
+                document.getElementById(idHTML[i]).innerHTML = valor[i];
+            }
+        }
+        //en caso de reiniciar, rellenamos con valores vacios
+        function reiniciar(){
+            rellenar([' ', ' ', ' ', ' ']);
+        }
+    </script>
+    
+</head>
+
+<body>
+    
+    <h1>Crea un campo de recogida de texto donde se puedan introducir numeros separados por ";"(punto y coma) junto con un boton calcular donde se genere y pinte el resultado de la suma de todos los numeros introducidos, el mayor,el menor y la media</h1>
+    
+    <h2>Añade un boton reiniciar donde se vacie el contenido del campo de texto</h2>
+        
+    
+    <input type="text" id="texto" autofocus/>
+    
+    <button onclick="rellenar(calcularValores())">Calcular</button>
+    
+    <button onclick="reiniciar()">Reiniciar</button>
+    
+    <p>Suma:<i id="resultadoSuma"></i></p>
+    
+    <p>Mayor:<i id="resultadoMayor"></i></p>
+    
+    <p>Menor:<i id="resultadoMenor"></i></p>
+    
+    <p>Media:<i id="resultadoMedia"></i></p>
+    
+</body></html>

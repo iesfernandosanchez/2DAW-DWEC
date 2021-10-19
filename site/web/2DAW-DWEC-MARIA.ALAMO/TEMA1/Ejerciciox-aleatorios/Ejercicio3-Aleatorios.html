@@ -1,0 +1,63 @@
+<html>
+<head>
+    <script type="text/javascript">
+        function getRandomInt(min, max){
+            return Math.floor(Math.random() * (max - min) + min);           
+        }
+        
+        function rellenarArray(max, intentos){
+            var arrayAleatorios = [];
+            for (let i = 0; i < intentos; i++) {
+                arrayAleatorios.push(getRandomInt(0, max));
+            }
+            return arrayAleatorios;
+        }
+        
+        //función que devuelve el numero de ocurrencias por cada repeticion
+        function hallarNumOcurrencias(array){
+            var numArray = [];    //array que almacena los números
+            var indice = 0; //para establecer el índice de los valores del array que almacenará los números
+            var arrayNumerosRepeticiones = []; //array que almacenará cada numero con sus repeticiones
+            for (let i = 0; i < array.length; i++) {
+                var numeroBuscar = array[i];                
+                //si este número no se encuentra en el array que almacena los números, se añade que aparece una vez y se sigue buscando en el resto del array
+                if(!numArray.includes(numeroBuscar)){ 
+                    var numRepeticiones = 1;
+                    numArray.push(numeroBuscar);
+                    for (let j = i + 1; j < array.length; j++) {
+                        if(array[j] === array[i]){
+                            numRepeticiones++;
+                        }
+                        arrayNumerosRepeticiones[indice] = " " + numArray[indice]
+                            + " => " + numRepeticiones + " reps."; //con este array mostraremos el número del array y las repeticiones del mismo dentro del array
+                    }  
+                    indice++;   //pasamos a la siguiente posición
+                }         
+            }
+            return arrayNumerosRepeticiones;
+        }
+
+        var numIntentos = 50;
+        var numMaximo = 32;
+        //creamos un array con el numero de intentos y el maximo dados
+        var resultados = rellenarArray(numMaximo, numIntentos);
+        
+        document.addEventListener("DOMContentLoaded", function(event){
+            document.getElementById("resultado").innerHTML = resultados;
+            document.getElementById("repeticiones").innerHTML = hallarNumOcurrencias(resultados);
+        });
+        
+    </script>
+    
+</head>
+<body>
+    <h3>Array aleatorio:</h3>
+    <p id="resultado"> 
+    </p>    
+    <h3>Repeticiones por número:</h3>
+    <p id="repeticiones"> 
+    </p>
+    
+</body>
+
+</html>

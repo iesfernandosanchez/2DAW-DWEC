@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculadora</title>
+
+	<script type="text/javascript" src="calculadora.js"></script>
+
+	<script type="text/javascript">
+		var Calculadora = new calculadora();
+		document.addEventListener("DOMContentLoaded", function(event){
+			document.getElementById("botonera").innerHTML = Calculadora.printButtons("resultado", 
+					["suma", "resta", "factorial"], "op1", "op2");
+		});		
+	</script>
+</head>
+
+<body>
+	
+	<input type="text" id="op1">	
+	<input type="text" id="op2">
+	
+	<p id="resultado"></p>
+
+	<div id="botonera">  </div>
+
+
+</body>
+</html>

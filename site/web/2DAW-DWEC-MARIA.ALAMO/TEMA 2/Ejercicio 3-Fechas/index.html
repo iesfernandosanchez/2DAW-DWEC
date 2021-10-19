@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	
+	<script type="text/javascript">
+		//calendario del 1/09 al 30/06/2022
+		
+		
+		festivos = ["11/10/2021", "12/10/2021"];
+		
+		var mesInicio = 9;
+		var mesFin = 7;
+		var calendario = [];		
+		
+		var acabarBucle = false;
+		var day = 1
+		while(!acabarBucle){
+			var objFecha = new Date(2021, mesInicio-1, day);
+			if(objFecha.getMonth() == mesFin -1){
+				acabarBucle = true;
+			} else{
+				events = [];
+				
+				var itemDay = [];
+				itemDay["date"] = objFecha.getDate() + '/' + objFecha.getMonth()+ '/' + objFecha.getFullYear();
+				
+				if(festivos.includes(itemDay["date"])){
+					events.push("festivo");
+				}
+				
+				itemDay["events"] = events;
+				calendario.push(itemDay);
+			}
+			day++;
+		}
+		
+		document.addEventListener("DOMContentLoaded", function(event) { 
+			console.log(calendario);
+		});
+		
+	</script>
+</head>
+<body>
+	
+	<div id="nostrar"></div>
+	
+</body>
+</html>
