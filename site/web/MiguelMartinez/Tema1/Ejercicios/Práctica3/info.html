@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script type="text/javascript" src="main.js"></script>
+        <script>
+
+            var meses = ["Enero","Febrero", "Marzo", "Abril", 
+            "Mayo", "Junio", "Julio", "Agosto", "Septiembre", 
+            "Octubre", "Noviembre", "Diciembre"];
+
+            var diasSemana = ["Lunes", "Martes", "Miércoles", 
+            "Jueves", "Viernes", "Sábado", "Domingo"];
+
+            /*
+            document.addEventListener("DOMContentLoaded", 
+            function(event) {
+                printTable(meses,"meses")
+            });
+            */
+
+        </script> 
+    </head>
+
+    <body>
+        <table id="listado">
+            <button onclick="printTable(diasSemana, 'listado')">Días de la semana</button>
+            <button onclick="printTable(meses, 'listado')">Meses del año</button>
+        </table>
+    </body>
+</html>

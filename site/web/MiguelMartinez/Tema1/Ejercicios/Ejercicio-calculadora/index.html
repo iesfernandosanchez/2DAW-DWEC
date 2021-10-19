@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="calculadora.js" type="text/javascript"></script>
+
+    <script>
+        var Calculadora = new calculadora(1, 12);
+        /*document.addEventListener("DOMContentLoaded", function(event){
+            document.getElementById("botonera").innerHTML = Calculadora.printButtons(
+                "resultado",["suma","resta","factorial","division"], "op1", "op2");
+            
+            console.log("la calculadora es de tipo: " + typeof Calculadora);
+
+            console.log("la calculadora es de tipo: " + Calculadora instanceof calculadora);
+        });
+        */
+    </script>
+</head>
+<body>
+    <input type="text" id="op1">
+    <input type="text" id="op2">
+
+    <button onclick=
+    "document.getElementById('resultado').innerHTML=
+        Calculadora.suma(
+            document.getElementById('op1').value,
+            document.getElementById('op2').value)">
+            SUMA
+    </button>
+
+    <button onclick=
+    "document.getElementById('resultado').innerHTML=
+        Calculadora.resta(
+            document.getElementById('op1').value,
+            document.getElementById('op2').value)">
+            RESTA
+    </button>
+
+    <button onclick=
+    "document.getElementById('resultado').innerHTML=
+        Calculadora.multiplicacion(
+            document.getElementById('op1').value,
+            document.getElementById('op2').value)">
+            MULTIPLICACIÓN
+    </button>
+
+    <button onclick=
+    "document.getElementById('resultado').innerHTML=
+        Calculadora.division(
+            document.getElementById('op1').value,
+            document.getElementById('op2').value)">
+            DIVISIÓN
+    </button>
+
+    <button onclick=
+    "document.getElementById('resultado').innerHTML=
+        Calculadora.factorial(
+            document.getElementById('op1').value,
+            document.getElementById('op2').value)">
+            FACTORIAL
+    </button>
+
+    <button onclick=
+    "document.getElementById('resultado').innerHTML=
+        Calculadora.orden(
+            document.getElementById('op1').value,
+            document.getElementById('op2').value)">
+            ORDENAR
+    </button>
+
+    <button onclick=
+    "document.getElementById('resultado').innerHTML=''
+    document.getElementById('op1').value=''
+    document.getElementById('op2').value=''">
+            REINICIAR
+    </button>
+
+    <div id="resultado"></div>
+    
+</body>
+</html>

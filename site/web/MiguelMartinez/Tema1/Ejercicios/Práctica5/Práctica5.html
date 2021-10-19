@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        
+        <script type="text/javascript">
+            var numeroMaximo = 32;
+            var numeroIntentos = 50;
+            var resultados = [];
+            var numeroOcurrencias = [];
+            
+            function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min)) + min;
+            }
+            
+            for(var i = 0; i < numeroIntentos; i++) {
+                resultados.push(getRandomInt(0, numeroMaximo))
+            } 
+            
+            console.log(resultados);
+            
+            for(var i = 0; i < resultados.length; i++) {
+                if(numeroOcurrencias[resultados[i]] == undefined){
+                    numeroOcurrencias[resultados[i]] = 1;
+                }else{
+                    numeroOcurrencias[resultados[i]] = numeroOcurrencias[resultados[i]] + 1;
+                }   
+            } 
+            console.log(numeroOcurrencias);
+            
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

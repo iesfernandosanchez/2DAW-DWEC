@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="cuadrados.css" rel="stylesheet">
+
+    <style>
+
+    </style>
+
+    <script type="text/javascript">
+        function pintafondo(color){
+            document.getElementById('contenedor').setAttribute('class','');
+            document.getElementById('contenedor').classList.add('' + color)
+        }
+    </script>
+
+</head>
+<body>
+    <section id="contenedor">
+        <div class="red" onmouseover="pintafondo('red')">
+
+        </div>
+        <div class="yellow" onmouseover="pintafondo('yellow')">
+
+        </div>
+        <div class="blue" onmouseover="pintafondo('blue')">
+
+        </div>
+        <div class="black" onmouseover="pintafondo('black')">
+
+        </div>
+    </section>
+</body>
+</html>

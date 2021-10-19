@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <script type="text/javascript">
+
+            var festives = ["11/10/2021","12/10/2021"];        
+
+            var mesInicio = 9;
+            var mesFin = 11;
+
+            var today = new Date;
+            var calenadrio = [];
+            var endGenerationCalendar = false;
+            var day = 1;
+            while(!endGenerationCalendar) {
+                var objFecha = new Date(today.getFullYear(),mesInicio -1, day);
+                if(objFecha.getMonth() == mesFin -1) {
+                    endGenerationCalendar = true;
+                } else {
+                    events = [];
+                    var itemDay = [];
+                    itemDay["date"]= objFecha.getDate()+ "/"+(objFecha.getMonth() + 1) + "/"+objFecha;
+                    getFullYear();
+
+                    if(festives.includes(itemDay["date"])){
+                        events.push("festivo");
+                    }
+
+                    itemDay["event"] = events;
+                    calenadrio.push(itemDay);
+                }
+                day++;
+            }
+            console.log(calendario);
+            
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ejercicio 8</title>
+
+        <script type="text/javascript">
+            function calcular(){
+                var numeros = document.getElementById("texto").value;
+                var arrayNumero = numeros.split(";");
+                var resultado = 0;
+
+                console.log(arrayNumero);
+                calcularSuma();
+                calcularMayor();
+                calcularMenor();
+                calcularMedia();
+
+                function calcularSuma() {
+                    for(var i = 0; i < arrayNumero.length; i++) {
+                        var x = parseInt(arrayNumero[i], 10);
+                        resultado = resultado + x;
+                    } 
+                    document.getElementById("resultadoSuma").innerHTML = resultado;
+                }
+                
+                function calcularMayor() {
+                    arrayNumero.sort(function(a, b) {return a-b;});
+                    resultado = arrayNumero[arrayNumero.length - 1];
+                    document.getElementById("resultadoMayor").innerHTML = resultado;
+                }
+
+                function calcularMenor() {
+                    arrayNumero.sort(function(a, b) {return a-b;});
+                    resultado = arrayNumero[0];
+                    document.getElementById("resultadoMenor").innerHTML = resultado;
+                }
+
+                function calcularMedia() {
+                    var media = 0;
+                    var calcularSuma = 0;
+                    for(var i = 0; i < arrayNumero.length; i++) {
+                        var x = parseInt(arrayNumero[i], 10);
+                        calcularSuma = calcularSuma + x;
+                    } 
+                    media =  calcularSuma / arrayNumero.length;
+                    document.getElementById("resultadoMedia").innerHTML = media;
+                }
+            }
+
+            function reiniciar() {
+                document.getElementById("texto").value = "";
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1>Crea un campo de recogida de texto donde se puedan introducir 
+            numeros separados por ";"(pùnto y coma) junto con un boton 
+            calcular donde se genere y pinte el resultado de la suma de 
+            todos los numeros introducidos, el mayor,el menor y la media</h1>
+        <h2>Añade un boton reiniciar donde se vacie el contenido del 
+            campo de texto</h2>
+
+
+        <input type="text" id="texto"/>
+
+        <button onclick="calcular()">Calcular</button>
+        <button onclick="reiniciar()">Reiniciar</button>
+
+        <p>Suma:<i id="resultadoSuma"></i></p>
+
+        <p>Mayor:<i id="resultadoMayor"></i></p>
+
+        <p>Menor:<i id="resultadoMenor"></i></p>
+
+        <p>Media:<i id="resultadoMedia"></i></p>
+
+    </body>
+</html>

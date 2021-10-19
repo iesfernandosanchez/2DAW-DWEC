@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+
+		<script type="text/javascript">
+			/*
+			var matrizA =[];
+			var procesoA = ["A", 0, 3];
+			var procesoB = ["B", 2, 4];
+			matrizA=[procesoA, procesoB];
+			console.log(matrizA);
+
+			var matrizB = [];
+			var procesos = ["A", "B"];
+			var tcreacion = [0, 2];
+			var tduracion = [3, 4];
+			matrizB = [procesos, tcreacion, tduracion];
+			console.log(matrizB);
+			*/
+			
+
+			var matriz = [];
+			var procesos = [];
+			var tiemposc = [];
+			var tiemposd = [];
+
+			function crearProceso (nombreProceso, tcreacion, tduracion){
+				procesos.push(nombreProceso);
+				tiemposc.push(tcreacion);
+				tiemposd.push(tduracion);
+				matriz = [procesos, tiemposc, tiemposd];
+				return matriz;
+			}
+
+			document.addEventListener("DOMContentLoaded", function() {
+				crearProceso(document.getElementById("nombreProcesoA").innerHTML, document.getElementById("tcreacionA").innerHTML, document.getElementById("tduracionA").innerHTML);
+
+				crearProceso(document.getElementById("nombreProcesoB").innerHTML, document.getElementById("tcreacionB").innerHTML, document.getElementById("tduracionB").innerHTML);
+
+				crearProceso(document.getElementById("nombreProcesoC").innerHTML, document.getElementById("tcreacionC").innerHTML, document.getElementById("tduracionC").innerHTML);
+
+				console.log(matriz);
+			});
+			
+
+		</script>
+	</head>
+	<body>
+		<table class="default">
+		    <tr>
+				<td id="nombreProcesoA">A</td>		
+				<td id="tcreacionA">0</td>
+				<td id="tduracionA">3</td>
+			</tr>
+			<tr>
+				<td id="nombreProcesoB">B</td>		
+				<td id="tcreacionB">2</td>
+				<td id="tduracionB">4</td>
+			</tr>
+		    <tr>
+				<td id="nombreProcesoC">C</td>		
+				<td id="tcreacionC">1</td>
+				<td id="tduracionC">1</td>
+			</tr>
+		</table>
+	</body>
+</html>
