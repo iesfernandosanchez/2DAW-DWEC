@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>numeros random</title>
+
+
+    
+
+    <script type="text/javascript"> 
+
+    function getRandomInt(min, max) {
+
+        return Math.floor(Math.random() * (max - min)) + min;
+
+    }
+
+    var numMax = 32; 
+    var numIntentos = 50;
+    var resultados = [];
+
+    function rellenarArray(){
+
+
+        for(var i = 0; i<50 ;i++){
+
+            resultados.push(getRandomInt(0,numMax));
+
+        }
+        
+
+    }
+
+    result = rellenarArray.values;
+
+
+
+    var array2 = [];
+    var contador = 1;
+    var maxElemento = resultados[0];
+        
+        for (var i=0; i < resultados.length; i++) {
+
+            var indice = resultados[i].values;
+
+             if(array2[indice] == null){
+                 array2[indice] = 1;
+             }else{
+                 array2[indice] ++;
+             }
+
+             if(array2[indice] > contador){
+
+                maxElemento = indice;
+
+             }
+        }
+
+
+    
+    </script>
+</head>
+<body>
+
+    <button onclick="rellenarArray();">Pulsa para empezar</button>
+    <p id="array">aqui array</p>
+
+    
+</body>
+</html>
