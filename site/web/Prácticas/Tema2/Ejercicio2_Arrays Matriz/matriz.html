@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Ejercicio2 - Matriz</title>
+	<script type="text/javascript">
+
+        matriz = [];
+
+		function compareProcess(a, b){
+			if ( a < b){
+				return -1;
+			}
+			if (a > b){
+				return 1;
+
+			}
+			return 0;
+		}
+
+		function createProcess(a, b, c){
+			matriz.push([a, b, c]);
+		}
+
+		createProcess('C', 1, 1);
+		createProcess('A', 0, 3);
+		createProcess('B', 2, 4);
+	
+		matriz.sort(function(a, b){return compareProcess(a, b)});
+		console.log(matriz)
+
+	</script>
+
+	</head>
+<body>
+
+</body>
+</html>

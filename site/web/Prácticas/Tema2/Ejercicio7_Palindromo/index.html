@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio 7 - Palindromo</title>
+    
+	<script type="text/javascript">
+
+    function esPalindromo(cadena) {
+        var cadenaMin = cadena.toLowerCase();
+
+        var arrayCadena = cadenaMin.split("");
+        //console.log(letrasEspacios)
+
+        var cadenaSinEspacios = "";
+        for(i in arrayCadena) {
+            if(arrayCadena[i] != " ") {
+                cadenaSinEspacios += arrayCadena[i];
+            }
+        }
+
+        var letras = cadenaSinEspacios.split("");
+        var letrasReves = cadenaSinEspacios.split("").reverse();
+
+        for(i in letras) {
+            if(letras[i] == letrasReves[i]) {
+                document.getElementById("texto").style.backgroundColor = "green";
+                var resultado = "Es un palíndromo";
+            }
+            else {
+                document.getElementById("texto").style.backgroundColor = "red";
+                var resultado = "No es un palíndromo";
+            }
+        }
+
+        return document.getElementById("resultado").textContent = resultado;
+    }
+
+	</script>
+
+</head>
+
+<body>
+    <input type="text" id="texto"/>
+    <button onclick="esPalindromo(texto.value)">¿Palindromo?</button>
+    <p id="resultado"></p>	
+</body>
+</html>

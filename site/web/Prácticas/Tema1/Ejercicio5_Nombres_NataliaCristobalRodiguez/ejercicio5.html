@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<style>
+		.button {
+			background: #ff9696;
+		}
+	</style>
+
+	<script type="text/javascript">
+	function recogerNombres(){
+
+		var nombres = [];
+		do{
+			var nombre = prompt("Por favor, escribe un nombre:");
+
+			if (nombre != "" && nombre != null && isNaN(nombre)) {
+				nombres.push(nombre);
+			} else alert("Nombre no válido");
+			
+		} while(nombre != "" && nombre != null && isNaN(nombre))
+
+		console.log(nombres);
+	}
+	</script>
+
+</head>
+
+<body>
+	<p>Para introducir los nombres pulse en el botón.</p>
+	<button onclick="recogerNombres()" class="button">Introducir nombres</button>
+</body>
+</html>

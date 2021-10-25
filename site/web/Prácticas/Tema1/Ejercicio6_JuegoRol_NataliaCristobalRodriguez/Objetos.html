@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Objetos</title>
+
+        <script text="text/javascript">
+
+            function pretty_print(cadena){
+
+            }
+
+            /*function Car(make, gasolina) {
+                this.make = make;
+                this.gasolina = gasolina;
+
+                arrancar = function(){
+                    this.gasolina--;
+                }
+            }*/
+
+            var Car = {
+                make : "TOYOTA",
+                gasolina : 100,
+                init: false,
+                arrancar: function(){
+                    if(this.init){
+                        this.gasolina--;
+                    }
+                },
+                repostar : function(cantidad){
+                    if(this.init){
+                        this.gasolina += cantidad;
+                    }
+                },
+                print: function(){
+                    //return pretty_print('marca $[this.make] gasolina: $[this.gasolina];');
+                    return 'marca ' + this.make + ' gasolina ' + this.gasolina;
+                },
+                init: function(){
+                    this.init = true;
+                }
+            }
+
+            /*var myCar = new Car("Toyota", 100);
+            console.log(myCar);*/
+            /*myCar.arrancar();
+            console.log(myCar);*/
+
+            var myCar = Object.create(Car);
+            myCar.init = true;
+            console.log(myCar.gasolina);
+
+            myCar.arrancar();
+            myCar.arrancar();
+            myCar.arrancar();
+            console.log(myCar.gasolina);
+
+            myCar.repostar(1000);
+            console.log(myCar.gasolina);
+
+            console.log(myCar.print());
+
+
+
+        </script>
+    </head>
+
+    <body>
+        
+    </body>
+</html>

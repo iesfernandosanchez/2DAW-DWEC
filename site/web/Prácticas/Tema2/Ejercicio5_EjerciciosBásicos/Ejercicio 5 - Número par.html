@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Pares</title>
+
+	<script type="text/javascript">
+        var par = new Boolean(true);
+
+        function comparar(num){
+			if(parseInt(num)%2 === 0){
+				return document.getElementById("resultado1").textContent = par;
+			} else{
+                return document.getElementById("resultado1").textContent = !par;
+			}
+		}
+
+        function recogerNumeros(){
+            var cont = 0;
+            var numeros = [];
+            do{
+                var numero = prompt("Por favor, escribe los números:");
+
+                if (numero != "" && numero != null && !isNaN(numero)) {
+                    numeros.push(numero);
+                    cont++;
+                } else alert("Nombre no válido");
+                
+            } while(cont != 10)
+
+            //console.log(numeros);
+            var sumaPar = 0;
+            var sumaImpar = 0;
+
+            numeros.forEach(element => {
+                if(comparar(element) == true){
+                    sumaPar = sumaPar + parseInt(element);
+                } else {
+                    sumaImpar = sumaImpar + parseInt(element);
+                }
+            });
+            return document.getElementById("resultado2").textContent = "Los números pares suman: " + sumaPar + " // " + "Los números impares suman: " + sumaImpar;
+        }
+
+	</script>
+</head>
+<body>
+    
+    <p>Introduce un número:</p>
+		<input type="text" id="num">
+	<button onclick="comparar(num.value)">¿Par?</button>
+    <div id="resultado1"></div>
+
+    <p>Introduce 10 números:</p>
+    <button onclick="recogerNumeros()" class="button">Introducir numeros</button>
+    <div id="resultado2"></div>
+
+
+</body>
+</html>

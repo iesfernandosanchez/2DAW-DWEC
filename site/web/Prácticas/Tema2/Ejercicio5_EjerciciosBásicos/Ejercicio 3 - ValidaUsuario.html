@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Validar Usuarios</title>
+
+	<script type="text/javascript">
+
+		function validar(user, pass){
+			if((user == 'Gwenevere') && (pass == 'excalibur')){
+				var resultado = "Usuario y contraseña correctos. Puede ingresar a Camelot"
+			} else{
+				var resultado = "Acceso denegado"
+			}
+			console.log(resultado);
+    	}
+
+	</script>
+</head>
+<body>
+    
+    <p>Introduce el usuario:</p>
+		<input type="text" id="usuario">
+    <p>Introduce la contraseña:</p>
+    	<input type="text" id="contraseña">
+
+	<button onclick="validar(usuario.value, contraseña.value)">Validar</button>
+
+</body>
+</html>

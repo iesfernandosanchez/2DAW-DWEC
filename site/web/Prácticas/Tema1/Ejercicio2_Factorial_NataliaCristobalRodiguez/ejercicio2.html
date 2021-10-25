@@ -1,0 +1,32 @@
+<html>
+<head>
+	<script type="text/javascript">
+		
+		function calcularFactorial(valor, idResultado){
+
+			if(isNaN(valor)){
+				document.getElementById(idResultado).innerHTML = "El valor no es valido";
+				return;
+			}
+
+			factorial = valor;
+			resultado = 1;
+			while(factorial  >0){
+				resultado *= factorial;
+				factorial--;
+			} 
+			document.getElementById(idResultado).innerHTML = resultado;
+			document.getElementById("numero").value = "";
+			document.getElementById("numero").focus();
+		}
+
+	</script>
+</head>
+
+<body>
+	<input type="text" id="numero" onchange="calcularFactorial(this.value, 'resultado')" autofocus>
+	<hr>
+ <p id="resultado"></p>
+</body>
+
+</html>

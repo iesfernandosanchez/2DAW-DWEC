@@ -1,0 +1,43 @@
+<!doctype HTML>
+<html>
+<head>
+		<script type="text/javascript">
+
+			var numeroMax = 10;
+			var numeroIntentos = 50;
+
+			function getRandomInt(min, max){
+				return Math.floor(Math.random() * (max - min)) + min;
+			}
+
+			function rellenarArray(max, intentos){
+				var results= [];
+
+				for (var i = 0; i < intentos; i++) {
+					results.push(getRandomInt(0, max))
+				} 
+				return results
+			}
+		
+			resultados = rellenarArray(numeroMax, numeroIntentos);
+			console.log(resultados);
+
+
+			var numeroOcurrencias = [];
+			for (var i = 0; i < resultados.length ; i++) {
+				var indice = resultados[i];
+
+				if(numeroOcurrencias[indice] == undefined){
+					numeroOcurrencias[indice] = 1;
+				}else{
+					numeroOcurrencias[indice] = numeroOcurrencias[indice] + 1;
+				}
+			}
+			console.log(numeroOcurrencias);
+		
+		</script>
+</head>
+<body>
+
+</body>
+</html>

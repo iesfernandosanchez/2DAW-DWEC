@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Mayor y Menor</title>
+
+	<script type="text/javascript">
+
+		function comparar(a,b){
+			if(parseInt(a) >  parseInt(b)){
+				var resultado = a + " es mayor que " + b;
+			} else{
+				var resultado = b + " es mayor que " + a;
+			}
+
+			return document.getElementById("resultado").textContent = resultado;
+		}
+
+	</script>
+</head>
+<body>
+	<input type="text" id="op1">
+	<input type="text" id="op2">
+
+	<button onclick="comparar(op1.value, op2.value)">Comparar</button>
+
+	<div id="resultado"></div>
+
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ejercicio 6 - Juego de Rol</title>
+        <script>
+            function pideNombres(){
+                return prompt("Introduce un nombre para el luchador:");
+            }
+
+            var nombre1 = pideNombres();
+            var nombre2 = pideNombres();
+
+            function crearPersonaje(nombre){
+                let personaje = [];
+                personaje['nombre'] = nombre;
+                personaje['fuerza'] = getRandomInt(5,20);
+                personaje['agilidad'] = getRandomInt(5,20);
+                personaje['vida'] = getRandomInt(50,100);
+
+                return personaje;
+            }
+
+            personaje1 = crearPersonaje(nombre1);
+            personaje2 = crearPersonaje(nombre2);
+
+            console.log(personaje1);
+            console.log(personaje2);
+
+            function getRandomInt(min, max){
+                return Math.floor(Math.random() * (max - min)) + min;
+            }
+
+            function crearGolpe(personaje){
+                var golpe = 0;
+                golpe = getRandomInt(0, personaje['fuerza']);
+                return golpe;
+            }
+
+            function crearDefensa(personaje){
+                var golpe = 0;
+                golpe = getRandomInt(0, personaje['agilidad']);
+                return golpe;
+            }
+
+            function darGolpe(){
+                ataque = golpe - defensa;
+                if(ataque < 0){
+                 ataque = 1}
+                 return ataque;
+            }
+
+            function luchar(personaje1, personaje2){
+                while(personaje1['vida'] >= 0 && personaje2['vida'] >= 0){
+                    var atacante = getRandomInt(0,2);
+
+                    if(atacante == 1){
+                        golpe = crearGolpe(personaje1);
+                        defensa = crearDefensa(personaje2);
+
+                        darGolpe();
+                        personaje2['vida'] -= ataque;
+                        console.log(personaje1['nombre'] + " golpea " + ataque);
+                    }else{
+                        golpe = crearGolpe(personaje2);
+                        defensa = crearDefensa(personaje1);
+
+                        darGolpe();
+                        personaje1['vida'] -= ataque;
+                        console.log(personaje2['nombre'] + " golpea " + ataque);
+                    }
+                }
+
+                if(personaje1['vida'] > personaje2['vida']){
+                    return personaje1;
+                }else{
+                    return personaje2;
+                }
+
+            }
+
+            ganador = luchar(personaje1, personaje2);
+
+            console.log("Gana " + ganador['nombre'] + " con la vida a: " + ganador['vida']);
+        </script>
+
+    </head>
+
+    <body>
+        <h1>Abre la consola para ver la lucha</h1>
+    </body>
+</html>

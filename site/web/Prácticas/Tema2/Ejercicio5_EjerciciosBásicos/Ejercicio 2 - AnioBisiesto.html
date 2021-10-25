@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Año Bisiesto</title>
+
+	<script type="text/javascript">
+
+		function esBisiesto(anio){
+			if(((anio % 4 == 0) && (anio % 100 != 0 )) || (anio % 400 == 0)){
+				var resultado = "El año " + anio + " es bisiesto"
+			} else{
+				var resultado = "El año " + anio + " no es bisiesto"
+			}
+			return document.getElementById("resultado").textContent = resultado;
+    	}
+
+	</script>
+</head>
+<body>
+	<input type="text" id="anio">
+
+	<button onclick="esBisiesto(anio.value)">¿Es bisiesto?</button>
+
+	<div id="resultado"></div>
+
+
+</body>
+</html>

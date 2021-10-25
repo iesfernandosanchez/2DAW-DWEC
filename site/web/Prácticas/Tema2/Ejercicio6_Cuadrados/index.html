@@ -1,0 +1,44 @@
+<html>
+<head>
+	<title>Ejercicio 6 - Cuadrados</title>
+	<style type="text/css">
+		.cuadrado{
+			height: 50px;
+			width: 50px;
+			margin: 10px;
+		}
+
+	</style>
+</head>
+
+<body>
+	<div id="myDivID" style="background-color: white; height: 100%; width: 100%;">
+		<div id="uno" class="cuadrado" style="background-color: red"></div>
+		<div id="dos" class="cuadrado" style="background-color: blue"></div>
+		<div id="tres" class="cuadrado" style="background-color: green"></div>
+		<div id="cuatro" class="cuadrado" style="background-color: yellow"></div>
+		<div id="cinco" class="cuadrado" style="background-color: purple"></div>
+	</div>
+</body>
+
+	<script>
+		let fondo = document.getElementById("myDivID");
+		//console.log(fondo.style.backgroundColor)
+		let colorOriginal = fondo.style.backgroundColor;
+
+		let cuadrados = document.getElementsByClassName("cuadrado");
+
+		for (let i = 0; i < cuadrados.length; i++) {
+			//console.log(cuadrados[i].style.backgroundColor)
+
+			cuadrados[i].addEventListener("mouseover",(event)=>{
+				fondo.style.backgroundColor = cuadrados[i].style.backgroundColor;
+			})
+
+			cuadrados[i].addEventListener("mouseout",(event)=>{
+				fondo.style.backgroundColor = colorOriginal;
+			})
+		}
+	</script>
+
+</html>
