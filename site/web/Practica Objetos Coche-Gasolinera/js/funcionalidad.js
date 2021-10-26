@@ -6,8 +6,7 @@ var precioGasolina;
 
 var hoy = new Date();
 
-var regexMatriculaAnt = /[A-Z]{1,2}[0-9]{4}[A-Z]{1,2}/;
-var regexMatriculaNue = /[0-9]{4}[A-Z]{3}/;
+var regexMatricula = /[a-zA-Z]{1,2}-[0-9]{4}-[a-zA-Z]{1,2}|[0-9]{4}-[a-zA-Z]{3}/;
 
 var coche;
 var gasolinera;
@@ -150,8 +149,8 @@ function validarDatos() {
     if (!matricula) {
         document.getElementById("modalError").innerHTML = "Introduzca matrícula";
         return;
-    } else if (!regexMatriculaAnt.test(matricula) && !regexMatriculaNue.test(matricula)) {
-        document.getElementById("modalError").innerHTML = "Introduzca matrícula válida (nnnnABC o AZnnnnAZ)";
+    } else if (!regexMatricula.test(matricula)) {
+        document.getElementById("modalError").innerHTML = "Introduzca matrícula válida (nnnn-ABC o AZ-nnnn-AZ)";
         return;
     }
 
