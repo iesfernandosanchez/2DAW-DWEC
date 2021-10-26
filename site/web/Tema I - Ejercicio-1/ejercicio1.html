@@ -1,0 +1,24 @@
+<!-- Ejercicio de JS con array con los meses del año y que se muestre en html-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <script type="text/javascript" src="js/main.js"></script>
+        <style>
+            table, th, td {
+              border:1px solid black;
+            };
+        </style>
+        
+    </head>
+    <body>
+
+        <noscript>
+            <p>La página que estás viendo requiere para su funcionamiento el uso de JavaScript.
+            Si lo has deshabilitado intencionadamente, por favor vuelve a activarlo.</p>
+        </noscript>
+
+        <table id="tabla"></table>
+        <button onclick="printTable('dias', 'tabla')">Días</button>
+        <button onclick="printTable('meses', 'tabla')">Meses</button>
+    </body>
+</html>
