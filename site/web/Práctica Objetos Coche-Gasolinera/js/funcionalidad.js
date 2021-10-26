@@ -6,7 +6,6 @@ var precioGasolina;
 
 var hoy = new Date();
 
-//var regexMatricula = [/[0-9]{4}[A-Z]{3}/],[/[A-Z]{1,2}[0-9]{4}[A-Z]{1,2}/]
 var regexMatriculaAnt = /[A-Z]{1,2}[0-9]{4}[A-Z]{1,2}/;
 var regexMatriculaNue = /[0-9]{4}[A-Z]{3}/;
 
