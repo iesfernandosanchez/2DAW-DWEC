@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica Objetos Coche-Gasolinera</title>
+
+    <!-- jQuery core JS -->
+    <script src="../jquery/jquery-3.6.0.min.js" type="text/javascript"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Funcionalidad de la página -->
+    <script src="js/funcionalidad.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+    <div class="row">
+        <div class="col-6 border border-bottom-0">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="text-center">Datos del Coche</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6"><span>Matrícula:</span></div>
+                <div class="col-6"><span id="cocheMatricula" class="fw-bold"></span></div>
+            </div>
+            <div class="row">
+                <div class="col-6"><span>Gasolina:</span></div>
+                <div class="col-6"><span id="cocheGasolina" class="fw-bold"></span></div>
+            </div>
+            <div class="row">
+                <div class="col-6"><span>Dinero:</span></div>
+                <div class="col-6"><span id="cocheDinero" class="fw-bold"></span></div>
+            </div>
+            <div class="row">
+                <div class="col-6"><span>Consumo:</span></div>
+                <div class="col-6"><span id="cocheConsumo" class="fw-bold"></span></div>
+            </div>
+            <div class="row">
+                <div class="col-6 text-center">
+                    <button type="button" class="btn btn-outline-primary" onclick="crearViaje()">Viajar</button>
+                </div>
+                <div class="col-6 text-center">
+                    <button type="button" class="btn btn-outline-primary" onclick="crearRepostaje()">Repostar</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <h5 class="text-center">Histórico de viajes</h5>
+                    <table id="histoViajes" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Kms</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Hora</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyViajes"></tbody>
+                    </table>
+                </div>
+                <div class="col-6">
+                    <h5 class="text-center">Histórico de repostajes</h5>
+                    <table id="histoRepostajes" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Gasolina</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Hora</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyRepostajes"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 border border-bottom-0">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="text-center">Datos de la Gasolinera</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6"><span>Gasolina:</span></div>
+                <div class="col-6"><span id="gasolineraGasolina" class="fw-bold"></span></div>
+            </div>
+            <div class="row">
+                <div class="col-6"><span>Dinero:</span></div>
+                <div class="col-6"><span id="gasolineraDinero" class="fw-bold"></span></div>
+            </div>
+            <div class="row">
+                <div class="col-6"><span>Precio de la gasolina:</span></div>
+                <div class="col-6"><span id="gasolineraPrecio" class="fw-bold"></span></div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h5 class="text-center">Histórico de ventas</h5>
+                    <table id="histoVentas" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Matricula</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Hora</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyVentas"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalInicio" class="modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Introduzca los datos de inicio</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="modalMatricula" class="col-form-label">Matrícula:</label>
+                        <input type="text" class="form-control" id="modalMatricula">
+                    </div>
+                    <div class="mb-3">
+                        <label for="modalPrecioGasolina" class="col-form-label">Precio de la gasolina:</label>
+                        <input type="text" class="form-control" id="modalPrecioGasolina">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div id="modalError" class="badge bg-danger text-wrap"></div>
+                    <button type="button" class="btn btn-primary" onclick="validarDatos()">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalViaje" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Introduzca los datos del viaje</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="modalKms" class="col-form-label">Kilómetros del viaje:</label>
+                        <input type="text" class="form-control" id="modalKms">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div id="modalKmsError" class="badge bg-danger text-wrap"></div>
+                    <button type="button" class="btn btn-primary" onclick="validarDatosViaje()">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalRepostaje" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Introduzca los datos del repostaje</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 ">
+                        <label for="modalLitros" class="col-form-label">Cantidad de litros:</label>
+                        <input type="text" class="form-control" id="modalLitros">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div id="modalLitrosError" class="badge bg-danger text-wrap"></div>
+                    <button type="button" class="btn btn-primary" onclick="validarDatosRepostaje()">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JS -->
+    <script src="../bootstrap/js/bootstrap.bundle.min.js" type="text/javascript "></script>
+
+</body>
+
+</html>
