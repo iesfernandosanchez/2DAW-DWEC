@@ -4,6 +4,12 @@ var modalRepostaje;
 var matricula;
 var precioGasolina;
 
+var hoy = new Date();
+
+//var regexMatricula = [/[0-9]{4}[A-Z]{3}/],[/[A-Z]{1,2}[0-9]{4}[A-Z]{1,2}/]
+var regexMatriculaAnt = /[A-Z]{1,2}[0-9]{4}[A-Z]{1,2}/;
+var regexMatriculaNue = /[0-9]{4}[A-Z]{3}/;
+
 var coche;
 var gasolinera;
 
@@ -26,13 +32,13 @@ var Coche = {
     },
 
     viajar: function(kilometros) {
-        var hoy = new Date();
+
         var registro = new Array();
 
         var gastado = 0;
 
         registro['kilometros'] = kilometros;
-        registro['dia'] = hoy.getDate() + '-' + (hoy.getMonth() + 1) + '-' + hoy.getFullYear();
+        registro['dia'] = String(hoy.getDate()).padStart(2, '0') + '-' + String((hoy.getMonth() + 1)).padStart(2, '0') + '-' + hoy.getFullYear();
         registro['hora'] = String(hoy.getHours()).padStart(2, '0') + ':' + String(hoy.getMinutes()).padStart(2, '0') + ':' + String(hoy.getSeconds()).padStart(2, '0');
 
         this.histoViajes.push(registro);
@@ -42,10 +48,9 @@ var Coche = {
     },
 
     repostar: function(gasolina) {
-        var hoy = new Date();
         var registro = new Array();
         registro['gasolina'] = gasolina;
-        registro['dia'] = hoy.getDate() + '-' + (hoy.getMonth() + 1) + '-' + hoy.getFullYear();
+        registro['dia'] = String(hoy.getDate()).padStart(2, '0') + '-' + String((hoy.getMonth() + 1)).padStart(2, '0') + '-' + hoy.getFullYear();
         registro['hora'] = String(hoy.getHours()).padStart(2, '0') + ':' + String(hoy.getMinutes()).padStart(2, '0') + ':' + String(hoy.getSeconds()).padStart(2, '0');
 
         this.histoRepostajes.push(registro);
@@ -74,11 +79,10 @@ var Gasolinera = {
 
     vender: function(matricula, cantidad) {
 
-        var hoy = new Date();
         var registro = new Array();
         registro['matricula'] = matricula;
         registro['cantidad'] = cantidad;
-        registro['dia'] = hoy.getDate() + '-' + (hoy.getMonth() + 1) + '-' + hoy.getFullYear();
+        registro['dia'] = String(hoy.getDate()).padStart(2, '0') + '-' + String((hoy.getMonth() + 1)).padStart(2, '0') + '-' + hoy.getFullYear();
         registro['hora'] = String(hoy.getHours()).padStart(2, '0') + ':' + String(hoy.getMinutes()).padStart(2, '0') + ':' + String(hoy.getSeconds()).padStart(2, '0');
 
         this.histoVentas.push(registro);
@@ -100,9 +104,6 @@ function inicializar() {
 };
 
 function recargarDatos() {
-
-    console.log(coche);
-    console.log(gasolinera);
 
     document.getElementById("cocheMatricula").innerHTML = coche.matricula;
     document.getElementById("cocheGasolina").innerHTML = coche.gasolina + ' litros';
@@ -149,6 +150,9 @@ function validarDatos() {
 
     if (!matricula) {
         document.getElementById("modalError").innerHTML = "Introduzca matrícula";
+        return;
+    } else if (!regexMatriculaAnt.test(matricula) && !regexMatriculaNue.test(matricula)) {
+        document.getElementById("modalError").innerHTML = "Introduzca matrícula válida (nnnnABC o AZnnnnAZ)";
         return;
     }
 
