@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Creacion de objetos</title>
+    <script src="js/script.js"></script>
+    <script src="js/Gasolinera.js"></script>
+    <script src="js/Coche.js"></script>
+</head>
+<body>
+
+<form id="formulario">
+    <input type="text" id="matriculaInput" placeholder="Matricula Coche">
+    <input type="button" onclick="createCoche(document.getElementById('matriculaInput').value)" value="Introducir">
+    <p id="resultadoMatricula"></p>
+</form>
+
+<div id="coche">
+    <div id="tituloCoche"></div>
+    <p id="matricula"></p>
+    <p id="gasolina"></p>
+    <p id="capacidad"></p>
+    <p id="consumo"></p>
+    <p id="dinero"></p>
+    <p id="historicoCoche"></p>
+    <div>
+        <form id="botoneraCoche">
+
+        </form>
+        <p id="resultado"></p>
+    </div>
+</div>
+
+<div id="gasolinera">
+    <div id="tituloGasolinera"></div>
+    <p id="gasolinaGasolinera"></p>
+    <p id="dineroGasolinera"></p>
+    <p id="precioGasolina"></p>
+    <p id="historicoGasolina"></p>
+</div>
+
+</body>
+</html>
