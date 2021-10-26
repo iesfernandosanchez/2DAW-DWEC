@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <script>
+        
+   
+        function Coche(gasolina,dinero,consumo){
+            this.gasolina;
+            this.dinero;
+            this.consumo;
+    }
+
+document.addEventListener("DOMContentLoaded",function(event){
+
+matricula = prompt("Introduce matricula");
+var coche = new Coche(matricula,'50','100','7');
+
+function mostrarCoche(){
+
+    console.log('Tiene ' + this.gasolina + 'litros ' + 'consume ' +this.consumo + 'litros x 100km' + 'tengo ' +this.dinero);
+    coche.mostrarCoche = mostrarCoche;
+
+}
+coche.mostrarCoche = mostrarCoche;
+coche.mostrarCoche();
+
+});
+
+
+
+
+
+    </script>
+</head>
+<body>
+    <p>Introduce numero de kms</p>
+    <input type="text" id="viaje">
+    <p>Introduce repostaje</p>
+    <input type="text" id="gasolina">
+    
+</body>
+</html>
