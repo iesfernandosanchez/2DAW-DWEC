@@ -41,6 +41,39 @@
 		<h3>Durante la ejecución del programa deberá estar siempre visible
 
 	</pre>
+
+	<style>
+		.coche, .gasolinera{
+			width: 49%;
+		}
+	</style>
+
+	<script type="text/javascript" src="js/coche.js"></script>
+	<script type="text/javascript">
+		var coche = Object.create(Coche);
+		document.addEventListener("DOMContentLoaded", function(event)
+		{ 
+			while(true){
+				var matricula = prompt("introduce la matricula");
+				if(coche.validarMatricula(matricula) == true){
+					break;
+				};
+			}
+			
+			coche.init(matricula);
+		});
+	</script>
+
+
+	<div class="">
+		<span class="coche" id="coche"></span>
+		<span class="gasolinera" id="gasolinera"></span>
+	</div>
+
+	<div class="">
+		<button onclick="coche.viajar(100)">viajar</button>
+		<span class="gasolinera"></span>
+	</div>
 	
 </body>
 </html>
