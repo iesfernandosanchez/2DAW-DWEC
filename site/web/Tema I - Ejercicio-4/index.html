@@ -1,0 +1,45 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Ejercicio 4</title>
+	<style>
+		pre {
+		    background: #cacaca;
+		    border: 1px solid;
+		    padding: 10px;
+		    white-space: unset;
+		}
+		h3, ul{
+			margin:  2px 0px;
+		}
+
+		#error {
+			color: red; 
+			display: none;
+		}
+	</style>
+
+	<script type="text/javascript" src="js/funcionalidad.js"></script>
+</head>
+<body>
+	<pre>
+		<h3>Crea un campo de recogida de texto donde se puedan introducir numeros separados por ";"(pùnto y coma) junto con un boton calcular donde se genere y pinte el resultado de la suma de todos los numeros introducidos, el mayor,el menor y la media</h3>
+		<h3>Añade un boton reiniciar donde se vacie el contenido del campo de texto</h3>
+	</pre>
+
+	<input type="text" id="texto" placeholder="Introduce números separados por ;" size="50"/>
+	<button onclick="calcular()">Calcular</button>
+	<button onclick="reiniciar()">Reiniciar</button>
+	<div>
+        <p id="error">Ha habido un error en la introducción de datos. Revíselo.</p>
+    </div>
+	<p>Suma:<i id="resultadoSuma"></i></p>
+	<p>Mayor:<i id="resultadoMayor"></i></p>
+	<p>Menor:<i id="resultadoMenor"></i></p>
+	<p>Media:<i id="resultadoMedia"></i></p>
+
+</body>
+</html>
