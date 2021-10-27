@@ -1,0 +1,30 @@
+<html>
+
+<head>
+	<style>
+		pre {
+		    background: #cacaca;
+		    border: 1px solid;
+		    padding: 10px;
+		    white-space: unset;
+		}
+		h3, ul{
+			margin:  2px 0px;
+		}
+	</style>
+
+	<script type="text/javascript" src="js/calcularFactorial.js"></script>
+</head>
+
+<body>
+
+	<pre>
+		<h3>Completa el siguiernte código para que cuando cambie el valor del campo "numero" se muestre el factorial del mismo en el identificador "resultado"</h3>
+		<h3>Se debe comprobar que el valor introducido sea un numero, en caso contrario se informará al usuario que el valor introducido no es válido</h3>
+	</pre>
+
+	<input type="text" id="numero" onchange="calcularFactorial(this.value, 'resultado')" autofocus>
+	<hr>
+	<p id="resultado"></p>
+</body>
+</html>
