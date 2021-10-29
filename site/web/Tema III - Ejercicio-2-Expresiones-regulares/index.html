@@ -1,0 +1,43 @@
+<html>
+<head>
+	<style>
+		pre {
+		    background: #cacaca;
+		    border: 1px solid;
+		    padding: 10px;
+		    white-space: unset;
+		}
+		h3, ul{
+			margin:  2px 0px;
+		}
+	</style>
+
+	<script type="text/javascript" src="js/funcionalidad.js"></script>
+</head>
+<body>
+	<pre>
+		<h3>Crea dos campos input donde se valide lo siguiente:</h3>
+		<ul>
+			<li>Matricula válida</li>
+			<li>Fecha y hora</li>
+		</ul>
+		<h3>El campo input se pondrá en rojo si el valor no es válido, y verde si es correcto</h3>
+	</pre>
+
+	<div>
+		<p>
+			<label>Matrícula:</label>
+			<input type="text" id="matricula">
+		</p>
+		<p>
+			<label>Fecha y hora:</label>
+			<input type="text" id="fechaHora" class="fecha" size="19" maxlength="19" placeholder="dd-mm-yyyy hh:ii:ss">
+		</p>
+		<p>
+			<button id="boton" onclick="validar()">Validar</button>
+		</p>
+	</div>
+
+
+</body>
+</html>
