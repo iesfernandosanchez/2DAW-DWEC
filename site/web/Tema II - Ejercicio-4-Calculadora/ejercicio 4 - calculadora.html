@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<style>
+		pre {
+		    background: #cacaca;
+		    border: 1px solid;
+		    padding: 10px;
+		    white-space: unset;
+		}
+		h3, ul{
+			margin:  2px 0px;
+		}
+	</style>
+	<title></title>
+
+	<script type="text/javascript">
+
+		var Calculadora = {
+
+			operador1: 0,
+			operador2: 0,
+
+			sumar: function(operador1, operador2) {
+				return parseInt(operador1) + parseInt(operador2);
+			},
+
+			restar: function(operador1, operador2) {
+				return parseInt(operador1) - parseInt(operador2);
+			},
+
+			factorial: function(operador1) {
+				var r = 1;
+				for(var i = parseInt(operador1); i > 1; i--){
+					r *= i;
+				}
+				return r;
+			},
+		};
+
+	</script>
+</head>
+<body>
+
+	<pre>
+		<h3>Completa el código para implementar una calculadora con dos campos donde introducir numeros y 3 botones para sumar, restar y calcular el factorial.</h3>
+		<h3>Se tendrá en cuenta la implementación de un objeto calculadora</h3>
+		
+
+	</pre>
+    <div>
+        <input type="number" id="operador1">
+        <input type="number" id="operador2">      
+    </div>
+
+	<div>
+		<button onClick="document.getElementById('resultado').innerHTML =
+			Calculadora.sumar(document.getElementById('operador1').value, document.getElementById('operador2').value)">SUMAR</button>
+		<button onClick="document.getElementById('resultado').innerHTML =
+			Calculadora.restar(document.getElementById('operador1').value, document.getElementById('operador2').value)">RESTAR</button>
+			<button onClick="document.getElementById('resultado').innerHTML =
+			Calculadora.factorial(document.getElementById('operador1').value)">FACTORIAL</button>
+	</div>
+
+    <div>
+        Resultado:&nbsp;<span id="resultado"></span>
+    </div>
+</body>
+</html>
