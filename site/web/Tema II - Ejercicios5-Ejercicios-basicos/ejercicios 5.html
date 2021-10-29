@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<style>
+		pre {
+		    background: #cacaca;
+		    border: 1px solid;
+		    padding: 10px;
+		    white-space: unset;
+		}
+		h3, ul{
+			margin:  2px 0px;
+		}
+	</style>
+	<title></title>
+
+	<script type="text/javascript">
+
+		function comparar() {
+
+			var numero1 = document.getElementById("numero1").value;
+			var numero2 = document.getElementById("numero2").value;
+
+			var resultado = 0;
+
+			if (numero1 > numero2) {
+				resultado = numero1;
+			} else {
+				resultado = numero2;
+			}
+			document.getElementById("resultadoEj1").innerHTML = "El número mayor es el " + resultado;
+		};
+
+		function bisiesto() {
+
+			var anio = document.getElementById("anio").value;
+
+			var resultado = '';
+
+			if ((anio%4 == 0 && anio%100 != 0) || (anio%400 == 0)) { 
+				resultado = 'El año ' + anio + ' es un año bisiesto';
+			} else {
+				resultado = 'El año ' + anio + ' NO es un año bisiesto';
+			} 
+			document.getElementById("resultadoEj2").innerHTML = resultado;
+		};
+
+		function login() {
+
+			var usuario = document.getElementById("user").value;
+			var password = document.getElementById("pass").value;
+
+			if (usuario == 'Gwenevere' && password=='excalibur') { 
+				resultado = 'Usuario y contraseña correctos. Puede ingresar a Camelot.';
+			} else {
+				resultado = 'Acceso denegado';
+			} 
+			document.getElementById("resultadoEj3").innerHTML = resultado;
+		};
+
+		function frase() {
+
+			var vocales = 0;
+			var frase = document.getElementById("frase").value.trim();
+
+			for (var i = 0; i < frase.length; i++) {
+				if (frase.charAt(i).match('[AEIOUaeiou]')) {
+					vocales ++;
+				}
+			}
+			document.getElementById("resultadoEj4").innerHTML = 'El número de vocales es: ' + vocales;
+		};
+
+		function paresImpares() {
+
+			var id = "";
+			var numero = 0;
+			var sumaPares = 0;
+			var sumaImpares = 0;
+
+			for (var i = 1; i<=10; i++) {
+				id = 'num' + i;
+				if (document.getElementById(id).value != '') {
+					numero = parseInt(document.getElementById(id).value);
+					if (esPar(numero)) {
+						sumaPares += numero;
+					} else {
+						sumaImpares += numero;
+					}
+				}
+			}
+
+			document.getElementById("resultadoPares").innerHTML = 'La suma de los números pares es: ' + sumaPares;
+			document.getElementById("resultadoImpares").innerHTML = 'La suma de los números impares es: ' + sumaImpares;
+
+			function esPar(numero) {
+				return (numero%2 == 0);
+			};
+
+		};
+
+	</script>
+</head>
+<body>
+
+	<pre>
+		<b>Ejercicio 1</b>
+		<h3>Compara dos numeros introducidos por el usuario en un formulario y muestra cual es el mayor</h3>
+		<hr/>
+		<b>Ejercicio 2</b>
+		<h3>Escribe un programa que permita saber si un año es bisiesto. Para que un año sea bisiesto debe ser divisible por 4 y no debe ser divisible por 100, excepto que también sea divisible por 400.</h3>
+		<hr/>
+		<b>Ejercicio 3</b>
+		<h3>Escribí un programa que solicite ingresar un nombre de usuario y una contraseña. Si el nombre es “Gwenevere” y la contraseña es “excalibur”, mostrar en pantalla “Usuario y contraseña correctos. Puede ingresar a Camelot”. Si el nombre o la contraseña no coinciden, mostrar “Acceso denegado”.</h3>
+		<hr/>
+		<b>Ejercicio 4</b>
+		<h3>Escribí un programa que, dada una frase por el usuario, muestre la cantidad total de vocales (tanto mayúsculas como minúsculas) que contiene.</h3>
+		<hr/>
+		<b>Ejercicio 5</b>
+		<h3>
+		Escribí una función llamada esPar que reciba como parámetro un número y retorne True si el número es par ó False si es impar. Utilizar esta función en un programa que solicite al usuario el ingreso de 10 números y que luego muestre, por separado, la suma de todos los pares y la suma de todos los impares.</h3>
+ 
+
+
+		
+
+	</pre>
+
+	<div style="border: 1px solid black;">
+		<div>
+			<h3>Ejercicio 1</h3>
+			<p>
+				<label>Primer número:</label>
+				<input type="number" id="numero1">
+			</p>
+			<p>
+				<label>Segundo número:</label>
+				<input type="number" id="numero2">
+			</p>
+			<p>
+				<button id="boton" onclick="comparar()">Resultado</button>
+			</p>
+			<p>
+				<div id="resultadoEj1"></div>
+			</p>
+		</div>
+		<hr />
+		<div>
+			<h3>Ejercicio 2</h3>
+			<p>
+				<label>Teclea el año: </label><input type="number" id="anio">
+			</p>
+			<p>
+				<button id="boton" onclick="bisiesto()">Resultado</button>
+			</p>
+			<p>
+				<div id="resultadoEj2"></div>
+			</p>
+		</div>
+		<hr />
+		<div>
+			<h3>Ejercicio 3</h3>
+			<p>
+				<label>Introduce usuario: </label><input type="text" id="user">
+			</p>
+			<p>
+				<label>Introduce password: </label><input type="password" id="pass">
+			</p>
+			<p>
+				<button id="boton" onclick="login()">Resultado</button>
+			</p>
+			<p>
+				<div id="resultadoEj3"></div>
+			</p>
+		</div>
+		<hr />
+		<div>
+			<h3>Ejercicio 4</h3>
+			<p>
+				<label>Introduce frase: </label><input type="text" id="frase">
+			</p>
+			<p>
+				<button id="boton" onclick="frase()">Resultado</button>
+			</p>
+			<p>
+				<div id="resultadoEj4"></div>
+			</p>
+		</div>
+		<hr />
+		<div>
+			<h3>Ejercicio 5</h3>
+			<p>
+				<label>Introduce números: </label><br />
+				<input type="number" id="num1"><br />
+				<input type="number" id="num2"><br />
+				<input type="number" id="num3"><br />
+				<input type="number" id="num4"><br />
+				<input type="number" id="num5"><br />
+				<input type="number" id="num6"><br />
+				<input type="number" id="num7"><br />
+				<input type="number" id="num8"><br />
+				<input type="number" id="num9"><br />
+				<input type="number" id="num10"><br />
+		
+			</p>
+			<p>
+				<button id="boton" onclick="paresImpares()">Procesar</button>
+			</p>
+			<p>
+				<div id="resultadoPares"></div>
+				<div id="resultadoImpares"></div>
+			</p>
+		</div>
+	</div>
+</body>
+</html>
