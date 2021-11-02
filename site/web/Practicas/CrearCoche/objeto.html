@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Practica coche</title>
+		<meta charset="utf-8">
+
+		<style type="text/css">
+			.coche, .gasolinera{
+				width: 49%;
+			}
+		</style>
+		<script type="text/javascript" src="js/coche.js"></script>
+		<script type="text/javascript">
+
+		var coche = Object.create(Coche);
+		var gasolinera = Object.create(Gasolinera);
+
+		document.addEventListener("DOMContentLoaded", function(event){
+			{
+		while(true){
+			var matricula = prompt("Introduce la matrícula:");
+			var precio = prompt("Introduce el precio de la gasolina:");
+			if(coche.validarMatricula(matricula) && gasolinera.validarNegativos(precio) == true){
+				break;
+			}
+			}
+		}
+			coche.init(matricula);
+			gasolinera.init(precio);
+		});
+
+		</script>
+
+	</head>
+	<body>
+
+		<div class="">
+			<h1>Coche</h1>
+			<span class="coche" id="coche"></span>
+			<h1>Gasolinera</h1>
+			<span class="gasolinera" id="gasolinera"></span>
+		</div>
+		<br>
+
+		<div class="">
+			<button onclick="coche.viajar()">Viajar</button>
+			<button onclick="gasolinera.repostar()">Repostar</button>
+			<span class="gasolinera"></span>
+		</div>
+		
+	</body>
+</html>
