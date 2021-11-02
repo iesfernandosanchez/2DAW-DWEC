@@ -1,0 +1,27 @@
+<html>
+<head>
+	<script type="text/javascript"></script>
+	<script type="text/javascript">
+
+	function nombres(){
+
+		var arrays = [];
+		
+		do{
+			var nombre = prompt("Escriba un nombre");
+
+			if (nombre != "" && nombre != null && nombre != " ") {
+				arrays.push(nombre);
+			} else alert("Nombre no válido");
+			
+		} while(nombre != "" && nombre != null && nombre != " ");
+		console.log(arrays);
+	}
+
+	</script>
+</head>
+
+<body>
+	<button onclick="nombres()">Ingresa nombres</button>
+</body>
+</html>

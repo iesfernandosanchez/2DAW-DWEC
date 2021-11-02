@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <title>Practica 4</title>
+    <script type="text/javascript">
+
+
+    function operaciones(arrays){
+        var numeros = arrays.split(';');
+
+    //Suma
+        var suma = 0;
+        numeros.forEach(function(numero){
+            suma += parseInt(numero, 10);
+        });
+
+    //Maximo    
+        var mayor = Math.max(...numeros);
+
+    //Minimo
+        var menor = Math.min(...numeros);
+
+    //Media
+        var media = suma / numeros.length;
+
+
+        document.getElementById("resultadoSuma").innerHTML = suma;
+        document.getElementById("resultadoMayor").innerHTML = mayor;
+        document.getElementById("resultadoMenor").innerHTML = menor;
+        document.getElementById("resultadoMedia").innerHTML = media;
+
+    }
+
+    function reset(){
+        document.getElementById("texto").value = "";
+        document.getElementById("resultadoSuma").innerHTML = "";
+        document.getElementById("resultadoMayor").innerHTML = "";
+        document.getElementById("resultadoMenor").innerHTML = "";
+        document.getElementById("resultadoMedia").innerHTML = "";
+
+    }
+    </script>
+</head>
+
+
+
+<body>
+    <h1>Crea un campo de recogida de texto donde se puedan introducir numeros separados por ";"(punto y coma) 
+junto con un boton calcular donde se genere y pinte el resultado de la suma de todos los numeros introducidos, 
+el mayor,el menor y la media</h1>
+
+    <h2>Añade un boton reiniciar donde se vacie el contenido del campo de texto</h2>
+
+    <input type="text" id="texto">
+
+    <button onclick="operaciones(texto.value)">Calcular</button>
+
+    <button onclick="reset()">Reiniciar</button>
+
+    <p>Suma:<i id="resultadoSuma"></i></p>
+
+    <p>Mayor:<i id="resultadoMayor"></i></p>
+
+    <p>Menor:<i id="resultadoMenor"></i></p>
+
+    <p>Media:<i id="resultadoMedia"></i></p>
+
+</body></html>

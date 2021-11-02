@@ -1,0 +1,47 @@
+<!doctype HTML>
+<html>
+<head>
+	<title>Practica 3</title>
+		<script type="text/javascript">
+
+			function getRandomInt(min, max){
+				return Math.floor(Math.random() * (max - min)) + min;
+			}
+
+			function rellenarArray(max, intentos){
+				var results= [];
+
+				for (var i = 0; i < intentos; i++) {
+					results.push(getRandomInt(0, max))
+				} return results;
+			}
+
+			var numeroMax = 32;
+			var numeroIntentos = 50;
+
+		
+			resultados = rellenarArray(numeroMax, numeroIntentos);
+			
+			var numOcurrencias = [];
+
+			for (var i = 0; i < resultados.length; i++) {
+				
+				var indice = resultados[i];
+
+				if (numOcurrencias[indice] == undefined) {
+					numOcurrencias[indice] = 1;
+				} else {
+					numOcurrencias[indice] = numOcurrencias[indice] + 1;
+				}
+			}
+
+			console.log(resultados);
+			console.log(numOcurrencias);
+
+		</script>
+</head>
+
+<body>
+
+</body>
+</html>
