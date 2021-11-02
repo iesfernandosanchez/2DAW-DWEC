@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación Matrícula</title>
+
+    <script text="text/javascript">
+
+        function validarMatricula(matricula){
+            var regex = /([0-9]{4}-[a-zA-Z]{3})|([a-zA-Z]{1,2}-[0-9]{4}-[a-zA-Z]{2})/;
+            var validacion = regex.test(matricula);
+            console.log(validacion);
+
+            if(validacion == true) {
+                document.getElementById("texto").style.backgroundColor = "green";
+            }
+            else {
+                document.getElementById("texto").style.backgroundColor = "red";
+            }
+        }
+
+        function validarFecha(fecha){
+            var date_regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[1-9]|2[1-9])$/;
+            var validacion = date_regex.test(fecha)
+            if (validacion == true) {
+                document.getElementById("fecha").style.backgroundColor = "green";
+            }
+            else{
+                document.getElementById("fecha").style.backgroundColor = "red";
+            }
+        }
+
+        function validarHora(hora){
+            var date_regex = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/;
+            var validacion = date_regex.test(hora)
+            if (validacion == true) {
+                document.getElementById("hora").style.backgroundColor = "green";
+            }
+            else{
+                document.getElementById("hora").style.backgroundColor = "red";
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+    <h3>Validación de matrícula</h3>
+
+    <div>
+        <label for="name">Introduce la matrícula:</label>
+        <input type="text" id="texto"/>
+    </div>
+
+    <div>
+        <label for="name">Introduce la fecha (MM/DD/YY):</label>
+        <input type="text" id="fecha"/>
+    </div>
+    <div>
+        <label for="name">Introduce la hora (HH:MM:SS):</label>
+        <input type="text" id="hora"/>
+    </div>
+        <button onclick="validarMatricula(texto.value),validarFecha(fecha.value),validarHora(hora.value)">Validar</button>
+    
+
+
+</body>
+</html>

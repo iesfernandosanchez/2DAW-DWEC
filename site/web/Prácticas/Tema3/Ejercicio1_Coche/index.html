@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creación de Objetos - Coche</title>
+
+    <style>
+        .coche, .gasolinera{
+            width: 49%;
+        }
+    </style>
+
+    <script text="text/javascript" src="coche.js"></script>
+    <script text="text/javascript">
+
+    var coche = Object.create(Coche);
+    var gasolinera = Object.create(Gasolinera);
+    document.addEventListener("DOMContentLoaded", function(event){
+        {
+            while(true){
+                var matricula = prompt("Introduce la matrícula");
+                var precio = prompt("Introduce un precio");
+                if(coche.validarMatricula(matricula) == true){
+                    break;
+                }
+            }
+        }
+        coche.init(matricula);
+        gasolinera.init(precio);
+    });
+    </script>
+
+</head>
+<body>
+    <h3>-Datos de tu coche:</h3>
+    <div class="">
+        <span class="coche" id="coche"></span>
+    </div>
+    <br>
+    <div class="">
+        <button onclick="coche.viajar()">Viajar</button>
+    </div>
+
+    <h3>-Datos de la gasolinera:</h3>
+    <div class="">
+        <span class="gasolinera" id="gasolinera"></span>
+    <br>
+    <h2>Introduce el repostaje:</h2>
+        <input id="cantidad">
+        <button onclick="coche.repostar(cantidad.value, gasolinera.precio), gasolinera.repostar(cantidad.value, coche)">Enviar</button>
+    </div>
+</body>
+</html>
