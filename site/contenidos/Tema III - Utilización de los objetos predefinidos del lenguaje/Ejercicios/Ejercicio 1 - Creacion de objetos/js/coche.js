@@ -23,9 +23,9 @@ var Coche = {
 
 			validarMatricula: function(matricula){
 				var regex = /([0-9]{4}-[a-zA-Z]{3})|([a-zA-Z]{1,2}-[0-9]{4}-[a-zA-Z]{2})/;
-				var regex = /([\D\w]{1,2}-\d{4}-[\D\w]{2})/;
-				var regex = new RegExp("^[A-Z]{1,2}\\s\\d{4}\\s([B-D]|[F-H]|[J-N]|[P-T]|[V-Z]){3}$");
-				var regex = new RegExp("^[A-z]{1,2}-\d{4}-[A-z]{2}");
+				var regex = new RegExp("^[A-z]{1,2}\-\\d{4}\-([A-z]){2,3}$");
+				console.log(regex);
+				//var regex = new RegExp("([\D\w]{1,2}-\d{4}-[\D\w]{2})");
 				return (regex.test(matricula));
 			},
 

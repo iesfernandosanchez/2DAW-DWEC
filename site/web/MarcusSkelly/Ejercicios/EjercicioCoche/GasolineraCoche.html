@@ -9,10 +9,11 @@
     <script>
         
    
-        function Coche(gasolina,dinero,consumo){
-            this.gasolina;
-            this.dinero;
-            this.consumo;
+        function Coche(matricula,gasolina,dinero,consumo){
+            this.matricula = matricula
+            this.gasolina = gasolina;
+            this.dinero = dinero;
+            this.consumo = consumo;
     }
 
 document.addEventListener("DOMContentLoaded",function(event){
@@ -23,12 +24,11 @@ var coche = new Coche(matricula,'50','100','7');
 function mostrarCoche(){
 
     console.log('Tiene ' + this.gasolina + 'litros ' + 'consume ' +this.consumo + 'litros x 100km' + 'tengo ' +this.dinero);
-    coche.mostrarCoche = mostrarCoche;
-
 }
 coche.mostrarCoche = mostrarCoche;
 coche.mostrarCoche();
 
+console.log(coche);
 });
 
 
