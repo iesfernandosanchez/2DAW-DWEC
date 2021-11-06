@@ -3,6 +3,13 @@
 <head>
 	<title></title>
 
+	<style>
+		table, tr, td {
+			border: 2px solid black;
+			text-align: center;
+		}
+	</style>
+
 	<script type="text/javascript">
 
 		
@@ -14,9 +21,28 @@
         if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
         	if (xmlhttp.status == 200) {
 
+				var respuesta = JSON.parse(xmlhttp.responseText);
+
+        		document.getElementById("Definition").innerHTML = respuesta;
         		
-        		document.getElementById("Definition").innerHTML = xmlhttp.responseText;
-        		
+				var i = 0;
+
+				var tabla = '<table>';
+
+				for (var i = 0; i < respuesta.length; i++) {
+					if (i == 0) {
+						tabla += '<tr>';
+					} else if (i == 10) {
+						tabla += '</tr><tr>';
+					}
+
+					tabla += '<td>' + respuesta[i] + '</td>';
+					
+				}
+
+				tabla += '</tr></table>';
+
+				document.getElementById("Definition").innerHTML = tabla;
 
         	}
         	else if (xmlhttp.status == 400) {
@@ -29,7 +55,7 @@
         }
     };
 
-    xmlhttp.open("GET", "http://dwec.daw:8006/bingo/index.php", true);
+    xmlhttp.open("GET", "http://localhost:8006/bingo/index.php", true);
     xmlhttp.send();
 }
 
@@ -40,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 </script>
 </head>
 <body>
+	<h1>Bingo!</h1>
 	<div id="Definition"></div>
 </body>
 </html>
