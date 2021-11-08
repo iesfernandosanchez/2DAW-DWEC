@@ -1,16 +1,14 @@
 const $btnEnviar = document.querySelector("#btnEnviar"),
-	$mensaje = document.querySelector("#mensaje"),
-	$mensajeRecibido = document.querySelector("#mensajeRecibido");
+	$fruta = document.querySelector("#fruta")
+
 $btnEnviar.addEventListener("click", () => {
-	const mensaje = $mensaje.value;
-	if (!mensaje) return alert("Escribe un mensaje");
+	const fruta = $fruta.value;
+	if (!fruta) {
+		alert("Teclee una fruta");
+	};
+
 	if (window.opener) {
-		window.opener.establecerMensaje(mensaje);
+		window.opener.marcarCheckbox(fruta);
 	}
+
 });
-
-
-// Definición de función desde la que nos llama el padre
-window.establecerMensaje = function (mensaje) {
-	$mensajeRecibido.textContent = mensaje;
-}

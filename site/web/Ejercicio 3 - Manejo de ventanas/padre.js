@@ -1,24 +1,36 @@
+const frutas = ['Naranja', 'Pera', 'Cereza', 'Tomate', 'Manzana', 'Fresa', 'Mandarina'];
+
 const $btnAbrir = document.querySelector("#btnAbrir"),
 	$mensaje = document.querySelector("#mensaje"),
 	$btnEnviarMensaje = document.querySelector("#btnEnviarMensaje"),
 	$mensajeRecibido = document.querySelector("#mensajeRecibido");
 
 let ventana;
+
+
 $btnAbrir.addEventListener("click", () => {
 	ventana = window.open("ventana.html","","height=400,width=800");;
 });
 
-$btnEnviarMensaje.addEventListener("click", () => {
-	let mensaje = $mensaje.value;
-	if (!mensaje) {
-		return;
-	}
-	if (ventana) {
-		ventana.establecerMensaje(mensaje);
-	}
-});
-
 // Llamada desde la hija
-function establecerMensaje(mensaje) {
-	$mensajeRecibido.textContent = mensaje;
+function marcarCheckbox(fruta) {
+	for (var i in frutas) {
+		if (frutas[i] == fruta) {
+			document.getElementById(fruta).checked = true;
+		}
+	}
 }
+
+// Al terminar de cargar la página se generan los checkbox
+document.addEventListener("DOMContentLoaded", function(){
+
+	var salida = '';
+
+	for (var i in frutas) {
+		var divCheck = '<div><input type="checkbox" id="'+frutas[i]+'" disabled/>'+frutas[i]+'</div>';
+		salida += divCheck;
+	}
+
+	document.getElementById("principal").innerHTML = salida;
+
+});
