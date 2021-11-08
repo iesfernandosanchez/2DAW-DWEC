@@ -1,9 +1,6 @@
 const frutas = ['Naranja', 'Pera', 'Cereza', 'Tomate', 'Manzana', 'Fresa', 'Mandarina'];
 
-const $btnAbrir = document.querySelector("#btnAbrir"),
-	$mensaje = document.querySelector("#mensaje"),
-	$btnEnviarMensaje = document.querySelector("#btnEnviarMensaje"),
-	$mensajeRecibido = document.querySelector("#mensajeRecibido");
+const $btnAbrir = document.querySelector("#btnAbrir");
 
 let ventana;
 
