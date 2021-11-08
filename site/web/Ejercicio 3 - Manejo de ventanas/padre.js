@@ -22,3 +22,21 @@ $btnEnviarMensaje.addEventListener("click", () => {
 function establecerMensaje(mensaje) {
 	$mensajeRecibido.textContent = mensaje;
 }
+
+
+function buscarProducto(nombreProducto) {
+	var search = nombreProducto;
+    var productos = document.getElementsByName("fruta");
+    for (var i = 0; i <= productos.length; i++) {
+    	if(productos[i].getAttribute('product') == search){
+    		productos[i].checked = true;
+    	}
+
+
+    }
+}
+
+window.onload = function()
+{
+	
+}

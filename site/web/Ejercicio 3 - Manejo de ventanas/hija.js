@@ -5,7 +5,7 @@ $btnEnviar.addEventListener("click", () => {
 	const mensaje = $mensaje.value;
 	if (!mensaje) return alert("Escribe un mensaje");
 	if (window.opener) {
-		window.opener.establecerMensaje(mensaje);
+		window.opener.buscarProducto(mensaje);
 	}
 });
 
