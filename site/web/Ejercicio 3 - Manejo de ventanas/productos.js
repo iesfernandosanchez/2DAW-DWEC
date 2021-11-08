@@ -1,1 +1,1 @@
-var productos = ["tomate","lechuga","pescado"]
+var productos = ["TomatE","lechuga","pescado"]

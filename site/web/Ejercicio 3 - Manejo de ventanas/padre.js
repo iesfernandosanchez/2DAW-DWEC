@@ -27,8 +27,8 @@ function establecerMensaje(mensaje) {
 function buscarProducto(nombreProducto) {
 	var search = nombreProducto;
     var productos = document.getElementsByName("fruta");
-    for (var i = 0; i <= productos.length; i++) {
-    	if(productos[i].getAttribute('product') == search){
+    for (var i = 0; i < productos.length; i++) {
+    	if(productos[i].getAttribute('product') == search.toLowerCase()){
     		productos[i].checked = true;
     	}
 
@@ -36,7 +36,28 @@ function buscarProducto(nombreProducto) {
     }
 }
 
+function limpiarSeleccion(){
+	var productos = document.getElementsByName("fruta");
+	for (var i = 0; i < productos.length; i++) {
+		productos[i].checked = false;
+    }
+}
+
+function inicializarListado(){
+	console.log(productos);
+
+    var listado = document.getElementById("listadoProductos");
+	 for (var i = 0; i < productos.length; i++) {
+	 	var producto = productos[i].toLowerCase();
+	 	listado.innerHTML += '<tr><td><input type="checkbox" '+
+	 						 'name="fruta" product="'+producto+'">'+
+	 						 producto.toUpperCase()+'</td></tr>';
+               
+    }
+
+}
+
 window.onload = function()
 {
-	
+	inicializarListado();
 }

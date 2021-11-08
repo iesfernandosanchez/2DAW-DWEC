@@ -1,4 +1,5 @@
 const $btnEnviar = document.querySelector("#btnEnviar"),
+    $btnClear = document.querySelector("#btnClear"),
 	$mensaje = document.querySelector("#mensaje"),
 	$mensajeRecibido = document.querySelector("#mensajeRecibido");
 $btnEnviar.addEventListener("click", () => {
@@ -8,6 +9,12 @@ $btnEnviar.addEventListener("click", () => {
 		window.opener.buscarProducto(mensaje);
 	}
 });
+
+$btnClear.addEventListener("click",() => {
+	if (window.opener) {
+		window.opener.limpiarSeleccion();
+	}
+})
 
 
 // Definición de función desde la que nos llama el padre
