@@ -15,7 +15,35 @@
         	if (xmlhttp.status == 200) {
 
         		
-        		document.getElementById("Definition").innerHTML = xmlhttp.responseText;
+        		/*document.getElementById("Definition").innerHTML = xmlhttp.responseText.json();
+        		*/
+
+        		var numeros = xmlhttp.responseText;
+        		var cell = '';
+        		var row = '';
+
+        		for (var i = 0; i <= numeros.length - 1; i++)
+        		{ 
+        			if(i == 0){
+        				row ='<tr>';
+        				cell +=row;
+
+        			}
+        			cell += '<td>'+numeros[i]+'</td>';
+        			if(i == (numeros.length/2)){
+        				row ='</tr>'
+        				cell +=row;
+
+        				document.getElementById("boleto").innerHTML = cell;
+        				cell = '';
+        			}
+
+
+        		}
+        		document.getElementById("boleto").innerHTML = cell;
+        		
+
+        		
         		
 
         	}
@@ -41,5 +69,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 </head>
 <body>
 	<div id="Definition"></div>
+
+	<table id="boleto">
+	</table>
 </body>
 </html>
