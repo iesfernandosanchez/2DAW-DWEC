@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejericio 2</title>
+</head>
+
+<script>
+
+    function isAñoBisiesto(year) {
+        var bisiesto = false
+
+        if (year % 4 === 0) {
+            if (year % 100 !== 0 || year % 100 === 0 && year % 400 === 0) {
+                bisiesto = true;
+                document.getElementById("resultado").innerHTML = "El año es bisiesto"
+            }
+        }
+
+        if (!bisiesto) {
+            document.getElementById("resultado").innerHTML = "El año no es bisiesto"
+        }
+    }
+
+
+</script>
+<body>
+<input type="number" id="year">
+<input type="button" onclick="isAñoBisiesto(parseInt(document.getElementById('year').value))" value="CLICK">
+
+<div id="resultado"></div>
+</body>
+</html>

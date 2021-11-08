@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 4</title>
+
+
+    <script>
+
+        function contadorVocales(frase) {
+            var vocalesMayusculas = ["A", "E", "I", "O", "U"]
+            var vocalesMinusculas = ["a", "e", "i", "o", "u"]
+
+            var recuentoMayusculas = recorrerFrase(frase,vocalesMayusculas)
+            var recuentoMinusculas = recorrerFrase(frase,vocalesMinusculas)
+
+            document.getElementById("resultado").innerHTML = "Hay " + recuentoMayusculas + " vocales mayusculas y " +
+                recuentoMinusculas + " vocales minusculas"
+        }
+
+        function recorrerFrase(frase,arrayLetras){
+
+            var fraseCopia = frase
+            var salir = false
+            var indexOf = 0
+
+            var recuento = 0
+
+            for (let i = 0; i < arrayLetras.length; i++) {
+                salir = false
+                do {
+                    indexOf = frase.indexOf(arrayLetras[i])
+                    if (indexOf !== -1) {
+                        frase = frase.substr(frase.indexOf(arrayLetras[i]) + 1, frase.length)
+                        recuento++
+                    } else {
+                        salir = true
+                        frase = fraseCopia
+                    }
+                } while (!salir)
+            }
+            return recuento
+        }
+
+    </script>
+
+</head>
+<body>
+
+<input type="text" id="frase">
+<input type="button" onclick="contadorVocales(document.getElementById('frase').value)" value="CLICK">
+
+<div id="resultado"></div>
+</body>
+</html>

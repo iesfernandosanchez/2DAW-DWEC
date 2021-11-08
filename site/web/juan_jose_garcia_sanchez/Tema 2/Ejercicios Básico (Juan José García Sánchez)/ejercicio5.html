@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 5</title>
+
+    <script>
+        function isPar(numeros) {
+
+            var arraynumeros = numeros.split(",")
+
+            var sumaNumerosPares = 0
+            var sumaNumerosImpares = 0
+
+            arraynumeros.forEach(value => {
+                if (value % 2 === 0) {
+                    sumaNumerosPares = sumaNumerosPares + parseInt(value)
+                } else {
+                    sumaNumerosImpares = sumaNumerosImpares + parseInt(value)
+                }
+            })
+
+            document.getElementById("resultado").innerHTML = "Suma numeros Pares: " + sumaNumerosPares +
+                " Suma numeros impares: " + sumaNumerosImpares
+        }
+
+    </script>
+
+</head>
+<body>
+
+<input type="text" id="numeros">
+<input type="button" onclick="isPar(document.getElementById('numeros').value)" value="CLICK">
+
+<div id="resultado"></div>
+
+
+</body>
+</html>

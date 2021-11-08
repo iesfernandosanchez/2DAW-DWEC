@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3</title>
+
+    <script>
+        function login(user,passwd){
+            var userLower = user.toLowerCase()
+            if (userLower === "gwenevere" && passwd === "excalibur"){
+                document.getElementById("resultado").innerHTML = "<h1 style='align-content: center'> Usuario y contraseña correctos. Puede ingresar a Camelot </h1>"
+            }else {
+                document.getElementById("resultadoContraseña").innerHTML = "Acceso denegado"
+            }
+        }
+    </script>
+
+</head>
+<body>
+
+<div id="resultado">
+    <input type="text" id="user">
+    <input type="password" id="passwd">
+    <input type="button" onclick="login(document.getElementById('user').value,document.getElementById('passwd').value)" value="Login">
+    <p style="color: red" id="resultadoContraseña"></p>
+</div>
+</body>
+</html>

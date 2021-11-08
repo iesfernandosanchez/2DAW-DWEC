@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="calculadora.js"></script>
+
+    <script>
+        let calculadora = new Calculadora()
+        document.addEventListener("DOMContentLoaded",function (event){
+            document.getElementById("botonera").innerHTML = calculadora.printBotonera()
+
+        })
+    </script>
+</head>
+<body>
+<input type="number" id="n1" name="n1">
+<input type="number" id="n2" name="n2">
+
+<div id="botonera"></div>
+
+<div id="resultado"></div>
+
+</body>
+</html>

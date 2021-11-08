@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coger nombre</title>
+</head>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var arrayNombre = []
+        var nombre;
+        var salir = false
+        do {
+            nombre = prompt("Dime tu nombre")
+            if (nombre) {
+                arrayNombre.push(nombre)
+            } else {
+                salir = true
+            }
+        } while (!salir)
+        console.log(arrayNombre);
+    })
+</script>
+
+<body>
+
+</body>
+</html>

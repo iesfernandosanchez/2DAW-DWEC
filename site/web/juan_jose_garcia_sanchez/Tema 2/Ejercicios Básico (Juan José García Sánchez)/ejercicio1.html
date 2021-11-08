@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 1</title>
+    <script src="calculadora.js"></script>
+
+    <script>
+        function compararNumeros(n1, n2) {
+            if (n1 > n2) {
+                document.getElementById("resultado").innerHTML = "El numero mayor es el " + n1
+            } else {
+                document.getElementById("resultado").innerHTML = "El numero mayor es el " + n2
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="number" id="n1" name="n1">
+<input type="number" id="n2" name="n2">
+<input type="button"
+       onclick="compararNumeros(parseInt(document.getElementById('n1').value),parseInt(document.getElementById('n2').value))" value="Click">
+<div id="resultado"></div>
+
+</body>
+</html>

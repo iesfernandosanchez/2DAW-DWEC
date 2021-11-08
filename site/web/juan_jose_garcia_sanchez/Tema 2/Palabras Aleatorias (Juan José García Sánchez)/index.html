@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        pre {
+            background: #cacaca;
+            border: 1px solid;
+            padding: 10px;
+            white-space: unset;
+        }
+        h3, ul{
+            margin:  2px 0px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function loadXMLDoc() {
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState === XMLHttpRequest.DONE) {
+                    if (xmlhttp.status === 200) {
+                        var body = JSON.parse(xmlhttp.responseText)["body"]
+                        console.log(body)
+                        document.getElementById("Word").innerHTML = body["Word"]
+                        document.getElementById("Definition").innerHTML = body["Definition"]
+                    }
+                    else if (xmlhttp.status === 400) {
+                        alert('There was an error 400');
+                    }
+                    else {
+                        alert('something else other than 200 was returned');
+                    }
+                }
+            };
+
+            xmlhttp.open("GET", "https://palabras-aleatorias-public-api.herokuapp.com/random", true);
+            xmlhttp.send();
+        }
+
+        document.addEventListener("DOMContentLoaded", function(event) {
+            loadXMLDoc();
+        });
+
+    </script>
+
+</head>
+
+<body>
+<div id="myDiv"></div>
+
+<div id="Word"></div>
+<hr/>
+<div id="Definition"></div>
+
+</body>
+</html>
