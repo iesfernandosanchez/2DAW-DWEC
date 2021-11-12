@@ -30,6 +30,10 @@ function buscarProducto(nombreProducto) {
     for (var i = 0; i < productos.length; i++) {
     	if(productos[i].getAttribute('product') == search.toLowerCase()){
     		productos[i].checked = true;
+
+    		if(ventana){
+    			ventana.establecerMensaje(productos[i].getAttribute('price'));
+    		}
     	}
 
 
@@ -48,16 +52,41 @@ function inicializarListado(){
 
     var listado = document.getElementById("listadoProductos");
 	 for (var i = 0; i < productos.length; i++) {
-	 	var producto = productos[i].toLowerCase();
+	 	var producto = productos[i];
 	 	listado.innerHTML += '<tr><td><input type="checkbox" '+
-	 						 'name="fruta" product="'+producto+'">'+
-	 						 producto.toUpperCase()+'</td></tr>';
+	 						 'name="fruta" product="'+producto.name.toLowerCase()+
+	 						 '" price="'+producto.price+'">'+
+	 						 producto.name.toUpperCase()+'</td>'+
+	 						 '<td>'+producto.price+'</td></tr>';
                
     }
 
 }
 
+function findElements(name)
+    {
+        var elArray = [];
+        var tmp = document.getElementsByTagName("input");
+        
+
+        var regex = new RegExp("" + name + "");
+        console.log(name);
+        console.log(regex);
+        for ( var i = 0; i < tmp.length; i++ ) {
+        	console.log(tmp[i].getAttribute('product'));
+            if ( regex.test(tmp[i].getAttribute('product')) ) {
+                elArray.push(tmp[i]);
+            }
+        }
+
+        return elArray;
+
+    }
+
 window.onload = function()
 {
 	inicializarListado();
+
+	var productos = findElements("tom");
+	console.log(productos);
 }
