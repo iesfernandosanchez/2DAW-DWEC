@@ -41,12 +41,11 @@ $btnBuscar.addEventListener("click", () => {
 	}
 
 });
-*/
 
 function clickFruta(checkbox) {
 	window.opener.marcarCheckbox(checkbox.getAttribute("id"));
 }
-
+*/
 
 $btnBuscar.addEventListener("click", () => {
 
@@ -76,10 +75,10 @@ $btnBuscar.addEventListener("click", () => {
 		eventos = document.getElementsByName("fruta");
 		for (var i = 0; i < eventos.length; i++) {
 			var nodo = eventos[i];
-			console.log(nodo);
-			nodo.addEventListener ("click", () => {
-				console.log(nodo.getAttribute("id"));
-				window.opener.marcarCheckbox(nodo.getAttribute("id"));
+			console.log('1: ' + nodo.getAttribute("id"));
+			nodo.addEventListener ("click", (event) => {
+				console.log('2: ' + event.target.getAttribute("id"));
+				window.opener.marcarCheckbox(event.target.getAttribute("id"));
 			});
 		}
 
