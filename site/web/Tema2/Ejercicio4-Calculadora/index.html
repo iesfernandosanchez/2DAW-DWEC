@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="main.js"></script>
+    <script>
+         var Calculadora = new calculadora()
+        document.addEventListener("DMContentLoaded", function(event){
+            document.getElementById("botonera").innerHTML = Calculadora.printButtons(resultado, ["suma", "resta", "factorial"], "op1", "op2");
+        });
+    </script>
+</head>
+<body>
+    <input type="text" id="op1">
+    <input type="text" id="op2">
+
+    <
+    <button onclick="
+    document.getElementById('resultado').innerHTML = 
+        Calculadora.suma(
+            document.getElementById('op1').value,
+            document.getElementById('op2').value
+        )">    
+        SUMA
+    </button>
+
+
+    <button onclick="
+    document.getElementById('resultado').innerHTML = 
+        Calculadora.resta(
+            document.getElementById('op1').value,
+            document.getElementById('op2').value
+        )"> 
+        RESTA
+    </button>
+
+    <button onclick="
+    document.getElementById('resultado').innerHTML = 
+        Calculadora.factorial(
+            document.getElementById('op1').value,
+        )">    
+        FACTORIAL
+    </button>
+
+    
+    <button onclick="
+    document.getElementById('resultado').innerHTML = 
+        Calculadora.mayor(
+            document.getElementById('op1').value,
+            document.getElementById('op2').value
+        )"> 
+        MAYOR
+    </button>
+
+    <button onclick="
+    document.getElementById('resultado').innerHTML = 
+        Calculadora.menor(
+            document.getElementById('op1').value,
+            document.getElementById('op2').value
+        )"> 
+        MENOR
+    </button>
+    
+
+    <div id="botonera"></div>
+
+    <div id="resultado"></div>
+</body>
+</html>
