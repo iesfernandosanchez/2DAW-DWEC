@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="main.js"></script>
+</head>
+<body>
+
+<h1>Crea un campo de recogida de texto donde se puedan introducir numeros separados por ";"(pùnto y coma) 
+junto con un boton calcular donde se genere y pinte el resultado de la suma de todos los numeros introducidos, el mayor,el menor y la media</h1>
+
+<h2>Añade un boton reiniciar donde se vacie el contenido del campo de texto</h2>
+
+
+
+<input type="text" id="recogida"/>
+
+<button id="calculo" onclick="main()">Calcular</button>
+
+<input type="button" value="Reset" id="reset" onClick="funcion_reset();">
+
+
+
+<p>Suma:<i id="resultadoSuma"></i></p>
+
+<p>Mayor:<i id="resultadoMayor"></i></p>
+
+<p>Menor:<i id="resultadoMenor"></i></p>
+
+<p>Media:<i id="resultadoMedia"></i></p>
+    
+</body>
+</html>

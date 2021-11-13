@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script type="text/javascript">
+        
+        function getRandomInt(min, max){
+            return Math.floor(Math.random() * (max -min)) + min;
+        }
+
+        var cantidadNumeros = 32;
+        var numIntentos = 50;
+
+        var resultados = [];
+
+        for (var i = 0; i < numIntentos; i++){
+            resultados[i] = getRandomInt(0, cantidadNumeros)
+        }
+
+        for(var i = 0; i < resultados.length; i++){
+            
+        }
+
+        var resultados =  [4,7,9,4,2,9,2,3,5];
+        var numOcurrencias = [];
+
+        for (var i = 0; i<resultados.length; i++){
+           var indice = resultados[i]
+
+           if (numOcurrencias[indice] ==    undefined){
+               numOcurrencias[indice] = 1;
+           }else {
+               numOcurrencias[indice] = numOcurrencias[indice] + 1;
+           }
+        }
+
+        console.log(resultados);
+        console.log(numOcurrencias);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
