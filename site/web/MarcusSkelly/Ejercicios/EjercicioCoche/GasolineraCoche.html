@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <script>
+        
+   
+<<<<<<< HEAD
+        function Coche(matricula,gasolina,dinero,consumo){
+            this.matricula = matricula
+            this.gasolina = gasolina;
+=======
+        function Coche(gasolina,dinero,consumo){
+            this.gasolina = gasolina
+>>>>>>> d7c81863cbe5c9db3ce13aa1f1618517aabd9192
+            this.dinero = dinero;
+            this.consumo = consumo;
+    }
+
+document.addEventListener("DOMContentLoaded",function(event){
+
+matricula = prompt("Introduce matricula");
+var coche = new Coche(matricula,'50','100','7');
+
+function viajar(distancia){
+    consumido = (distancia * this.consumo)/100;
+    this.gasolina -= consumido;
+}
+
+function mostrarCoche(){
+
+<<<<<<< HEAD
+    console.log('Tiene ' + this.gasolina + 'litros ' + 'consume ' +this.consumo + 'litros x 100km' + 'tengo ' +this.dinero);
+=======
+    console.log('Tiene ' + this.gasolina + 'litros ' + 'consume ' + this.consumo + ' litros x 100km' + ' tengo ' + this.dinero);
+
+>>>>>>> d7c81863cbe5c9db3ce13aa1f1618517aabd9192
+}
+
+<<<<<<< HEAD
+console.log(coche);
+});
+=======
+>>>>>>> d7c81863cbe5c9db3ce13aa1f1618517aabd9192
+
+coche.mostrarCoche = mostrarCoche;
+coche.mostrarCoche();
+
+
+
+});
+
+    </script>
+</head>
+<body>
+    <p>Introduce numero de kms</p>
+    <input type="text" id="viaje">
+    <button onclick="viajar(document.getElementById('viaje').value);"> viajar</button>
+    
+</body>
+</html>
