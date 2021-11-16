@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="main.js"></script>
+</head>
+<body>
+    <h3>Crea dos campos input donde se valide lo siguiente:</h3>
+		<ul>
+			<li>Matricula válida</li>
+			<li>Fecha y hora</li>
+		</ul>
+		<h3>El campo input se pondrá en rojo si el valor no es válido, y verde si es correcto</h3>
+	</pre>
+
+    <!--Creamos los inputs-->
+    <label>Matricula: </label>
+    <input type="text" id="matricula"/>
+
+    <label>Fecha y Hora: </label>
+    <input type="text" id="FechaHora" placeholder="dd/mm/yyyy hh:mm:ss"/>
+
+
+    <button onclick="validar()">Validar</button>
+</body>
+</html>
