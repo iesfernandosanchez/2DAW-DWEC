@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 5</title>
+</head>
+<script>
+    var nombres = [];
+    var nombre = prompt('Introduce un nombre: ');
+    nombres.push(nombre);
+    while (nombre != null && nombre != ''){
+        nombre = prompt('Introduce un nombre: ');
+        if (nombre != null && nombre != ''){
+            nombres.push(nombre);
+        } else {
+            break;
+        }
+    }
+    console.log(nombres);
+</script>
+<body>
+</body>
+</html>

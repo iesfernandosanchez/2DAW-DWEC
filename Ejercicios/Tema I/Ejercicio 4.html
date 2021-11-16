@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Ejercicio 8</title>
+
+  <script>
+
+    function reiniciar(){
+      document.getElementById("texto").value = "";
+      document.getElementById("resultadoSuma").innerHTML = "";
+      document.getElementById("resultadoMayor").innerHTML = "";
+      document.getElementById("resultadoMenor").innerHTML = "";
+      document.getElementById("resultadoMedia").innerHTML = "";
+    }
+
+    function calcular(){
+      var numeros = [];
+      numeros = document.getElementById("texto").value.split(";");
+      console.log(numeros)
+
+      let sum = 0;
+      for (let i = 0; i < numeros.length; i++) {
+        sum += parseInt(numeros[i]);
+      }
+      console.log(sum)
+      document.getElementById("resultadoSuma").innerHTML = sum;
+
+      let mayor = parseInt(numeros[0]);
+      for(let i = 0; i < numeros.length; i++){
+        if (parseInt(numeros[i]) > mayor) {
+          mayor = numeros[i];
+        }
+      }
+      console.log(mayor)
+      document.getElementById("resultadoMayor").innerHTML = mayor;
+
+      let menor = parseInt(numeros[0]);
+      for(let i = 0; i < numeros.length; i++){
+        if (parseInt(numeros[i]) < menor) {
+          menor = numeros[i];
+        }
+      }
+      console.log(menor)
+      document.getElementById("resultadoMenor").innerHTML = menor;
+
+      let avg = sum/numeros.length;
+      console.log(avg)
+      document.getElementById("resultadoMedia").innerHTML = avg;
+    }
+
+  </script>
+</head>
+
+<body>
+  <input type="text" id="texto" />
+  <button onclick="calcular()">Calcular</button>
+  <button onclick="reiniciar()">Reiniciar</button>
+  <p>Suma:<i id="resultadoSuma"></i></p>
+  <p>Mayor:<i id="resultadoMayor"></i></p>
+  <p>Menor:<i id="resultadoMenor"></i></p>
+  <p>Media:<i id="resultadoMedia"></i></p>
+</body>
+
+</html>

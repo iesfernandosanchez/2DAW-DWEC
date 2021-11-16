@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 2</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            document.getElementById("numero").focus()
+        });
+        function calcularFactorial(valor, idResultado){
+            factorial = valor;
+            resultado = 1;
+            while(factorial > 1){
+                resultado *= factorial;
+                factorial--;
+            }
+            document.getElementById(idResultado).innerHTML = resultado;
+            document.getElementById("numero").focus();
+            document.getElementById("numero").value = "";
+        }
+    </script>
+</head>
+<body>
+    <input type="number" id="numero" onchange="calcularFactorial(this.value, 'resultado')">
+    <p id="resultado"></p>
+</body>
+</html>
