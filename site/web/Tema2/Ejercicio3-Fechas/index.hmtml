@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="main.js"></script>
+    <script>
+        var Calendar = new calendar();
+        document.addEventListener("DMContentLoaded", function(event){
+            document.getElementById("calendario").innerHTML = Calendar.print();
+        });
+    </script>
+
+    <script type="text/javascript">
+        var festivos = [[2021,10,11], [2021,10,11]];
+
+        var mesInicio = 9;
+        var mesFin = 11;
+
+        var today = new Date();
+        var calendario = []
+        var endGenerationCalendar = false;
+        var day = '';
+
+        while (!endGenerationCalendar){
+            var objFecha = new Date(today.getFullYear(), mesInicio-1, day);
+            if(objFecha.getMonth() == mesFin - 1){
+                endGenerationCalendar = true;
+            }else{
+                events = []
+
+                var itemDay = []
+                itemDay["date"] = objFecha.getDate() + "/" + (objFecha.getMonth() + 1) + "/" + objFecha.getFullYear();
+
+                if(festivos.includes(itemDay["date"])){
+                    events.push("festivo");
+                }
+
+                itemDay["event"] = events;
+                calendario.push(itemDay);
+            }
+            day++;
+        }
+
+        console.log(calendario)
+
+
+    </script>
+</head>
+<body>
+
+    <div id="calendario"></div>
+    
+</body>
+</html>

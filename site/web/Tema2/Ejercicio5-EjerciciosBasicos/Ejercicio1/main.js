@@ -43,5 +43,3 @@ calculadora = function()
 
            
 };
-
-

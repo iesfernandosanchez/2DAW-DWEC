@@ -95,5 +95,3 @@ calculadora = function()
 
            
 };
-
-
