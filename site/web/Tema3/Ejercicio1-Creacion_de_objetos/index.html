@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="main.js"></script>
+    <style>
+		.coche, .gasolinera{
+			width: 49%;
+		}
+	</style>
+
+<script type="text/javascript">
+    var coche = Object.create(Coche);
+    document.addEventListener("DOMContentLoaded", function(event)
+    { 
+        while(true){
+            var matricula = prompt("introduce la matricula");
+            if(coche.validarMatricula(matricula) == true){
+                break;
+            };
+        }
+        
+        coche.init(matricula);
+        gasolinera.init(precio);
+    });
+</script>
+</head>
+<body>
+    <h1>Coche:</h1>
+	<div class="">
+		<span class="coche" id="coche"></span>
+	</div>
+
+	<div class="">
+		<button onclick="coche.viajar(100)">viajar</button>
+	</div>
+
+    <h1>Gasolina: </h1>
+	<div class="">
+		<span class="gasolinera" id="gasolinera"></span>
+	</div>
+
+    <button onclick="coche.repostar()">Repostar</button>
+
+</body>
+</html>
