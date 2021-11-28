@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+	<style>
+		pre {
+		    background: #cacaca;
+		    border: 1px solid;
+		    padding: 10px;
+		    white-space: unset;
+		}
+		h3, ul{
+			margin:  2px 0px;
+		}
+	</style>
+	<title></title>
+
+	<script type="text/javascript">
+		function loadXMLDoc() {
+			var xmlhttp = new XMLHttpRequest();
+
+			xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
+        	if (xmlhttp.status == 200) {
+
+                var cuerpo = JSON.parse(xmlhttp.responseText);
+                var body = cuerpo["body"];
+                var word = body["Word"];
+                var definition = body["Definition"];
+
+                //document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+                document.getElementById("Word").innerHTML = word;
+				document.getElementById("Definition").innerHTML = unescape(definition);
+
+        	}
+        	else if (xmlhttp.status == 400) {
+        		alert('There was an error 400');
+        	}
+        	else {
+        		alert('something else other than 200 was returned');
+        	}
+        }
+    };
+
+    xmlhttp.open("GET", "https://palabras-aleatorias-public-api.herokuapp.com/random", true);
+    xmlhttp.send();
+}
+
+document.addEventListener("DOMContentLoaded", function(event) { 
+			loadXMLDoc();
+		});
+
+</script>
+</head>
+<body>
+
+	<pre>
+		<h3>Muestra correctamente la palabra y su definición en sus DIV's correspondientes:</h3>
+		
+
+	</pre>
+	<div id="myDiv"></div>
+
+	<div id="Word"></div>
+	<hr/>
+	<div id="Definition"></div>
+
+</body>
+</html>
