@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 4</title>
+    <script>
+    var calculadora = calculadora || {};
+
+    calculadora = function(){
+    var version = '1.0';
+
+    function init(){
+
+    }
+
+    function suma(a,b){
+        return parseInt(a)+parseInt(b)
+    }
+
+    function resta(a,b){
+        return parseInt(a)-parseInt(b)
+    }
+
+    function Factorial(valor){
+        factorial = valor;
+        resultado = 1;
+        while(factorial > 0){
+            resultado *= factorial;
+            factorial--;
+        }
+        return resultado;
+    }
+
+    init()
+
+    return{
+        version: function (){
+            return version;
+        }
+        ,suma: suma
+        ,init: init
+        ,resta : resta
+        ,Factorial: Factorial
+    }
+}
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

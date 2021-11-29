@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 2</title>
+    <script>
+        let matriz = [];
+        let nombreProceso = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+        function creaProceso (nombre, tiempoCreacion, tiempoUso, matriz){
+            matriz.push([nombre, tiempoCreacion, tiempoUso]);
+            return matriz;
+        }
+        
+        function numeroAleatorio(){
+            return Math.floor(Math.random()*(9));
+        }
+        
+        function comparaProcesos(matriz){
+            matriz.sort(function (a,b){
+                if (a[1] < b[1]){
+                    return 1
+                } if (a[1] > b[1]){
+                    return -1
+                } else return 0
+            })
+        }
+        
+        for(let i = 0; i < nombreProceso.length; i++){
+            creaProceso(nombreProceso[i], numeroAleatorio(), numeroAleatorio(), matriz);
+        }
+        
+        comparaProcesos(matriz);
+        console.log(matriz);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
