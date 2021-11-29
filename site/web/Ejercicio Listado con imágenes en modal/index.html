@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado con imágenes en modal</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <script text="text/javascript">
+
+        function montarListado() {
+
+            var modal = new bootstrap.Modal(document.getElementById("imagenModal"), {keyboard: false});
+
+            const productos = [['Cereza','1.98', 'cereza.jpeg'],['Manzana','0.87', 'manzana.jpeg'],['Naranja','0.64', 'naranja.jpeg'],['Platano','1.22', 'platano.jpeg']];
+            const $tbody = document.querySelector("#tbody");
+
+            for (var i in productos) {
+
+                const $tr = document.createElement("tr");
+                
+                let $tdId = document.createElement("td");
+                $tdId.textContent = i;
+                $tr.appendChild($tdId);
+
+                let $tdNombre = document.createElement("td");
+                $tdNombre.textContent = productos[i][0];
+                $tr.appendChild($tdNombre);
+
+                let $tdPrecio = document.createElement("td");
+                $tdPrecio.textContent = productos[i][1];
+                $tr.appendChild($tdPrecio);
+
+                let $tdImg = document.createElement("td");
+                $tdImg.textContent = productos[i][2];
+                $tdImg.setAttribute('hidden', 'hidden')
+                $tr.appendChild($tdImg);
+
+                $tr.addEventListener("click", () => {
+
+                    document.getElementById("exampleModalLabel").innerHTML = $tr.childNodes[1].textContent;
+                    document.getElementById("imagen").setAttribute('src', 'img/'+$tr.lastChild.textContent);
+
+                    modal.toggle();
+                });
+                $tbody.appendChild($tr);
+            }
+        }
+
+    </script>
+
+</head>
+<body onload="montarListado()">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+      </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="imagenModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            </div>
+            <div class="modal-body d-flex v-100 justify-content-center">
+                <img id="imagen" class="m-auto">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script text="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
