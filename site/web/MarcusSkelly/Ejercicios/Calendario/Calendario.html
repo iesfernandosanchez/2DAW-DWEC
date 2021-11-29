@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario</title>
+    <script type= "text/javascript" src="js/Calendario.js"></script>
+
+    <script type="text/javascript">
+    var Calendar = new calendar();
+    document.addEventListener("DOMContentLoaded", function(event){
+        document.getElementById("calendario").innerHTML = Calendar.print();
+
+    });
+    </script>
+
+    <!--
+        // de esta manera es sin objeto calendar
+
+    <script>
+
+        var festives = [[2021,10,11],[2021,10,12]];
+
+        var mesInicio = 9;
+        var mesFin = 7;
+        var events = ["festivo"];
+        var today = new Date();
+        var calendario = [];
+
+        var endGenerationCalendar = false;
+        var day = 1;
+
+        while(!endGenerationCalendar){
+            var objFecha = new Date(today.getFullYear(),mesInicio,day);
+            if(objFecha.getMonth() == mesFin){
+                endGenerationCalendar = true;
+            }else{
+                calendario.push(objFecha);
+            }
+
+            day ++;
+        }
+
+        console.log(calendario);
+
+    </script>
+
+     -->
+    
+</head>
+<body>
+
+    <div id="calendario"></div>
+
+    
+</body>
+</html>

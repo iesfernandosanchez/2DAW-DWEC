@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <script type= "text/javascript" src="js/Calculadora.js"></script>
+
+    <script type="text/javascript">
+    var Calculadora = new calculadora();
+    document.addEventListener("DOMContentLoaded", function(event){
+
+    });
+    </script>
+
+    
+</head>
+<body>
+    <input type="text" id="op1"></input>
+    <input type="text" id="op2"></input>
+
+   <button value="SUMA" 
+   onclick=" document.getElementById('resultado').innerHTML = 
+                Calculadora.suma(
+                    document.getElementById('op1').value , 
+                    document.getElementById('op2').value
+                    )">
+                    SUMA
+   </button>
+
+   <button value="RESTA" 
+   onclick=" document.getElementById('resultado').innerHTML = 
+                Calculadora.resta(
+                    document.getElementById('op1').value , 
+                    document.getElementById('op2').value
+                    )">
+                    Resta
+   </button>
+
+   <button value="FACTORIAL" 
+   onclick=" document.getElementById('resultado').innerHTML = 
+                Calculadora.factorial(
+                    document.getElementById('op1').value ,
+                    )">
+                    Factorial
+   </button>
+
+   <div id="resultado"></div>
+   <div id="arrayResultados"></div>
+
+    
+</body>
+</html>

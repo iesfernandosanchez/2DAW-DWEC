@@ -1,50 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Gasolinera</title>
 
     <script>
         
    
-        function Coche(gasolina,dinero,consumo){
+    function Coche(matricula,gasolina,dinero,consumo){
+            this.matricula = matricula;
             this.gasolina = gasolina
             this.dinero = dinero;
             this.consumo = consumo;
     }
 
+    function Gasolinera(gasolina,dinero,precio){
+        this.gasolina = gasolina;
+        this.dinero = dinero;
+        this.precio = 1.60;
+    }
+
+var coche = null;
+var regex = null;
+
 document.addEventListener("DOMContentLoaded",function(event){
 
 matricula = prompt("Introduce matricula");
-var coche = new Coche(matricula,'50','100','7');
+coche = new Coche(matricula,50,100,7);
+gasolinera = new Gasolinera(4000,6000);
+
 
 function viajar(distancia){
-    consumido = (distancia * this.consumo)/100;
-    this.gasolina -= consumido;
+    consumido = (parseInt(distancia) * coche.consumo)/100;
+    coche.gasolina -= consumido;
+    
+}
+
+function repostar(litros){
+
+    coche.dinero = coche.dinero - (litros * gasolinera.precio);
+    gasolinera.dinero = gasolinera.dinero + (litros * gasolinera.precio);
+    gasolinera.gasolina = gasolinera.gasolina-litros;
+    coche.gasolina = coche.gasolina + parseInt(litros);
 }
 
 function mostrarCoche(){
 
-    console.log('Tiene ' + this.gasolina + 'litros ' + 'consume ' + this.consumo + ' litros x 100km' + ' tengo ' + this.dinero);
+    console.log('Tiene ' + coche.gasolina + ' litros ' + 'consume ' + coche.consumo + ' litros x 100km' + ' tengo ' + coche.dinero);
 
+}
+
+function mostrarGasolinera(){
+
+console.log('Tiene ' + gasolinera.gasolina + ' litros ' +  'tiene ' + gasolinera.dinero );
+
+}
+
+function validarMatricula(matricula){
+    regex = /([0-9]{4}-[a-z]{3})/;
+    return(regex.test(matricula));
 }
 
 
 coche.mostrarCoche = mostrarCoche;
-coche.mostrarCoche();
+gasolinera.mostrarGasolinera = mostrarGasolinera;
 
-
+coche.viajar = viajar;
+coche.repostar = repostar;
 
 });
 
     </script>
 </head>
 <body>
+
     <p>Introduce numero de kms</p>
     <input type="text" id="viaje">
-    <button onclick="viajar(document.getElementById('viaje').value);"> viajar</button>
+    <p>Introduce numero de litros</p>
+    <input type="text" id="repostaje">
+    <button onclick="coche.viajar(document.getElementById('viaje').value);">viajar</button>
+    <button onclick="coche.repostar(document.getElementById('repostaje').value);">Repostar</button>
+    <button onclick="coche.mostrarCoche(document.getElementById('mostrarCoche').innerHTML);">mostrarCoche</button>
+    <button onclick="gasolinera.mostrarGasolinera(document.getElementById('mostrarGasolinera').innerHTML);">mostrarGasolinera</button>
+    <button onclick="coche.validarMatricula(coche.matricula);">validar matricula</button>
+    <div id="mostrarCoche"></div>
+    <div id="mostrarGasolinera"></div>
     
 </body>
 </html>

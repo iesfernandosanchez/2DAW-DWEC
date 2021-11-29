@@ -1,6 +1,4 @@
-document.addEventListener("DOMContentLoaded",function(){
 
-// GOOGLE drive ocamlfuse
 function nombres() {
     var nombres = [];
     var cont = '';
@@ -9,9 +7,9 @@ function nombres() {
     do{
         x = prompt("Ingresa tu nombre:", "");
 
-        if(x == false){
+        if(x == null){
 
-            x = false;
+            x = null;
 
         }else{
 
@@ -29,5 +27,5 @@ function nombres() {
 }
 
 
-});
+
 

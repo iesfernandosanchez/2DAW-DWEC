@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>numeros random</title>
+    <title>Numeros random</title>
 
 
     
@@ -20,6 +20,13 @@
     var numMax = 32; 
     var numIntentos = 50;
     var resultados = [];
+    var array2 = [];
+    var maxElemento = 0;
+    var a=0;
+    var b=0;
+    var c=0;
+    var d=0;
+    
 
     function rellenarArray(){
 
@@ -30,33 +37,43 @@
 
         }
         
+        document.getElementById("array").innerHTML = resultados;
 
-    }
-
-    result = rellenarArray.values;
-
-
-
-    var array2 = [];
-    var contador = 1;
-    var maxElemento = resultados[0];
-        
         for (var i=0; i < resultados.length; i++) {
 
-            var indice = resultados[i].values;
 
-             if(array2[indice] == null){
-                 array2[indice] = 1;
-             }else{
-                 array2[indice] ++;
-             }
+             if(resultados[i] > maxElemento){
 
-             if(array2[indice] > contador){
-
-                maxElemento = indice;
+                maxElemento = resultados[i];
 
              }
         }
+
+        document.getElementById("mayor").innerHTML = maxElemento;
+        
+
+        while(a < resultados.length){
+
+            b = resultados[a];
+            
+            c=0;
+
+            while(c < resultados.length){
+                    d = resultados[c];
+            
+                    if( b === d){
+                        console.log("Este numero se repite:", d);
+                    }
+                    c++;
+                }
+
+                a++;
+        }
+
+    }
+
+        
+        
 
 
     
@@ -66,6 +83,9 @@
 
     <button onclick="rellenarArray();">Pulsa para empezar</button>
     <p id="array">aqui array</p>
+    <p id="mayor"></p>
+    <p id="repetido"></p>
+    <p id="repetidos"></p>
 
     
 </body>

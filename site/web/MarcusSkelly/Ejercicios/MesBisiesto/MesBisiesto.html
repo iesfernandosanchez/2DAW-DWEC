@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Año bisiesto</title>
+
+    <input type="text" id="año" class="gui-input" autofocus>
+
+    <button onclick="añoBisiesto();">año</button>
+
+    <p id="resultado"></p>
+
+    <script type="text/javascript">
+    
+
+    function añoBisiesto(){
+
+       
+        var año = document.getElementById('año').value;
+
+        console.log(año);
+        
+        if ((año % 4 == 0) && ((año % 100 != 0) || (año % 400 == 0))){
+            document.getElementById('resultado').innerHTML =  "El año es bisiesto";
+        }else{
+            document.getElementById('resultado').innerHTML =  "El año no es bisiesto";
+        }
+       
+    }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

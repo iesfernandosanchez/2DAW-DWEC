@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NombreUsuario</title>
+
+
+
+    <script type="text/javascript">
+    
+
+        function comprobar(){
+    
+           
+            var nombre = document.getElementById('nombre').value;
+
+            var password = document.getElementById('contraseña').value;
+    
+            var nombreCorrecto = "Pedro";
+
+            var passwordCorrecta = "Pablo";
+
+            if((nombre != nombreCorrecto) && (password != passwordCorrecta)){
+
+                alert("No es la password correcta");
+            }else{
+                alert("Si es la correcta");
+            }
+           
+        }
+    
+        </script>
+
+</head>
+<body>
+
+    <input type="text" id="nombre"></input>
+    <input type="password" id="contraseña"></input>
+
+    <button  id="comprobar" onclick="comprobar();">Comprobar contraseña</button>
+    
+</body>
+</html>

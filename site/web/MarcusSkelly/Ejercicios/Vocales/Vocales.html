@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocales</title>
+
+
+
+    <script type="text/javascript">
+
+    var vocalesMinusculas = ['a','e','i','o','u'];
+    var vocalesMayusculas = ['A','E','I','O','U'];
+    var contadorMinusculas = 0;
+    var contadorMayusculas = 0;
+
+        function comprobar(){
+    
+           
+            var nombre = document.getElementById('nombre').value;
+
+
+
+            for(var i=0; i<nombre.length ;i++) {
+
+                if(vocalesMinusculas.indexOf(nombre[i]) >= 0){
+                    ++contadorMinusculas;
+                }else if(vocalesMayusculas.indexOf(nombre[i]) >= 0){
+                    ++contadorMayusculas;
+                }
+            }
+           
+            document.getElementById('resultadoMinusculas').innerHTML = "El nombre tiene " +contadorMinusculas + " vocales minusculas";
+            document.getElementById('resultadoMayusculas').innerHTML = "Además tiene " +contadorMayusculas + " Vocales mayusculas";
+
+      }
+    
+    
+    </script>
+
+</head>
+<body>
+
+    <input type="text" id="nombre"></input>
+
+    <button  id="comprobar" onclick="comprobar();">Comprobar vocales</button>
+
+    <div id="resultadoMinusculas"></div>
+    <div id="resultadoMayusculas"></div>
+    
+</body>
+</html>

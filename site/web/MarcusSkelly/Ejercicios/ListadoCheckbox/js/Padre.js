@@ -29,3 +29,5 @@ const $btnAbrir = document.querySelector("#btnAbrir");
       checks.checked = true
   }
   }
+
+  //Poner precio a los elementos en la ventana padre, 

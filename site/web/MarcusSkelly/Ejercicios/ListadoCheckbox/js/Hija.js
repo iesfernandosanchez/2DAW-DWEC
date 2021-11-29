@@ -15,3 +15,4 @@ window.opener.marcar(input)}
 window.establecerMensaje = function (mensaje) {
 $mensajeRecibido.textContent = mensaje;
 }
+

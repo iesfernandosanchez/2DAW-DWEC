@@ -1,7 +1,7 @@
  
-var personaje1 = new Array();
+var personaje1 = [];
 
-var personaje2 = new Array();
+var personaje2 = [];
 
 var vidaPersonaje1;
 
@@ -25,10 +25,6 @@ function crearPersonajes(){
     var inputText2 = document.getElementById('personaje2').value;
 
     personaje2.push(inputText2);
-
-    document.getElementById('personaje1').value = "";
-
-    document.getElementById('personaje2').value = "";
 
     vidaPersonaje1 = getRandomInt(0,100).value;
 
