@@ -7,7 +7,7 @@ $btnEnviar.addEventListener("click", () => {
 	if (!mensaje) return alert("Escribe un mensaje");
 	if (window.opener) {
 		//window.opener.buscarProducto(mensaje);
-		var productos = window.opener.findElements(mensaje);
+		var productos = window.opener.findElements(mensaje.toLowerCase());
 		var listado = document.getElementById("listadoProductos");
 		listado.innerHTML = '';
 		for (var i = 0; i < productos.length; i++) {
