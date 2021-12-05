@@ -9,81 +9,143 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Datatable core CSS-->
+    <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+
+    <script type="text/javascript" src="js/producto.js"></script>
+    <script type="text/javascript" src="js/shop.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+
     <script text="text/javascript">
+        
+        var app;
 
-        function montarListado() {
+        function iniciarApp() {
+            app = new App();
+            app.inicio();
+        }
 
-            var modal = new bootstrap.Modal(document.getElementById("imagenModal"), {keyboard: false});
+        function guardar() {
+            app.guardar();
+        }
 
-            const productos = [['Cereza','1.98', 'cereza.jpeg'],['Manzana','0.87', 'manzana.jpeg'],['Naranja','0.64', 'naranja.jpeg'],['Platano','1.22', 'platano.jpeg']];
-            const $tbody = document.querySelector("#tbody");
-
-            for (var i in productos) {
-
-                const $tr = document.createElement("tr");
-                
-                let $tdId = document.createElement("td");
-                $tdId.textContent = i;
-                $tr.appendChild($tdId);
-
-                let $tdNombre = document.createElement("td");
-                $tdNombre.textContent = productos[i][0];
-                $tr.appendChild($tdNombre);
-
-                let $tdPrecio = document.createElement("td");
-                $tdPrecio.textContent = productos[i][1];
-                $tr.appendChild($tdPrecio);
-
-                let $tdImg = document.createElement("td");
-                $tdImg.textContent = productos[i][2];
-                $tdImg.setAttribute('hidden', 'hidden')
-                $tr.appendChild($tdImg);
-
-                $tr.addEventListener("click", () => {
-
-                    document.getElementById("exampleModalLabel").innerHTML = $tr.childNodes[1].textContent;
-                    document.getElementById("imagen").setAttribute('src', 'img/'+$tr.lastChild.textContent);
-
-                    modal.toggle();
-                });
-                $tbody.appendChild($tr);
-            }
+        function presupuesto() {
+            app.prepararPresupuesto();
         }
 
     </script>
 
 </head>
-<body onload="montarListado()">
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Precio</th>
-          </tr>
-        </thead>
-        <tbody id="tbody">
+<body onload="iniciarApp()">
+    <div class="container mt-4">
+        <table id="listado" class="table">
+            <thead>
+            <tr>
+                <th scope="col">#Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Imagen</th>
+                <th scope="col">Cantidad</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
 
-        </tbody>
-      </table>
+            </tbody>
+        </table>
+ 
+        <div class="d-grid gap-2 d-md-flex justify-content-end mt-4">
+            <button class="btn btn-primary me-md-2" type="button" data-bs-toggle="modal" data-bs-target="#addArticulo">+ artículo</button>
+            <button class="btn btn-success" type="button" onclick="presupuesto()" data-bs-toggle="modal" data-bs-target="#presupuesto">Presupuesto</button>
+        </div>
 
-    <!-- Modal -->
+    </div>
+
+    <!-- Modal foto-->
     <div class="modal fade" id="imagenModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="nombreImagen">Modal title</h5>
+                </div>
+                <div class="modal-body d-flex v-100 justify-content-center">
+                    <img id="imagen" class="m-auto">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
-            <div class="modal-body d-flex v-100 justify-content-center">
-                <img id="imagen" class="m-auto">
+        </div>
+    </div>     
+
+    <!-- Modal addArticulo -->
+    <div class="modal fade" id="addArticulo" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Añadir artículo</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="addNombre" class="form-label">Nombre:</label>
+                        <input type="text" class="form-control" id="addNombre">
+                        <span class="invalid-feedback" id="errNombre"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="addPrecio" class="form-label">Precio:</label>
+                        <input type="number" class="form-control" id="addPrecio" min="0.01" max="99.99" step="0.05">
+                        <span class="invalid-feedback" id="errPrecio"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="addFoto" class="form-label">Foto:</label>
+                        <input type="text" class="form-control" id="addFoto">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
+        </div>
+    </div>
+
+    <!-- Modal Presupuesto -->
+    <div class="modal fade" id="presupuesto" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <table class="table table-borderless caption-top" id="tablePresupuesto">
+                        <caption>Presupuesto</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">#Id</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Importe</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyPresupuesto">
+
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <th colspan="4" class="text-end">Total:</th>
+                                <th id="totalPresupuesto" class="text-end"></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
             </div>
         </div>
     </div>
 
     <script text="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+    <script text="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+    <script text="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
 </body>
 </html>
