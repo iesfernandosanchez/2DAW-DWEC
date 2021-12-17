@@ -29,6 +29,7 @@ class App {
         this.metro.lineas[0].estaciones.push(new Estacion(estaciones[0].codigo, estaciones[0].nombre));
         this.metro.lineas[0].estaciones.push(new Estacion(estaciones[1].codigo, estaciones[1].nombre));
         this.metro.lineas[0].estaciones.push(new Estacion(estaciones[2].codigo, estaciones[2].nombre));
+        this.metro.lineas[1].estaciones.push(new Estacion(estaciones[1].codigo, estaciones[1].nombre));
         this.metro.lineas[1].estaciones.push(new Estacion(estaciones[3].codigo, estaciones[3].nombre));
         
         this.metro.lineas[0].estaciones[0].caminos.push(new Camino(1, "#1", "#2"));
@@ -39,8 +40,12 @@ class App {
 
         this.metro.lineas[0].estaciones[2].caminos.push(new Camino(1, "#3", "#2"));
         
-        this.metro.lineas[1].estaciones[0].caminos.push(new Camino(1, "#4", "#2"));
+        this.metro.lineas[1].estaciones[0].caminos.push(new Camino(1, "#2", "#1"));
+        this.metro.lineas[1].estaciones[0].caminos.push(new Camino(1, "#2", "#3"));
+        this.metro.lineas[1].estaciones[0].caminos.push(new Camino(1, "#2", "#4"));
+        this.metro.lineas[1].estaciones[1].caminos.push(new Camino(1, "#4", "#2"));
     
+        console.log(this.metro)
     }
 
     imprimirMetro() {
