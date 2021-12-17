@@ -9,14 +9,13 @@
 </head>
 <body>
     <div id="mapholder">
-        <!-- Aquí irá el mapa de Google Maps-->
 
-        <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe> 
+        <!-- Aquí irá el mapa de Google Maps-->
 
     </div>
     <script type="text/javascript">
 
-        const x = document.getElementById("demo");
+        const x = document.getElementById("mapholder");
         console.log(x)
         
         function getLocation() {
@@ -28,12 +27,14 @@
         }
 
         function showPosition(position) {
+
             let latlon = position.coords.latitude + "," + position.coords.longitude;
-            console.log(latlon)
 
-            let img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false&key=AIzaSyC5a9LPGBtDbWGFdbTK4RDJfkdTXv46Ic8";
+            let img_url = "https://maps.google.com/maps?q="+latlon+"&t=&z=13&ie=UTF8&iwloc=&output=embed";
 
-            document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+            var innerHtml = '<iframe width="600" height="500" id="gmap_canvas" src="'+img_url+'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>';
+
+            document.getElementById("mapholder").innerHTML = innerHtml;
         }
 
         function showError(error) {
@@ -54,7 +55,6 @@
         }
 
         getLocation();
-        showPosition();
     </script>
 </body>
 </html>
