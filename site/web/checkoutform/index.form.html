@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body onload="inicializar()">
+
+	<style type="text/css">
+		.invalid{
+			border: 1px solid #ff0000;
+		}
+	</style>
+
+	<script type="text/javascript">
+		function mensaje(){
+			alert("se ha validado el formulario");
+		}
+
+
+		function inicializar(){
+
+			const formulario = document.getElementById("formulario");
+
+		
+
+			formulario.addEventListener("submit", function(event){
+				if(form.checkValidity()){
+					alert("es valido");		
+				}else{
+					formulario.className ="invalid"
+				}
+			})	
+
+	
+
+			
+		}
+		
+	</script>
+
+
+<form onsubmit="mensaje()" action="url-del-formulario" id="formulario">
+	<!--
+	<label>Username</label>
+	<input type="text=" name="" 
+		required 
+		pattern="hola" 
+		minlength="3" 
+		maxlength="20"
+		>
+	-->
+
+	<label>Marca de vehículo</label>
+	<!--<select>
+		<option>Volvo</option>
+		<option>Renault</option>
+		<option>Citroen</option>
+		<option>Citroen</option>
+		<option>Otro</option>
+	</select>-->
+
+
+	<input type="text" name="marca" id="selector-marca" list="marcas" required pattern="Volvo|Renault">
+	<datalist id="marcas">
+		<option>Volvo</option>
+		<option>Renault</option>
+	</datalist>
+	
+
+	<label>Número de ruedas</label>
+	<input type="number" required="" name="" 
+		min="1" 
+		max="10"
+		>
+	<input type="submit" name="" id="btnSubmit" value="Enviar">
+</form>
+</body>
+</html>
