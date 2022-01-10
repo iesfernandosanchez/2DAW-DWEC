@@ -1,7 +1,7 @@
 var products = [{
 	'name': 'tomate',
 	'price': '9',
-	'image': 'tomate.jpg'
+	'image': 'tomates.jpg'
 },{
 	'name': 'leche',
 	'price': '2',
