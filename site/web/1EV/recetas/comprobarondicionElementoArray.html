@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+
+	<script>
+		var msg = 'Hoy para ver el método "some" de los arrays, que sirve para comprobar si una lista de elementos contiene al menos uno que cumpla la condición que especifiquemos.Dos apuntes sobre este método👉 Devuelve true / false en función de si encontró o no el elemento.🚀 Detiene la iteración en cuanto encuentra el elemento.'
+
+		console.log(msg);
+
+		const numbers = [1,3,5,7,8,9,11];
+		const hasEventNumber = numbers.some(number => number % 2 === 0);
+		console.log(hasEventNumber);
+	</script>
+
+</body>
+</html>

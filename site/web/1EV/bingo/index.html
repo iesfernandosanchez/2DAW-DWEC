@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<script type="text/javascript">
+
+		
+
+		function loadXMLDoc() {
+			var xmlhttp = new XMLHttpRequest();
+
+			xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
+        	if (xmlhttp.status == 200) {
+
+        		
+        		/*document.getElementById("Definition").innerHTML = xmlhttp.responseText.json();
+        		*/
+
+        		var numeros = xmlhttp.responseText;
+        		var cell = '';
+        		var row = '';
+
+        		for (var i = 0; i <= numeros.length - 1; i++)
+        		{ 
+        			if(i == 0){
+        				row ='<tr>';
+        				cell +=row;
+
+        			}
+        			cell += '<td>'+numeros[i]+'</td>';
+        			if(i == (numeros.length/2)){
+        				row ='</tr>'
+        				cell +=row;
+
+        				document.getElementById("boleto").innerHTML = cell;
+        				cell = '';
+        			}
+
+
+        		}
+        		document.getElementById("boleto").innerHTML = cell;
+        		
+
+        		
+        		
+
+        	}
+        	else if (xmlhttp.status == 400) {
+        		alert('There was an error 400');
+        	}
+        	else {;
+        		console.log(xmlhttp);
+        		alert('something else other than 200 was returned');
+        	}
+        }
+    };
+
+    xmlhttp.open("GET", "http://dwec.daw:8006/bingo/index.php", true);
+    xmlhttp.send();
+}
+
+document.addEventListener("DOMContentLoaded", function(event) { 
+			loadXMLDoc();
+		});
+
+</script>
+</head>
+<body>
+	<div id="Definition"></div>
+
+	<table id="boleto">
+	</table>
+</body>
+</html>
