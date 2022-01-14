@@ -2,7 +2,7 @@ class Metro {
 
     constructor() {
 
-        this.lineas = []
+        this.lineas = [];
 
         this.estaciones = [];
 
