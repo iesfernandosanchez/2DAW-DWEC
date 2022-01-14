@@ -1,0 +1,126 @@
+<html>
+
+<head>
+
+	<style>
+		pre {
+		    background: #cacaca;
+		    border: 1px solid;
+		    padding: 10px;
+		    white-space: unset;
+		}
+		h3, ul{
+			margin:  2px 0px;
+		}
+	</style>
+	<script>
+
+		function getRandomInt(min, max) {
+			return Math.floor(Math.random() * (max - min)) + min;
+		}
+
+		function pideNombres(){
+			return prompt("Introduce un nombre");
+		}
+
+		function calculaGolpe(personaje){
+
+			var golpe = 0;
+			golpe = getRandomInt(0,personaje['fuerza']);
+			return golpe;
+		}
+
+		function calculaDefensa(personaje){
+
+			var golpe = 0;
+			golpe = getRandomInt(0,personaje['destreza']);
+			return golpe;
+		}
+
+		function creaPersonaje(nombre){
+
+			var personaje = []
+			personaje['nombre'] = nombre;
+			personaje['fuerza'] = getRandomInt(5,20);
+			personaje['destreza'] = getRandomInt(5,20);
+			personaje['vida'] = getRandomInt(50,100);;
+
+			return personaje;
+		}
+
+		function lucha(personaje1, personaje2){
+			while(personaje1['vida']>0 && personaje2['vida']>0){
+				var quienGolpea = getRandomInt(0,2);
+
+				if(quienGolpea == 1){
+					golpe = calculaGolpe( personaje1);
+					defensa = calculaDefensa( personaje2);
+
+					ataque = golpe - defensa;
+					if(ataque < 0){
+						ataque = 1
+					}
+					personaje2['vida'] -= ataque 
+					console.log(personaje1['nombre']+" golpea "+ataque);
+
+				}else{
+					golpe = calculaGolpe( personaje2);
+					defensa = calculaDefensa( personaje1);					
+					ataque = golpe - defensa;
+					if(ataque < 0){
+						ataque = 1
+					}
+					personaje1['vida'] -= ataque;
+					console.log(personaje2['nombre']+" golpea "+ataque);
+				}
+
+			}
+
+			if(personaje1['vida'] < personaje2['vida']){
+				return personaje1
+			}else{
+				return personaje2
+			}
+			
+		}
+
+		var nombre1 = "pepe";
+		var nombre2 = "juan";
+
+
+		personaje1 = creaPersonaje(nombre1);
+		personaje2 = creaPersonaje(nombre2);
+		console.log(personaje1);
+		console.log(personaje2);
+
+		ganador = lucha( personaje1, personaje2);
+
+		console.log("pierde "+ ganador['nombre']+" con una vida de:"+ ganador['vida'] );
+		
+
+		/*
+		var nombres = [];
+		var masNombres = true;
+		do{
+			nombre = pideNombres();
+			if(nombre != false){
+				nombres.push(nombre);
+			}else{
+				masNombres = false
+			}
+		}while(masNombres)
+
+		console.log(nombres)
+		*/
+	</script>
+</head>
+<body>
+	<pre>
+		<h3>Crea un script donde se pida al usuario que introduzca nombres hasta que este no introduce ninguno o bien pulsa en el boton cancelar de la ventana pop-up.</h3>
+		<h3>Se debe hacer uso de la funcion prompt.</h3>
+		<h3>Los valores recogidos deberan de guardarse en un array para mostrarlos al final por consola</h3>
+	</pre>
+
+</body>
+
+</html>
