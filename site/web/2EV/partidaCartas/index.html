@@ -7,6 +7,10 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
 
+    <script src = "testing/lib/faker/faker.js" type = "text/javascript"></script>
+
+    <script src='js/configBaraja.js'></script>
+
     <script src='js/mazo.js'></script>
     <script src='js/jugador.js'></script>
     <script src='js/caracteristica.js'></script>
@@ -15,53 +19,13 @@
     <script>
         document.addEventListener("DOMContentLoaded", function(event) { 
 
-            let configBaraja = [
-                {
-                    'nombre': 'thor',
-                    'caracteristicas' : 
-                        {
-                            'vida': 89,
-                            'puntuacion' : 90,
-                            'fuerza' : 91,
-                        }
-
-                },
-                {
-                    'nombre': 'ares',
-                    'caracteristicas' : 
-                        {
-                            'vida': 99,
-                            'puntuacion' : 70,
-                            'fuerza' : 81,
-                        }
-                    
-                },
-                {
-                    'nombre': 'aquaman',
-                    'caracteristicas' : 
-                        {
-                            'vida': 56,
-                            'puntuacion' : 75,
-                            'fuerza' : 21,
-                        }
-                    
-                },
-                {
-                    'nombre': 'batman',
-                    'caracteristicas' : 
-                        {
-                            'vida': 46,
-                            'puntuacion' : 65,
-                            'fuerza' : 27,
-                        }
-                    
-                },
-            ]
+            
 			app = new App();
             app.crearBaraja(configBaraja);
-			app.crearJugadores(2);
+			app.crearJugadores(["juan","pepe","lucia"]);
 
-            app.jugarPartida();
+            app.pintarBotones();
+            //app.jugarPartida();
 		});
 
     </script>
@@ -70,6 +34,9 @@
 
 
     <div id="cartaSeleccionada"></div>
+    <div id="botonesCaracteristicas"></div>
+    <div id="resumenJugada"></div>
+    <div id="resumen"></div>
     
 </body>
 </html>

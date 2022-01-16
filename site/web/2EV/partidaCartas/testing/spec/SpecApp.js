@@ -6,7 +6,21 @@ describe("App", function() {
     
   });
 
-  it('it create classrooms',() => {
-    expect(app.getClassRooms().length).toBe(10)
+  /*
+  it('it create players',() => {
+    let numPlayers = 5;
+    app.crearJugadores(numPlayers);
+    expect(app.jugadores.length).toBe(numPlayers)
   })  
+  */
+
+  it('it create cards',() => {
+    
+    app.crearBaraja(configBaraja);
+    expect(app.baraja.length).toBe(configBaraja.length)
+  })  
+
+  it('generate new cards',() => {
+    alert(faker.animal.type());
+  }) 
 })

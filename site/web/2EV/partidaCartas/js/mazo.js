@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class Mazo {
 
     constructor() {
@@ -17,4 +18,10 @@ class Mazo {
         }
     }
 
+=======
+class Mazo{
+    constructor(){
+        this.cartas = []
+    }
+>>>>>>> master
 }

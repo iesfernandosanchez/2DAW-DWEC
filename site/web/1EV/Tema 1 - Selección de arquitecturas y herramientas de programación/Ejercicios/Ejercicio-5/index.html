@@ -1,0 +1,46 @@
+<html>
+
+<head>
+
+	<style>
+		pre {
+		    background: #cacaca;
+		    border: 1px solid;
+		    padding: 10px;
+		    white-space: unset;
+		}
+		h3, ul{
+			margin:  2px 0px;
+		}
+	</style>
+	<script>
+		function pideNombres(){
+			return prompt("Introduce un nombre");
+		}
+
+		
+
+		var nombres = [];
+		var masNombres = true;
+		do{
+			nombre = pideNombres();
+			if(nombre != false){
+				nombres.push(nombre);
+			}else{
+				masNombres = false
+			}
+		}while(masNombres)
+
+		console.log(nombres)
+	</script>
+</head>
+<body>
+	<pre>
+		<h3>Crea un script donde se pida al usuario que introduzca nombres hasta que este no introduce ninguno o bien pulsa en el boton cancelar de la ventana pop-up.</h3>
+		<h3>Se debe hacer uso de la funcion prompt.</h3>
+		<h3>Los valores recogidos deberan de guardarse en un array para mostrarlos al final por consola</h3>
+	</pre>
+
+</body>
+
+</html>
