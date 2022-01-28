@@ -1,0 +1,43 @@
+Con faker
+
+Entrada:
+crear cursos {
+    - 1DAW [30]
+    - 2DAW [20]
+    - 1DAM [35]
+    - 2DAM [25]
+}
+
+Salida:
+
+cursos
+    1DAW
+        Alumnos:
+            nombre1
+            nombre2
+            nombre3
+            .
+            .
+            .
+        Notas:
+            1EV:
+                nombre1;nota
+                nombre2;nota
+                nombre3;nota
+                .
+                .
+                .
+            2EV:
+                nombre1;nota
+                nombre2;nota
+                nombre3;nota
+                .
+                .
+                .
+            3EV:
+                nombre1;nota
+                nombre2;nota
+                nombre3;nota
+                .
+                .
+                .
