@@ -5,47 +5,100 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Práctica JSON</title>
-
+    
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
     <script type="text/javascript" src="data/data-courses.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/@faker-js/faker"></script>
-
-    <script>
-
-        const faker = require('faker');
-
-        // Caitlyn Kerluke
-        const randomName = faker.name.findName();
-      
-        // Rusty@arne.info
-        const randomEmail = faker.internet.email();
-      
-        // An object representing a random contact card
-        // containing many properties
-        const randomCard = faker.helpers.createCard();
-
-        console.log(randomName);
-        console.log(randomEmail);
-        console.log(randomCard);
-      </script>
-
+    <script type="text/javascript" src="js/faker/faker.js"></script>
+    
     <script>
         document.addEventListener("DOMContentLoaded", function(event) {
+            
+            var JSONnotas;
             let courseArray = [];
-            for (var i = courses.length - 1; i>= 0; i--) {
-                let itemCourse = {'name' : courses[i].nombre};
-                itemCourse['students'] = [];
-
+            var eval = ['1EV', '2EV', '3EV'];
+            
+            for (var i in courses) {
+                
+                let itemCourse = {'curso' : courses[i].nombre};
+                itemCourse['alumnos'] = [];
+                itemCourse['notas'] = [];
+                
+                itemCourse['notas'][eval[0]] = [];
+                itemCourse['notas'][eval[1]] = [];
+                itemCourse['notas'][eval[2]] = [];
+                
                 for (let x = 0; x < courses[i].capacidad; x++) {
                     var randomName = faker.name.findName();
-                    itemCourse['students'].push(randomName);
+                    
+                    itemCourse['alumnos'].push(randomName);
+                    
+                    for (var e = 0; e < 3; e++) {
+                        var randomNota = random(0, 10);
+                        let itemEstudiante = {'nombre' : randomName, 'nota': randomNota};
+                        itemCourse['notas'][eval[e]].push(itemEstudiante);
+                    }
+                    
                 }
                 courseArray.push(itemCourse);
             }
             console.log(courseArray);
+            JSONnotas = JSON.stringify(courseArray[0].notas['1EV']);
         });
+        
+        function random(min, max) {
+            return Math.floor((Math.random() * (max - min + 1)) + min);
+        }
+
+    </script>
+    
+    <script>
+        function cargarApexChart() {
+
+            var datos = [];
+            var xaxis = [];
+
+            new ApexCharts(document.querySelector("#barChart"), {
+                series: [{
+                    data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 350
+                },
+                plotOptions: {
+                    bar: {
+                        borderRadius: 4,
+                        horizontal: true,
+                    }
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                xaxis: {
+                    categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
+                    'United States', 'China', 'Germany'
+                    ],
+                }
+            }).render();
+        }
     </script>
 </head>
-<body>
+<body onload="cargarApexChart()">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Bar Chart</h5>
+            
+            <!-- Bar Chart -->
+            <div id="barChart"></div>
+            
+            <!-- End Bar Chart -->
+            
+        </div>
+    </div>
     
+    <script src="js/apexcharts/apexcharts.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
