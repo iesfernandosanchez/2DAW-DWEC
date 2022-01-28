@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Geolocation</title>
+
+	<script type="text/javascript">
+		const x = document.getElementById("demo");
+		function getLocation() {
+		  if (navigator.geolocation) {
+		    navigator.geolocation.getCurrentPosition(showMapPosition);
+		  } else {
+		    x.innerHTML = "Geolocation is not supported by this browser.";
+		  }
+		}
+
+		function showPosition(position) {
+		  x.innerHTML = "Latitude: " + position.coords.latitude +
+		  "<br>Longitude: " + position.coords.longitude;
+		}
+
+		function showMapPosition(position) {
+		  let latlon = position.coords.latitude + "," + position.coords.longitude;
+
+		  let img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false&key=AIzaSyDDU6sQ2rlm2T8GMMdpitGCJOmKKa0_Oc4";
+
+		  document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+		}
+	</script>
+</head>
+<body>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+<div id="mapholder"></div>
+</body>
+</html>
