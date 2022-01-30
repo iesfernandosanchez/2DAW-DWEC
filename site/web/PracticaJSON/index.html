@@ -13,59 +13,85 @@
     <script type="text/javascript" src="js/faker/faker.js"></script>
     
     <script>
-        document.addEventListener("DOMContentLoaded", function(event) {
+        
+        var courseArray = [];
+        var evaluaciones = ['1EV', '2EV', '3EV'];
+        
+        for (var i in courses) {
             
-            var JSONnotas;
-            let courseArray = [];
-            var eval = ['1EV', '2EV', '3EV'];
+            let itemCourse = {'curso' : courses[i].nombre};
+            itemCourse['alumnos'] = [];
+            itemCourse['notas'] = [];
             
-            for (var i in courses) {
+            itemCourse['notas'][evaluaciones[0]] = [];
+            itemCourse['notas'][evaluaciones[1]] = [];
+            itemCourse['notas'][evaluaciones[2]] = [];
+            
+            for (let x = 0; x < courses[i].capacidad; x++) {
+                var randomName = faker.name.findName();
                 
-                let itemCourse = {'curso' : courses[i].nombre};
-                itemCourse['alumnos'] = [];
-                itemCourse['notas'] = [];
+                itemCourse['alumnos'].push(randomName);
                 
-                itemCourse['notas'][eval[0]] = [];
-                itemCourse['notas'][eval[1]] = [];
-                itemCourse['notas'][eval[2]] = [];
-                
-                for (let x = 0; x < courses[i].capacidad; x++) {
-                    var randomName = faker.name.findName();
-                    
-                    itemCourse['alumnos'].push(randomName);
-                    
-                    for (var e = 0; e < 3; e++) {
-                        var randomNota = random(0, 10);
-                        let itemEstudiante = {'nombre' : randomName, 'nota': randomNota};
-                        itemCourse['notas'][eval[e]].push(itemEstudiante);
-                    }
-                    
+                for (var e = 0; e < 3; e++) {
+                    var randomNota = random(0, 10);
+                    let itemEstudiante = {'nombre' : randomName, 'nota': randomNota};
+                    itemCourse['notas'][evaluaciones[e]].push(itemEstudiante);
                 }
-                courseArray.push(itemCourse);
+                
             }
-            console.log(courseArray);
-            JSONnotas = JSON.stringify(courseArray[0].notas['1EV']);
-        });
+            courseArray.push(itemCourse);
+        }
+        console.log(courseArray);
         
         function random(min, max) {
             return Math.floor((Math.random() * (max - min + 1)) + min);
         }
-
-    </script>
-    
-    <script>
-        function cargarApexChart() {
-
-            var datos = [];
+        
+        function cargarCharts() {
+            
+            const $template = document.querySelector("template");
+            const $charts = document.querySelector("#charts")
+            
+            evaluaciones.forEach(evaluacion => {
+                
+                const $userTemplate = document.importNode($template.content, true);
+                
+                const $element = $userTemplate.querySelector(".col-lg-6");
+                
+                const $cardTitle = $userTemplate.querySelector(".card-title");
+                $cardTitle.innerText = "Evaluación: " + evaluacion.slice(0,1) + "ª";
+                
+                const $barChart = $userTemplate.querySelector(".barChart");
+                $barChart.id = "eval"+evaluacion;
+                
+                $charts.appendChild($element)
+                
+                cargarApexChart(evaluacion);
+            });
+        }
+        
+        function cargarApexChart(evaluacion) {
+            
+            const $idCharts = '#eval'+evaluacion;
+            
+            var JSONnotas = JSON.stringify(courseArray[0].notas[evaluacion]);
             var xaxis = [];
-
-            new ApexCharts(document.querySelector("#barChart"), {
+            var datos = [];
+            
+            var as = JSON.parse(JSONnotas);
+            
+            for (var i in as) {
+                xaxis.push(as[i].nombre)
+                datos.push(as[i].nota)
+            }
+            
+            new ApexCharts(document.querySelector($idCharts), {
                 series: [{
-                    data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
+                    data: datos
                 }],
                 chart: {
                     type: 'bar',
-                    height: 350
+                    height: 700
                 },
                 plotOptions: {
                     bar: {
@@ -77,26 +103,31 @@
                     enabled: false
                 },
                 xaxis: {
-                    categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
-                    'United States', 'China', 'Germany'
-                    ],
+                    categories: xaxis,
                 }
             }).render();
-        }
+        }  
+        
     </script>
 </head>
-<body onload="cargarApexChart()">
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Bar Chart</h5>
-            
-            <!-- Bar Chart -->
-            <div id="barChart"></div>
-            
-            <!-- End Bar Chart -->
-            
+<body onload="cargarCharts()">
+    
+    <div class="container">
+        <div class="row" id="charts">
         </div>
     </div>
+
+    <!-- Template -->
+    <template>
+        <div class="col-lg-6 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <div class="barChart"></div>
+                </div>
+            </div>
+        </div>
+    </template>
     
     <script src="js/apexcharts/apexcharts.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
