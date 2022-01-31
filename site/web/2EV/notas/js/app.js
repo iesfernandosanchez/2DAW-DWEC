@@ -4,6 +4,39 @@ class App{
         this.courses = []
     }
 
+    loadCoursesConfigJSON(url){
+        var request = new XMLHttpRequest();
+			request.open('GET', url, true);
+			request.onload = function() {
+			if (request.status >= 200 && request.status < 400) {
+				// Success!
+				app.coursesConfig = app.JSONtransformToObject(request.responseText);
+                app.generateData();
+                // app.coursesConfig = JSON.parse(request.responseText);
+                
+				
+
+                console.log(app.courses)
+			
+//				coursesConfig = JSON.parse(request.responseText);
+			} else {
+				// We reached our target server, but it returned an error
+
+			}
+			};
+
+			request.onerror = function() {
+			// There was a connection error of some sort
+			};
+
+			
+
+			request.send();
+        
+            
+
+    }
+
     setCoursesConfig(coursesConfig){
         this.coursesConfig = coursesConfig
     }
@@ -28,7 +61,10 @@ class App{
 
     generateData(){
         let courseArray = []
+
+        console.log(this.coursesConfig.length);
         for (let i = this.coursesConfig.length - 1; i >= 0; i--) {
+            
             let itemCourse = {
                 'name' : this.coursesConfig[i].name
             };
@@ -50,6 +86,7 @@ class App{
             });
             courseArray.push(itemCourse);				
         }  
+        console.log(courseArray);
 
         this.courses = courseArray;
     }

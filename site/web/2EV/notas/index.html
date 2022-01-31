@@ -5,44 +5,38 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Notas alumnos</title>
 
-	<script type="text/javascript" src="data/data-courses.js"></script>
+	<!-- <script type="text/javascript" src="data/data-courses.js"></script> -->
 	<script type="text/javascript" src="js/faker/faker.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
+	<script>		
 
-	<script>
 
-		
+		function sleep (time) {
+			return new Promise((resolve) => setTimeout(resolve, time));
+		}
+
+		var coursesConfig;
 		var app;
 		document.addEventListener("DOMContentLoaded", function(event) { 
-			app = new App();          
-			app.setCoursesConfig(coursesConfig);
-			app.generateData()
-			
-			var evaluations = app.getEvaluations(app.getCourse("1DAW"));
-			var students = app.getStudentsCourse(app.getCourse("1DAW"));
-
-			
-			Object.keys(evaluations).forEach(key => {
-				app.generateGraphDIV(key)				
-            });
-
-
-
-			Object.keys(evaluations).forEach(key => {
-				var notas = app.getQualifications(evaluations[key])
-				app.generateGraph(key,notas, students)				
-            });
+			app = new App();   
+			app.loadCoursesConfigJSON('data/data-courses.json');
 			
 
-			
+			sleep(0).then(() => {
+			// Do something after the sleep!
+				var evaluations = app.getEvaluations(app.getCourse("1DAW"));
+				var students = app.getStudentsCourse(app.getCourse("1DAW"));
 
-	
+				
+				Object.keys(evaluations).forEach(key => {
+					app.generateGraphDIV(key)				
+				});
 
-			
-			
-			
-
-			
+				Object.keys(evaluations).forEach(key => {
+					var notas = app.getQualifications(evaluations[key])
+					app.generateGraph(key,notas, students)				
+				});
+			});			
 		});
 	</script>
 
@@ -51,7 +45,7 @@
 
 
 	<div id="graphs">
-	
+		
 	</div>
 	
 

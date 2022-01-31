@@ -1,10 +1,15 @@
 [
 	{
-		'nombre':'1DAW',
-		'capacidad': '20'
+		"name":"1DAW",
+		"capacity":"20",
+		"evaluations":
+			["EV1","EV2","EV3","Final"]
 	},
+
 	{
-		'nombre':'2DAW'
-		'capacidad': '30'
-	},
+		"name":"2DAW",
+		"capacity":"30",
+		"evaluations":
+			["EV1","EV2","Final"]
+	}
 ]
