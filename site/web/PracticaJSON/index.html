@@ -11,106 +11,13 @@
     
     <script type="text/javascript" src="data/data-courses.js"></script>
     <script type="text/javascript" src="js/faker/faker.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
     
     <script>
-        
-        var courseArray = [];
-        var evaluaciones = ['1EV', '2EV', '3EV'];
-        
-        for (var i in courses) {
-            
-            let itemCourse = {'curso' : courses[i].nombre};
-            itemCourse['alumnos'] = [];
-            itemCourse['notas'] = [];
-            
-            itemCourse['notas'][evaluaciones[0]] = [];
-            itemCourse['notas'][evaluaciones[1]] = [];
-            itemCourse['notas'][evaluaciones[2]] = [];
-            
-            for (let x = 0; x < courses[i].capacidad; x++) {
-                var randomName = faker.name.findName();
-                
-                itemCourse['alumnos'].push(randomName);
-                
-                for (var e = 0; e < 3; e++) {
-                    var randomNota = random(0, 10);
-                    let itemEstudiante = {'nombre' : randomName, 'nota': randomNota};
-                    itemCourse['notas'][evaluaciones[e]].push(itemEstudiante);
-                }
-                
-            }
-            courseArray.push(itemCourse);
-        }
-        console.log(courseArray);
-        
-        function random(min, max) {
-            return Math.floor((Math.random() * (max - min + 1)) + min);
-        }
-        
-        function cargarCharts() {
-            
-            const $template = document.querySelector("template");
-            const $charts = document.querySelector("#charts")
-            
-            evaluaciones.forEach(evaluacion => {
-                
-                const $userTemplate = document.importNode($template.content, true);
-                
-                const $element = $userTemplate.querySelector(".col-lg-6");
-                
-                const $cardTitle = $userTemplate.querySelector(".card-title");
-                $cardTitle.innerText = "Evaluación: " + evaluacion.slice(0,1) + "ª";
-                
-                const $barChart = $userTemplate.querySelector(".barChart");
-                $barChart.id = "eval"+evaluacion;
-                
-                $charts.appendChild($element)
-                
-                cargarApexChart(evaluacion);
-            });
-        }
-        
-        function cargarApexChart(evaluacion) {
-            
-            const $idCharts = '#eval'+evaluacion;
-            
-            var JSONnotas = JSON.stringify(courseArray[0].notas[evaluacion]);
-            var xaxis = [];
-            var datos = [];
-            
-            var as = JSON.parse(JSONnotas);
-            
-            for (var i in as) {
-                xaxis.push(as[i].nombre)
-                datos.push(as[i].nota)
-            }
-            
-            new ApexCharts(document.querySelector($idCharts), {
-                series: [{
-                    data: datos
-                }],
-                chart: {
-                    type: 'bar',
-                    height: 700
-                },
-                plotOptions: {
-                    bar: {
-                        borderRadius: 4,
-                        horizontal: true,
-                    }
-                },
-                dataLabels: {
-                    enabled: false
-                },
-                xaxis: {
-                    categories: xaxis,
-                }
-            }).render();
-        }  
-        
+        const app = new App();
     </script>
 </head>
-<body onload="cargarCharts()">
+<body onload="app.cargarCharts()">
     
     <div class="container">
         <div class="row" id="charts">
