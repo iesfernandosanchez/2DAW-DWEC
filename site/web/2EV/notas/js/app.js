@@ -16,11 +16,22 @@ class App{
         cardTitle.innerHTML = 'Promote <span>| '+evaluationName+'</span>';
 
         var cardPromoteNumber = cloneSummaryCard.querySelector("#cardPromoteNumber");
-        cardPromoteNumber.innerHTML = ''+cardPromoteNumberValue+'</span>';
+        cardPromoteNumber.innerHTML = ''+cardPromoteNumberValue+'';
 
 
         var cardPercentPromote = cloneSummaryCard.querySelector("#cardPercentPromote");
-        cardPercentPromote.innerHTML = ''+cardPercentPromoteValue+'</span>';
+        cardPercentPromote.innerHTML = ''+cardPercentPromoteValue+'';
+
+        var cardPromoteIcon = cloneSummaryCard.querySelector("#cardPromoteIcon");
+
+        if(cardPercentPromoteValue >= 70){
+            cardPromoteIcon.classList.add('bi-emoji-laughing');
+        }else if(cardPercentPromoteValue < 50){
+            cardPromoteIcon.classList.add('bi-emoji-angry-fill');
+        }else{
+            cardPromoteIcon.classList.add('bi-emoji-expressionless');
+        }
+        
         
         itemSummaryCourse.appendChild(cloneSummaryCard);
         
@@ -129,13 +140,8 @@ class App{
         this.emptyGraphs()
         this.emptySummary()
 
-
-
         var evaluations = app.getEvaluations(app.getCourse(course));
-        var students = app.getStudentsCourse(app.getCourse(course));
-
-        
-
+        var students = app.getStudentsCourse(app.getCourse(course));   
         
         Object.keys(evaluations).forEach(key => {
             app.generateGraphDIV(key);
@@ -144,12 +150,7 @@ class App{
 
         Object.keys(evaluations).forEach(key => {
             var notas = app.getQualifications(evaluations[key])
-
-            console.log(key);
-            console.log(notas);
-            
-
-            app.loadSummaryEvaluation(key, app.calculatePromote(notas), ((notas.length/app.calculatePromote(notas))*100));	
+            app.loadSummaryEvaluation(key, app.calculatePromote(notas), ((app.calculatePromote(notas)/notas.length)*100));	
             app.generateGraph(key,notas, students)				
         });
 
@@ -218,7 +219,10 @@ class App{
             },
             xaxis: {
                 categories: students,
+                min: 0,
+                max: 10,
             }
+            
         });
         graph.render();
     }
