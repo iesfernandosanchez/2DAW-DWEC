@@ -1,7 +1,32 @@
+const select = (el, all = false) => {
+    el = el.trim()
+    if (all) {
+      return [...document.querySelectorAll(el)]
+    } else {
+      return document.querySelector(el)
+    }
+  }
+  
 class App{
+
+    
     constructor(){
         this.coursesConfig = []
         this.courses = []
+    }
+
+    loadSummaryStudents(students){
+
+        var itemSummaryStudents = document.querySelector('#summaryStudents');
+        var cloneSymmarStudents = document.importNode(itemSummaryStudents.content, true);
+
+        var itemSummaryCourse = document.querySelector('#summaryCourse');
+        itemSummaryCourse.appendChild(cloneSymmarStudents);
+
+        
+        /*for (let index = 0; index < students.length; index++) {
+            const element = students[index];   
+        }*/
     }
 
     loadSummaryEvaluation(evaluationName, cardPromoteNumberValue, cardPercentPromoteValue){
@@ -159,7 +184,13 @@ class App{
             app.generateGraph(key,notas, students)				
         });
 
+        app.loadSummaryStudents(students);
+
         
+        const datatables = select('.datatable', true)
+        datatables.forEach(datatable => {
+            new simpleDatatables.DataTable(datatable);
+        })
 
     }
 
