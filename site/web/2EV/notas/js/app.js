@@ -5,7 +5,13 @@ class App{
     }
 
     loadSummaryCourse(){
-        var result = '';
+        var itemSummaryCourse = document.querySelector('#summaryCourse');
+        var itemSummaryCard = document.querySelector('#summaryCard');
+        
+        var cloneSummaryCard = document.importNode(itemSummaryCard.content, true);
+
+        itemSummaryCourse.appendChild(cloneSummaryCard);
+        
     }
 
     loadButtonCourses(){
@@ -35,6 +41,7 @@ class App{
 				app.coursesConfig = app.JSONtransformToObject(request.responseText);
                 app.loadButtonCourses()
                 app.generateData();
+                
                 // app.coursesConfig = JSON.parse(request.responseText);
                 
 				
@@ -123,6 +130,7 @@ class App{
 
         this.emptyGraphs()
 
+
         var evaluations = app.getEvaluations(app.getCourse(course));
         var students = app.getStudentsCourse(app.getCourse(course));
 
@@ -135,6 +143,8 @@ class App{
             var notas = app.getQualifications(evaluations[key])
             app.generateGraph(key,notas, students)				
         });
+
+        app.loadSummaryCourse();
 
     }
 
