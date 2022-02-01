@@ -7,19 +7,20 @@ class App{
     loadSummaryCourse(){
         var itemSummaryCourse = document.querySelector('#summaryCourse');
         var itemSummaryCard = document.querySelector('#summaryCard');
-        
         var cloneSummaryCard = document.importNode(itemSummaryCard.content, true);
 
+        var cardName = cloneSummaryCard.querySelector("#cardName");
+        cardName.classList.add("promote-card");
+
+        var cardTitle = cloneSummaryCard.querySelector("#cardTitle");
+        cardTitle.innerHTML = 'Promote <span>| Today</span>';
+        
         itemSummaryCourse.appendChild(cloneSummaryCard);
         
     }
 
     loadButtonCourses(){
-
         var coursesButton = document.querySelector("#coursesButton");
-
-       
-
         var buttons = '<a class="nav-link" data-bs-target="#cursos-nav" data-bs-toggle="collapse" href="#" aria-expanded="true">'+
         '<i class="bi bi-bar-chart"></i><span>Cursos</span>'+
         '<i class="bi bi-chevron-down ms-auto"></i></a>'+
@@ -34,37 +35,22 @@ class App{
 
     loadCoursesConfigJSON(url){
         var request = new XMLHttpRequest();
-			request.open('GET', url, true);
-			request.onload = function() {
-			if (request.status >= 200 && request.status < 400) {
-				// Success!
-				app.coursesConfig = app.JSONtransformToObject(request.responseText);
-                app.loadButtonCourses()
-                app.generateData();
-                
-                // app.coursesConfig = JSON.parse(request.responseText);
-                
-				
+        request.open('GET', url, true);
+        request.onload = function() {
+        if (request.status >= 200 && request.status < 400) {
+            // Success!
+            app.coursesConfig = app.JSONtransformToObject(request.responseText);
+            app.loadButtonCourses()
+            app.generateData();
+        } else {
+            // We reached our target server, but it returned an error
+        }
+        };
 
-                console.log(app.courses)
-			
-//				coursesConfig = JSON.parse(request.responseText);
-			} else {
-				// We reached our target server, but it returned an error
-
-			}
-			};
-
-			request.onerror = function() {
-			// There was a connection error of some sort
-			};
-
-			
-
-			request.send();
-        
-            
-
+        request.onerror = function() {
+        // There was a connection error of some sort
+        };
+        request.send();
     }
 
     setCoursesConfig(coursesConfig){
