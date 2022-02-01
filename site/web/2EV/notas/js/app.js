@@ -4,7 +4,7 @@ class App{
         this.courses = []
     }
 
-    loadSummaryEvaluation(evaluationName){
+    loadSummaryEvaluation(evaluationName, cardPromoteNumberValue, cardPercentPromoteValue){
         var itemSummaryCourse = document.querySelector('#summaryCourse');
         var itemSummaryCard = document.querySelector('#summaryCard');
         var cloneSummaryCard = document.importNode(itemSummaryCard.content, true);
@@ -14,6 +14,13 @@ class App{
 
         var cardTitle = cloneSummaryCard.querySelector("#cardTitle");
         cardTitle.innerHTML = 'Promote <span>| '+evaluationName+'</span>';
+
+        var cardPromoteNumber = cloneSummaryCard.querySelector("#cardPromoteNumber");
+        cardPromoteNumber.innerHTML = ''+cardPromoteNumberValue+'</span>';
+
+
+        var cardPercentPromote = cloneSummaryCard.querySelector("#cardPercentPromote");
+        cardPercentPromote.innerHTML = ''+cardPercentPromoteValue+'</span>';
         
         itemSummaryCourse.appendChild(cloneSummaryCard);
         
@@ -123,22 +130,43 @@ class App{
         this.emptySummary()
 
 
+
         var evaluations = app.getEvaluations(app.getCourse(course));
         var students = app.getStudentsCourse(app.getCourse(course));
 
         
+
+        
         Object.keys(evaluations).forEach(key => {
             app.generateGraphDIV(key);
-            app.loadSummaryEvaluation(key);			
+            		
         });
 
         Object.keys(evaluations).forEach(key => {
             var notas = app.getQualifications(evaluations[key])
+
+            console.log(key);
+            console.log(notas);
+            
+
+            app.loadSummaryEvaluation(key, app.calculatePromote(notas), ((notas.length/app.calculatePromote(notas))*100));	
             app.generateGraph(key,notas, students)				
         });
 
         
 
+    }
+
+    calculatePromote(notas){
+        var promoteNumber = 0;
+        for (let index = 0; index < notas.length; index++) {
+            const element = notas[index];
+            if(element >= 5){
+                promoteNumber += 1;
+            }
+            
+        }
+        return promoteNumber;
     }
 
     getQualifications(evaluation){
