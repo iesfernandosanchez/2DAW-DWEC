@@ -4,7 +4,7 @@ class App{
         this.courses = []
     }
 
-    loadSummaryCourse(){
+    loadSummaryEvaluation(evaluationName){
         var itemSummaryCourse = document.querySelector('#summaryCourse');
         var itemSummaryCard = document.querySelector('#summaryCard');
         var cloneSummaryCard = document.importNode(itemSummaryCard.content, true);
@@ -13,7 +13,7 @@ class App{
         cardName.classList.add("promote-card");
 
         var cardTitle = cloneSummaryCard.querySelector("#cardTitle");
-        cardTitle.innerHTML = 'Promote <span>| Today</span>';
+        cardTitle.innerHTML = 'Promote <span>| '+evaluationName+'</span>';
         
         itemSummaryCourse.appendChild(cloneSummaryCard);
         
@@ -112,9 +112,15 @@ class App{
         itemGraphs.innerHTML = '';
     }
 
+    emptySummary(){
+        var itemsummaryCourse = document.querySelector("#summaryCourse");
+        itemsummaryCourse.innerHTML = '';
+    }
+
     showGraphsCourse(course){
 
         this.emptyGraphs()
+        this.emptySummary()
 
 
         var evaluations = app.getEvaluations(app.getCourse(course));
@@ -122,7 +128,8 @@ class App{
 
         
         Object.keys(evaluations).forEach(key => {
-            app.generateGraphDIV(key)				
+            app.generateGraphDIV(key);
+            app.loadSummaryEvaluation(key);			
         });
 
         Object.keys(evaluations).forEach(key => {
@@ -130,7 +137,7 @@ class App{
             app.generateGraph(key,notas, students)				
         });
 
-        app.loadSummaryCourse();
+        
 
     }
 
