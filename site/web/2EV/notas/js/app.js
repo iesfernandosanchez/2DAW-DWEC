@@ -4,6 +4,28 @@ class App{
         this.courses = []
     }
 
+    loadSummaryCourse(){
+        var result = '';
+    }
+
+    loadButtonCourses(){
+
+        var coursesButton = document.querySelector("#coursesButton");
+
+       
+
+        var buttons = '<a class="nav-link" data-bs-target="#cursos-nav" data-bs-toggle="collapse" href="#" aria-expanded="true">'+
+        '<i class="bi bi-bar-chart"></i><span>Cursos</span>'+
+        '<i class="bi bi-chevron-down ms-auto"></i></a>'+
+        '<ul id="cursos-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav" style="">';
+
+        for (let i = this.coursesConfig.length - 1; i >= 0; i--) {
+            buttons += '<li><a class="dropdown-item" href="#" onClick="app.showGraphsCourse(\''+this.coursesConfig[i].name+'\')"><i class="bi bi-circle"></i><span>'+this.coursesConfig[i].name+'</span></a></li>';
+        }
+        buttons += '</ul>';
+        coursesButton.innerHTML = buttons;
+    }
+
     loadCoursesConfigJSON(url){
         var request = new XMLHttpRequest();
 			request.open('GET', url, true);
@@ -11,6 +33,7 @@ class App{
 			if (request.status >= 200 && request.status < 400) {
 				// Success!
 				app.coursesConfig = app.JSONtransformToObject(request.responseText);
+                app.loadButtonCourses()
                 app.generateData();
                 // app.coursesConfig = JSON.parse(request.responseText);
                 
@@ -91,6 +114,30 @@ class App{
         this.courses = courseArray;
     }
 
+    emptyGraphs(){
+        var itemGraphs = document.querySelector("#graphs");
+        itemGraphs.innerHTML = '';
+    }
+
+    showGraphsCourse(course){
+
+        this.emptyGraphs()
+
+        var evaluations = app.getEvaluations(app.getCourse(course));
+        var students = app.getStudentsCourse(app.getCourse(course));
+
+        
+        Object.keys(evaluations).forEach(key => {
+            app.generateGraphDIV(key)				
+        });
+
+        Object.keys(evaluations).forEach(key => {
+            var notas = app.getQualifications(evaluations[key])
+            app.generateGraph(key,notas, students)				
+        });
+
+    }
+
     getQualifications(evaluation){
         let qualifications = []
         for (let index = 0; index < evaluation.length; index++) {
@@ -113,10 +160,8 @@ class App{
     }
 
     generateGraphDIV(name){
-
         var itemGraphs = document.querySelector("#graphs");
-        itemGraphs.innerHTML += '<div id="'+name+'"></div>';
-
+        itemGraphs.innerHTML += '<div class="card"><div class="card-body"><div id="'+name+'"><h5 class="card-title">Reports /<span>'+name+'</span></h5></div></div></div>';
     }
 
     generateGraph(name,notas,students){
