@@ -11,6 +11,8 @@ class App{
 
         var cardName = cloneSummaryCard.querySelector("#cardName");
         cardName.classList.add("promote-card");
+        
+        
 
         var cardTitle = cloneSummaryCard.querySelector("#cardTitle");
         cardTitle.innerHTML = 'Promote <span>| '+evaluationName+'</span>';
@@ -26,10 +28,13 @@ class App{
 
         if(cardPercentPromoteValue >= 70){
             cardPromoteIcon.classList.add('bi-emoji-laughing');
+            cardName.classList.add("bg-success");
         }else if(cardPercentPromoteValue < 50){
             cardPromoteIcon.classList.add('bi-emoji-angry-fill');
+            cardName.classList.add("bg-danger");
         }else{
             cardPromoteIcon.classList.add('bi-emoji-expressionless');
+            cardName.classList.add("bg-info");
         }
         
         
