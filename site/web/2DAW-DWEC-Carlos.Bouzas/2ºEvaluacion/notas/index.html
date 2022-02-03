@@ -12,21 +12,12 @@
 
     <script src="assets/faker/faker.js"></script>
     <script src="assets/js/App.js"></script>
-
     <script>
-
-        var app;
+        let app;
         document.addEventListener('DOMContentLoaded', function (){
-            app = new App();
-            app.sacarDatos();
-            app.sleep(600).then(() => {
-                app.pintarGraficas();
-            })
-
+            app = new App("assets/data/data-courses.json");
         })
     </script>
-
-
 </head>
 <body>
 <!-- ======= Sidebar ======= -->
@@ -37,21 +28,33 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link " href="">
-                        <i class="bi bi-grid"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li><!-- End Dashboard Nav -->
 
+                    <button onclick="app.pintarTodosLosCursos(true);" class="nav-link w-100"><i class="bi bi-grid"></i>Todos los cursos</button>
+
+                </li>
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#nombre-modal" data-bs-toggle="collapse" href="#">
-                        <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
+                        <span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
                     <ul id="nombre-modal" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                         <li>
                             <a href="">
-                                <i class="bi bi-circle"></i><span>Alerts</span>
+                                <span>Alerts</span>
                             </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span>Alerts</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span>Alerts</span>
+                            </a>
+                        </li>
+                        <li>
+
+                            <button type="button" class="w-100" style="">hola</button>
                         </li>
 
                     </ul>
@@ -70,8 +73,6 @@
 
 
 
-
-
     <template id="div-canvas">
         <div class="col-12">
             <div class="card">
@@ -81,7 +82,7 @@
                         <li class="dropdown-header text-start">
                             <h6>Filtros</h6>
                         </li>
-                        <li><a class="dropdown-item" href="#">Agregar filtros</a></li>
+                        <li><a class="dropdown-item" href="#" >Agregar filtros</a></li>
 
                     </ul>
                 </div>
@@ -95,6 +96,13 @@
                 </div>
             </div>
         </div>
+    </template>
+
+    <template id="lista-cursos">
+        <li class="nav-item">
+            <input type="button" class="nav-link w-100">
+
+        </li>
     </template>
 
  <!-- Mirar esta barra -->

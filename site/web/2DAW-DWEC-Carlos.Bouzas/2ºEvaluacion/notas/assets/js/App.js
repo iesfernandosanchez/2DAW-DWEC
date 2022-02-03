@@ -1,27 +1,24 @@
 class App {
-    constructor() {
+    constructor(url) {
         this.cursos = [];
+        this.sacarDatos(url);
     }
 
-
-    sacarDatos() {
-        let datos;
+    sacarDatos(url) {
         var req = new XMLHttpRequest();
-        req.open('GET', "assets/data/data-courses.json");
+        req.open('GET', url);
         req.onreadystatechange = function () {
             if (req.readyState === 4) {
                 if (req.status === 200) {
                     app.rellenarCursos(JSON.parse(req.responseText));
+                    app.pintarComienzo();
                 } else {
-                    datos = "Error loading page\n";
+                    console.log("Error loading page\n");
                 }
-
             }
         };
         req.send();
     }
-
-
 
     rellenarCursos(datos) {
         for (let i = 0; i < datos.length; i++) {
@@ -31,7 +28,6 @@ class App {
             for (let j = 0; j < Object.keys(datos[i].calificaciones).length - 1; j++) {
                 for (let k = 0; k < datos[i].capacidad; k++) {
                     let notaEstudiante = {nombre: datos[i].estudiantes[k], nota: app.notaAleatoria()}
-                    // datos[i].calificaciones[j].push(notaEstudiante);
                     Object.values(datos[i].calificaciones)[j].push(notaEstudiante);
                 }
             }
@@ -44,56 +40,27 @@ class App {
         this.cursos = datos;
     }
 
+    pintarComienzo() {
+        app.pintarTodosLosCursos(true);
+        app.pintarBarraLateral();
+    }
 
-
-    pintarGraficas() {
+    pintarTodosLosCursos(boolean){
+        document.getElementById('graficos').innerHTML = "";
         for (let i = 0; i < this.cursos.length; i++) {
-            const divNotas = app.generarDivCanvas();
-            //const divNotasMedias = app.generarDivCanvas();
-            divNotas.querySelector('.card-title').childNodes[0].before(this.cursos[i].curso);
-
-            let tablaAlumnosNota = document.createElement("canvas");
-            //let tablaMediaNotas = document.createElement("canvas");
-            tablaAlumnosNota.id = this.cursos[i].curso;
-            //tablaMediaNotas.id = this.cursos[i].curso + '-media';
-
-            divNotas.querySelector('.chart-container').appendChild(tablaAlumnosNota);
-            //divNotasMedias.querySelector('.chart-container').appendChild(tablaMediaNotas);
-
-            document.getElementById('graficos').appendChild(divNotas);
-            //document.getElementById('graficos').appendChild(divNotasMedias);
-
-            const datosNota = [];
-            const datosAlumnos = [];
-            for (let j = 0; j < this.cursos[i].capacidad; j++) {
-                datosNota.push(Object.values(this.cursos[i].calificaciones)[3][j].nota);
-                datosAlumnos.push(Object.values(this.cursos[i].calificaciones)[3][j].nombre);
-            }
-            const ctx1 = document.getElementById(this.cursos[i].curso);
-            app.graficaNotaAlumno(ctx1, datosAlumnos, datosNota);
-
-/*
-            let suspensos = 0;
-            let aprobados = 0;
-            let sobresalientes = 0;
-
-            for (let i = 0; i < datosNota.length; i++) {
-                if (datosNota[i] < 5) {
-                    suspensos++;
-                } else if (datosNota[i] >= 5 && datosNota[i] < 8) {
-                    aprobados++;
-                } else if (datosNota[i] >= 8) {
-                    sobresalientes++;
-                }
-            }
-                const ctx2 = document.getElementById(this.cursos[i].curso + '-media');
-                app.graficaNotaMedia(ctx2, suspensos, aprobados, sobresalientes);
-    */
+            app.generarDivCanvas(this.cursos[i].curso, boolean);
         }
     }
 
-    graficaNotaAlumno(ctx, datosAlumnos, datosNota){
-        const myChart = new Chart(ctx, {
+    graficaNotaAlumno(curso){
+        let datosNota = [];
+        let datosAlumnos = [];
+        for (let j = 0; j < curso.capacidad; j++) {
+            datosNota.push(Object.values(curso.calificaciones)[3][j].nota);
+            datosAlumnos.push(Object.values(curso.calificaciones)[3][j].nombre);
+        }
+        const contexto = document.getElementById(curso.curso);
+        const myChart = new Chart(contexto, {
             type: 'bar',
             data: {
                 labels: datosAlumnos,
@@ -121,7 +88,7 @@ class App {
                 title: {
                     display: true,
                     position: 'top',
-                    text: this.cursos[0].curso
+                    text: curso.curso
                 },
                 scales: {
                     y: {
@@ -131,16 +98,35 @@ class App {
                 }
             }
         });
-
     }
-    graficaNotaMedia(ctx, suspensos, aprobados, sobresalientes){
-        const myChart1 = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Suspensos', 'Aprobados', 'Sobresalientes'],
-                datasets: [{
-                    label: ' - Nota Media',
-                    data: [suspensos, aprobados, sobresalientes],
+    graficaNotaMedia(curso){
+        let datosNota = [];
+        let datosAlumnos = [];
+        for (let j = 0; j < curso.capacidad; j++) {
+            datosNota.push(Object.values(curso.calificaciones)[3][j].nota);
+            datosAlumnos.push(Object.values(curso.calificaciones)[3][j].nombre);
+        }
+            let suspensos = 0;
+            let aprobados = 0;
+            let sobresalientes = 0;
+
+            for (let i = 0; i < datosNota.length; i++) {
+                if (datosNota[i] < 5) {
+                    suspensos++;
+                } else if (datosNota[i] >= 5 && datosNota[i] < 8) {
+                    aprobados++;
+                } else if (datosNota[i] >= 8) {
+                    sobresalientes++;
+                }
+            }
+            const contexto = document.getElementById(curso.curso + '-media');
+            const myChart1 = new Chart(contexto, {
+                type: 'bar',
+                data: {
+                    labels: ['Suspensos', 'Aprobados', 'Sobresalientes'],
+                    datasets: [{
+                        label: ' - Nota Media',
+                        data: [suspensos, aprobados, sobresalientes],
                     backgroundColor: [
                         'rgba(239,101,101,0.93)',
                         'rgba(166,180,238,0.88)',
@@ -152,25 +138,54 @@ class App {
                         'rgb(42,194,1)'
                     ],
                     borderWidth: 2
-                }]
-            },
-            options: {
-                title: {
-                    display: true,
-                    position: 'top',
-                    text: 'Aprobados'
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        position: 'top',
+                        text: 'Aprobados'
+                    }
                 }
-            }
-        });
+            });
+        }S
+
+    pintarBarraLateral(){
+        for (let i = 0; i < this.cursos.length; i++) {
+            const template = document.querySelector('#lista-cursos').content;
+            const listaCursos = new DocumentFragment();
+            listaCursos.appendChild(document.importNode(template, true));
+            listaCursos.querySelector('input').value = this.cursos[i].curso;
+            listaCursos.querySelector('input').setAttribute('onclick', 'app.elegirCurso("' + this.cursos[i].curso + '", true);');
+            document.querySelector('#sidebar-nav').appendChild(listaCursos);
+        }
     }
 
 
-
-    generarDivCanvas(){
+    generarDivCanvas(curso, boolean){
         const template = document.querySelector('#div-canvas').content;
         const divCanvas = new DocumentFragment();
         divCanvas.appendChild(document.importNode(template, true));
-        return divCanvas;
+        divCanvas.querySelector('.card-title').childNodes[0].before(curso);
+        let tablaAlumnosNota = document.createElement("canvas");
+        if (boolean === false){
+            tablaAlumnosNota.id = curso;
+        } else if (boolean === true){
+            tablaAlumnosNota.id = curso + '-media';
+        }
+        divCanvas.querySelector('.chart-container').appendChild(tablaAlumnosNota);
+        document.getElementById('graficos').appendChild(divCanvas);
+        let cursoDibujar = app.getCursoPorNombre(curso);
+        if (boolean === false){
+            app.graficaNotaAlumno(cursoDibujar);
+        } else if (boolean === true){
+            app.graficaNotaMedia(cursoDibujar);
+        }
+    }
+
+    elegirCurso(curso, boolean){
+        document.getElementById('graficos').innerHTML = "";
+        app.generarDivCanvas(curso, boolean);
     }
 
     notaAleatoria(){
@@ -179,6 +194,14 @@ class App {
 
     sleep(time) {
         return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    getCursoPorNombre(curso){
+        for (let i = 0; i < this.cursos.length; i++) {
+            if (this.cursos[i].curso === curso){
+                return this.cursos[i];
+            }
+        }
+
     }
 
 }
