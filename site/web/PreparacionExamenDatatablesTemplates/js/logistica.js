@@ -1,15 +1,14 @@
-class App {
-    
+class Logistica {
+
     constructor() {
-        this.url = 'json/bibliotecas.json';
         this.datosJSON;
-        this.bibliotecas = [];
+        this.url = "json/logistica.json";
     }
-    
+
     init() {
         this.obtenerJSON(this.url);
     }
-    
+       
     obtenerJSON(url) {
         
         // Enviando y recibiendo datos en formato JSON utilizando el metodo GET
@@ -19,14 +18,24 @@ class App {
         xhr.onreadystatechange = function () { 
             if (xhr.readyState == 4 && xhr.status == 200) {
                 app.datosJSON = JSON.parse(xhr.responseText);
-                //console.log(app.datosJSON);
+                console.log(app.datosJSON);
                 app.tratarDatos();
             }
         }
         xhr.send();
     }
-    
+
     tratarDatos() {
+
+        const $envio = document.querySelector("#envio");
+        $envio.innerHTML = this.datosJSON["numEnvio"];
+
+        const $referencia = document.querySelector("#referencia");
+        $referencia.innerHTML = this.datosJSON["referencia"];
+
+        const $estado = document.querySelector("#estado");
+        $estado.innerHTML = this.datosJSON["estado"];
+
         //console.log(this.datosJSON['@graph']);
         this.datosJSON['@graph'].forEach(element => {
             
@@ -39,40 +48,5 @@ class App {
             
             this.bibliotecas.push([element['title'],element['address']['street-address']])
         });
-        
-        console.log(this.bibliotecas);
-        
-        this.montarDatatable();
-    }
-    
-    montarDatatable() {
-        /**
-        * Easy selector helper function
-        */
-        const select = (el, all = false) => {
-            el = el.trim()
-            if (all) {
-                return [...document.querySelectorAll(el)]
-            } else {
-                return document.querySelector(el)
-            }
-        }
-        
-        /**
-        * Initiate Datatables
-        */
-        const datatables = select('.datatable', true)
-        const myData = {
-            "heading": [
-                "Nombre",
-                "Dirección"
-            ],
-            "data": app.bibliotecas
-        }
-        datatables.forEach(datatable => {
-            new simpleDatatables.DataTable(datatable, {
-                'data': myData
-            });
-        })
     }
 }

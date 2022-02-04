@@ -1,0 +1,76 @@
+{
+  "numEnvio": "123456789012345",
+  "referencia": "123456",
+  "estado": "Entregado",
+  "traking": [
+    {
+      "dia": "01/02/2022",
+      "estados": [
+        {
+          "hora": "10:33",
+          "mensaje": "entregado a agencia de transportes"
+        },
+        {
+          "hora": "12:33",
+          "mensaje": "salida hacia ciudad de destino"
+        },
+        {
+          "hora": "12:34",
+          "mensaje": "en tránsito"
+        },
+        {
+          "hora": "18:13",
+          "mensaje": "llegada a centro de reparto"
+        }
+      ]
+    },
+    {
+      "dia": "02/02/2022",
+      "estados": [
+        {
+          "hora": "07:33",
+          "mensaje": "procesado en centro de reparto"
+        },
+        {
+          "hora": "11:12",
+          "mensaje": "entregado a repartidor"
+        },
+        {
+          "hora": "12:42",
+          "mensaje": "en transito"
+        },
+        {
+          "hora": "17:22",
+          "mensaje": "intento de entrega fallido"
+        },
+        {
+          "hora": "18:01",
+          "mensaje": "llegada a centro de reparto"
+        }
+      ]
+    },
+    {
+      "dia": "03/02/2022",
+      "estados": [
+        {
+          "hora": "08:33",
+          "mensaje": "entregado a repartidor"
+        },
+        {
+          "hora": "08:34",
+          "mensaje": "en transito"
+        },
+        {
+          "hora": "15:12",
+          "mensaje": "entregado en domicilio"
+        }
+      ]
+    }
+  ],
+  "direccion": {
+    "calle": "C/ Alcalá, 2 piso 5 puerta 3",
+    "codigo postal": "28033",
+    "ciudad": "Madrid",
+    "provincia": "Madrid"
+  }
+}
