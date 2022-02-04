@@ -17,7 +17,7 @@ services:
         volumes:
             - ./site/:/var/www/${PROJECT}/
         ports:
-            - 8006:8006
+            - 80:80
         networks:
             - dwec2daw
 

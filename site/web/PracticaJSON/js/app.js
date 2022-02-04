@@ -2,20 +2,56 @@ class App {
     
     constructor() {
         
+        this.courses = "";
+        this.url = "data/data-courses.json"
         this.courseArray = [];
         this.evaluaciones = ['1EV', '2EV', '3EV'];
         
-        this.init();
+        this.obtenerJSON(this.url);
+
+    }
+    
+    obtenerJSON(url) {
+
+        // Enviando y recibiendo datos en formato JSON utilizando el metodo GET
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+        xhr.setRequestHeader("Content-type", "application/json");
+        xhr.onreadystatechange = function () { 
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                app.courses = JSON.parse(xhr.responseText);
+                console.log(app.courses);
+                app.init();
+            }
+        }
+        xhr.send();
     }
     
     init() {
+        
+        this.courses.forEach(course => {
 
-        courses.forEach(course => {
+            //Carga los cursos en el ul
+            console.log(course);
+            var $ulCursos = document.querySelector("#components-nav");
+            var $li = document.createElement("li");
+            var $a = document.createElement("a");
+            var $i = document.createElement("i");
+            var $span = document.createElement("span");
+            $a.href = "#";
+            $i.className = "bi bi-circle";
+            $span.textContent = course.nombre;
+
+            $a.appendChild($i);
+            $a.appendChild($span);
+            
+            $li.appendChild($a);
+            $ulCursos.appendChild($li);
             
             let itemCourse = {'curso' : course.nombre};
             itemCourse['alumnos'] = [];
             itemCourse['notas'] = [];
-
+            
             this.evaluaciones.forEach(evaluacion => {
                 itemCourse['notas'][evaluacion] = [];
             });
@@ -35,14 +71,20 @@ class App {
             this.courseArray.push(itemCourse);
         });
         console.log(this.courseArray);
+//        this.cargarCurso(0);
     }
-            
+    
     randomNum(min, max) {
         return Math.floor((Math.random() * (max - min + 1)) + min);
     }
 
-    cargarCharts() {
-            
+    cargarCurso(cursoSel) {
+        console.log(cursoSel);
+        //this.cargarCharts(cursoSel)
+    }
+    
+    cargarCharts(curso) {
+        
         const $template = document.querySelector("template");
         const $charts = document.querySelector("#charts")
         
@@ -61,16 +103,15 @@ class App {
             $charts.appendChild($element)
             
             // Carga un ApexChart por cada evaluación
-            this.cargarApexChart(evaluacion);
+            this.cargarApexChart(curso, evaluacion);
         });
     }
-
-    cargarApexChart(evaluacion) {
-            
+    
+    cargarApexChart(cursoSel, evaluacion) {
+        
         const $idCharts = '#eval'+evaluacion;
-
-        // Solo carga en charts el primer curso
-        var JSONnotas = JSON.stringify(this.courseArray[0].notas[evaluacion]);
+        
+        var JSONnotas = JSON.stringify(this.courseArray[cursoSel].notas[evaluacion]);
         var xaxis = [];
         var datos = [];
         
@@ -99,9 +140,11 @@ class App {
                 enabled: false
             },
             xaxis: {
+                min: 0,
+                max: 10,
                 categories: xaxis,
             }
         }).render();
     }  
-
+    
 }
