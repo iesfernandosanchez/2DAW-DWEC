@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+
+
+	<script>
+		function createProcess(name, timeCreation, timeUse, data){
+			var process = [name, timeCreation, timeUse];
+			data.push(process);
+			return data;
+		}
+
+		function compareProcess(a,b)
+		{
+			if(a[1]<b[1]){
+				return -1
+			}
+			if(a[1]>b[1]){
+				return 1
+			}
+			return 0
+		}
+
+		function processData(data){
+
+			var pila = [];
+			var CPU = [];
+
+			var finProcessData = false;
+			//for(var i = 0; i< data.length; i++){
+				var tiempo = 0;
+			while(!finProcessData){
+				
+				//console.log(data[i])
+				/*
+				for (var i = 0; i < data.length; i++) {
+					if(data[i][1]==tiempo){
+						if(CPU[tiempo] == undefined){
+							CPU[tiempo] = data[i][0]
+							tiempo += data[i][2]
+						}else{
+							
+							pila.push(data[i][0])							
+						}
+					}else{
+						if(pila.length > 0){
+							process = pila.pop();
+						}
+					}
+				}
+				*/
+				
+			}
+		}
+
+		matriz = [];
+		matriz = createProcess('C',1,1, matriz);
+		matriz = createProcess('A',0,3, matriz);
+		matriz = createProcess('B',2,4, matriz);
+	
+		matriz.sort(compareProcess);
+		console.log(matriz)
+	</script>
+</head>
+<body>
+
+</body>
+</html>
