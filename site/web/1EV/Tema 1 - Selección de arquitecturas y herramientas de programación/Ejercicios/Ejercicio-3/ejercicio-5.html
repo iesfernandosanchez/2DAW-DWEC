@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+
+		function getRandomInt(min, max) {
+			return Math.floor(Math.random() * (max - min)) + min;
+		}
+
+		function rellenaArray( max, intentos){
+			var results = [];
+			for (var i = 0; i < intentos; i++) {
+				results.push(getRandomInt(0,max))
+			}
+			return results
+		}
+
+		var numeroIntentos = 50;
+		var numeroMaximo = 32;
+
+		resultados = rellenaArray(numeroMaximo, numeroIntentos);
+		
+
+
+		//var resultados = [4,7,9,4,2,9,2,3,5]
+		var numeroOcurrencias =[];
+
+		//numeroOcurrencias[1]=1;
+
+
+		for (var i = 0; i < resultados.length ; i++) {
+			
+			var indice = resultados[i];
+			
+			if(numeroOcurrencias[indice] == undefined){
+				numeroOcurrencias[indice] = 1;		
+			}else{
+				numeroOcurrencias[indice] = numeroOcurrencias[indice] + 1;		
+			}
+		}		
+		console.log(resultados);
+		console.log(numeroOcurrencias);
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
