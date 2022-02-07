@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Control de gastos</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/bootstrap/css/bootstrap.css'>
+
+    <link href="css/simple-datatables/style.css" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+    
+    
+</head>
+<body>
+    
+    <script>
+        var data = [
+        {
+            "nombre":"juna",
+            "fecha":"20/02/2022",
+            "importe":"6117.4", 
+            "concepto":"cena"
+        },
+        {
+            "nombre":"pepe",
+            "fecha":"21/01/2022",
+            "importe":"6.4", 
+            "concepto":"comida"
+        },
+        {
+            "nombre":"maria",
+            "fecha":"19/02/2022",
+            "importe":"7.2", 
+            "concepto":"desayuno"
+        },
+        {
+            "nombre":"juna",
+            "fecha":"21/02/2022",
+            "importe":"47.14", 
+            "concepto":"almuerzo"
+        }
+        
+        ]
+    </script>
+    
+    
+    
+    <script src='js/bootstrap/js/bootstrap.bundle.js'></script>
+    
+    <script src='js/usuario.js'></script>
+    <script src='js/gasto.js'></script>
+    <script src='js/cartera.js'></script>
+    <script src='js/screen.js'></script>
+    <script src='js/app.js'></script>
+
+    <script src="js/echarts/echarts.min.js"></script>
+    
+    
+    
+    <script>		
+        var app;
+        document.addEventListener("DOMContentLoaded", function(event) { 
+            app = new App();   
+            app.loadData(data);
+
+            app.refreshScreen();
+            
+            
+        });
+    </script>
+    <div class="row">
+        <div class="col-xl-8">
+            <main id="main" class="main">
+                
+                <div class="pagetitle">
+                    <h1>Blank Page</h1>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item">Pages</li>
+                            <li class="breadcrumb-item active">Blank</li>
+                        </ol>
+                    </nav>
+                </div><!-- End Page Title -->
+                
+                <section class="section">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table table-borderless datatable"></table>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Example Card</h5>
+                                    <p>This is an examle page with no contrnt. You can use it as a starter for your custom pages.</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </section>
+                
+            </main><!-- End #main -->
+        </div>
+        
+        <div class="col-xl-4 profile" id="profiles">
+
+            <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
+        </div>
+    </div>
+
+    <template id="profile-user">
+        <div class="card">
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">                    
+                <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                <h2 id="nombre"></h2>
+                <h3 id="description"></h3>
+            </div>
+        </div>
+    </template>
+    
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="copyright">
+            &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+    </footer><!-- End Footer -->
+    
+    <script src="js/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/simple-datatables/simple-datatables.js"></script>
+    
+</body>
+</html>
