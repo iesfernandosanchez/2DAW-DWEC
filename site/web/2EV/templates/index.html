@@ -5,23 +5,41 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Templates</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
     <script src='js/app.js'></script>
 
 
   <script>		
     var app;
     document.addEventListener("DOMContentLoaded", function(event) { 
-        app = new App();   
+
+        var collectionPersonas = [
+            {
+                'name':'pablo',
+                'description':'es un estudiante de 2DAW',
+                'sex':'M'
+            },
+            {
+                'name':'lucia',
+                'description':'es un estudiante de 1SMR',
+                'sex':'F'
+            },
+        ]
+        app = new App(collectionPersonas, '#panelPersonas');   
         
     });
 </script>
 </head>
 <body>
 
+    <div id="panelPersonas"></div>
+
 
     <template id="persona">
-        
+        <div class="card">
+            <h1 id="name"></h1>
+            <p id="description"></p>
+        </div>
     </template>
     
 </body>

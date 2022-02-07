@@ -1,0 +1,15 @@
+.card {
+  background: #adadad;
+  border-radius: 14px;
+  padding: 10px;
+  text-align: center;
+}
+
+.card.femenino {
+  background: #f883ee;
+}
+
+.card.masculino {
+  background: #5384ec;
+}
+/*# sourceMappingURL=main.css.map */
