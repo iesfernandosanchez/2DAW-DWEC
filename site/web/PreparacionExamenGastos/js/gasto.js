@@ -1,0 +1,10 @@
+class Gasto {
+
+    constructor(usuario, fecha, importe, concepto) {
+        this.usuario = usuario;
+        this.fecha = fecha;
+        this.importe = importe;
+        this.concepto = concepto;
+    }
+
+}

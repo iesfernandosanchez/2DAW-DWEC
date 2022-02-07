@@ -36,9 +36,17 @@ class Logistica {
         const $estado = document.querySelector("#estado");
         $estado.innerHTML = this.datosJSON["estado"];
 
-        //console.log(this.datosJSON['@graph']);
-        this.datosJSON['@graph'].forEach(element => {
-            
+        const $template = document.querySelector("#trackingTemplate");
+        const $tracking = document.querySelector("#tracking")
+
+        this.datosJSON["traking"].forEach(dias => {
+
+            const $cardTemplate = document.importNode($template.content, true);
+            const $cardTitle =  $cardTemplate.querySelector(".card-title");
+            $cardTitle.innerText = dias["dia"];
+
+            $tracking.appendChild($cardTemplate);
+
             /*
             this.bibliotecas.push({
                 'title': element['title'],
@@ -46,7 +54,9 @@ class Logistica {
             })
             */
             
-            this.bibliotecas.push([element['title'],element['address']['street-address']])
+            //this.bibliotecas.push([element['title'],element['address']['street-address']])
+
+            console.log(dias);
         });
     }
 }

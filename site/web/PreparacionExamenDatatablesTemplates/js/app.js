@@ -61,6 +61,7 @@ class App {
         /**
         * Initiate Datatables
         */
+       console.log(app.bibliotecas);
         const datatables = select('.datatable', true)
         const myData = {
             "heading": [
