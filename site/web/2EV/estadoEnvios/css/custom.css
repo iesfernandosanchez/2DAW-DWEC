@@ -1,0 +1,16 @@
+.accordion-collapse{
+    background: #cacaca;
+    border-radius: 10px;
+    top: -15px;
+    position: relative;
+    z-index: 10;
+}
+
+.accordion-item>button{
+    z-index: 100;
+    position: relative;
+}
+
+.x2{
+    font-size: 60px;
+}
