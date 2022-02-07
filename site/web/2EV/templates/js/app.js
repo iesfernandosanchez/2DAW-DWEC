@@ -12,6 +12,14 @@ class App{
             var descriptionPersona = cloneItemPersona.querySelector('#description');
             descriptionPersona.innerHTML = element['description'];
 
+            var cardPerson = cloneItemPersona.querySelector('.card');
+            if(element['sex']=='M'){
+                cardPerson.classList.add('masculino');
+            }else{
+                cardPerson.classList.add('femenino');
+            }
+
+            console.log(cardPerson.classList);
             panel.appendChild(cloneItemPersona);            
         }
     }
