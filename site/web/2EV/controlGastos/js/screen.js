@@ -3,6 +3,16 @@ class Screen{
 
     }
 
+    hideLoading() {
+		  document.getElementById("container-loader").style.display = "none";
+		  document.getElementById("content").style.display = "block";
+		}
+
+    showLoading() {
+		  document.getElementById("container-loader").style.display = "block";
+		  document.getElementById("content").style.display = "none";
+		}
+
     renderProfiles(usuarios){
 
         var panelUsuarios = document.querySelector("#profiles");
