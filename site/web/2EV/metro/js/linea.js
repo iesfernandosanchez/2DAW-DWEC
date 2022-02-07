@@ -17,7 +17,8 @@ class Linea{
 			}
 			
 			this.estaciones.push(estacionObj);
-		}	
+		}
+		
 	}
 
 	getEstacion(nombre){
