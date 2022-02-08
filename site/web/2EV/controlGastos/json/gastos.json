@@ -1,0 +1,26 @@
+[
+    {
+        "nombre":"juna",
+        "fecha":"20/02/2022",
+        "importe":"6117.4", 
+        "concepto":"cena"
+    },
+    {
+        "nombre":"pepe",
+        "fecha":"21/01/2022",
+        "importe":"6.4", 
+        "concepto":"comida"
+    },
+    {
+        "nombre":"maria",
+        "fecha":"19/02/2022",
+        "importe":"7.2", 
+        "concepto":"desayuno"
+    },
+    {
+        "nombre":"juna",
+        "fecha":"21/02/2022",
+        "importe":"47.14", 
+        "concepto":"almuerzo"
+    }
+]
