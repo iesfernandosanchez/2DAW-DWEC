@@ -6,63 +6,105 @@
     <title>Simulacro 1</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
-    <script src='js/main.js'></script>
+    <link href="css/simple-datatables/style.css" rel="stylesheet">
+    <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    
+   
 </head>
 <body>
-    
-    <pre>
-        <ol>
-            <li>
-                <h3>En la carpeta json del simulacro puedes encontrar un ejemplo de los datos que deberá de procesar la aplicacion.</h3>
-            </li>
-            <li>
-                <h3>Genera para los datos del fichero contabilidad una estructura de datos donde puedas almacenar y procesar la información</h3>
-            </li>
-            <li>
-                <h3>Genera un fichero contabilidad con datos generados con la libreria faker</h3>
-            </li>
-            <li>
-                <h3>Convierte el fichero contabilidad.json de la carpeta json a una cookie.</h3>
-            </li>
-            <li>
-                <h3>Tu estructura de datos mediante clases y controladores deberá ser capaz de procesar la siguiente infromación para:</h3>
+
+
+
+    <div id="content">
+        <div class="row">
+            <div class="col-xl-8">
+                <main id="main" class="main">
                     
-                <ul>
-                    <li>Genera una caja con el control de todas las compras, ventas, gasto por cada tienda.</li>
-                    <li>Centralizar todo lo que tiene que ver con la visualización de datos en una clase llamada screen</li>
-                    <li>Mostrar un listado con todas las ventas y toda su información(datatable).</li>
-                    <li>Generar gráfica con:(elige el grafico que mejor se adapte a los siguientes requisitos)
-                        <ul>
-                            <li>Eje X: fecha</li>
-                            <li>Eje Y: importe caja</li>
-                            <li>Series: tienda</li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <h3>Muestra en un lateral cada una de las tienda junto con su recaudación total (utilizando templates).</h3>
-            </li>
-            <li>
-                <h3>Pasa los siguientes test de pruebas.</h3>
-                <ul>
-                    <li>
-                        Crear una tienda.
-                    </li>
-                    <li>
-                        Crear una crear un gasto en una tienda.
-                    </li>
-                    <li>
-                        Introduciendo varios gastos a varias tienda.
-                        Comprobar que todos los gastos introducidos a una de las tienda se pueden extraer.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <h3>Apoyate en el resto de desarrollos de la asignatura.</h3>
-            </li>
-        </ol>
-    </pre>
+                    <div class="pagetitle">
+                        <h1>Blank Page</h1>
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item">Pages</li>
+                                <li class="breadcrumb-item active">Blank</li>
+                            </ol>
+                        </nav>
+                    </div><!-- End Page Title -->
+                    
+                    <section class="section">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Todos los gastos de las Tiendas</h5>
+                                        <table class="table table-borderless datatable" id="tablaGastos"></table>
+                
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                            <div class="col-lg-12">
+                                
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Summary Tiendas</h5>
+                                        <div id="graphSummaryTiendas"style="min-height: 400px;" class="echart"></div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </section>
+                    
+                </main><!-- End #main -->
+            </div>
+            
+            <div class="col-xl-4 profile" id="summaryTiendas">               
+                
+            </div>
+        </div>
+
+ 
+    <template id="tiendaTemplate">
+
+        <div class="card">
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">                    
+                <h3 id="nombre"></h3>
+                <small id="caja"></small>
+            </div>
+        </div>
+        
+    </template>
+        
+        <!-- ======= Footer ======= -->
+        <footer id="footer" class="footer">
+            <div class="copyright">
+                &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
+        </footer><!-- End Footer -->
+    </div>
+
+        
+    <script src='js/echarts/echarts.min.js'></script>
+    <script src="js/simple-datatables/simple-datatables.js"></script>
+    <script src='js/faker/faker.js'></script>
+
+    <script src='js/gasto.js'></script>
+    <script src='js/tienda.js'></script>
+    <script src='js/screen.js'></script>
+    <script src='js/app.js'></script>
+    <script src='js/main.js'></script>
     
 </body>
 </html>
