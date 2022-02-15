@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
+    <script src='js/deporte.js'></script>
+    
+    <script src='js/participante.js'></script>
+    <script src='js/partido.js'></script>
+    <script src='js/ronda.js'></script>
+    <script src='js/torneo.js'></script>
+    <script src='js/app.js'></script>
+    <script src='js/config.js'></script>
+    <script src='js/screen.js'></script>
+    <script>
+        var app;
+        document.addEventListener("DOMContentLoaded", function(event) { 
+            app = new App();
+            Object.keys(config.data).forEach(function (deporte) {
+                app.createTorneo(
+                    "torneo de "+deporte, 
+                    deporte, 
+                    config.sports[deporte]
+                    )
+                for (let index = 0; index < config.data[deporte].length; index++) {
+                    const element = config.data[deporte][index];
+                    app.torneo.addEquipo(element)
+                    
+                }
+            });
+            app.screen.printRonda(app.torneo.createRondaInicial("R0"));         
+        });
+    </script>
+</head>
+<body>
+
+    <div class="" id="rondaPanel"></div>
+    <button onclick="app.generarResultados()">Generar Resultados</button>
+
+    <template id="partidoTemplate">
+        <div class="card">
+            <table id="participantes" style="border: 1px solid #000;">
+                
+                
+            </table>
+        </div>
+    </template>
+
+    <template id="participante">
+        <tr id="rowParticipante">
+            <td id="equipo"></td>
+            <td id="marcador"></td>
+        </tr>
+    </template>
+
+    <template id="ganador">
+        <td id="equipoGanador"></td>
+    </template>
+    
+</body>
+</html>
