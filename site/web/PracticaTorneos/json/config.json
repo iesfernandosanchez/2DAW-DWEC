@@ -1,0 +1,37 @@
+{
+    "configDeportes": 
+    [
+        {
+            "deporte": "baloncesto",
+            "resultadoMin": 0,
+            "resultadoMax": 100
+        },
+        {
+            "deporte": "balonmano",
+            "resultadoMin": 0,
+            "resultadoMax": 15
+        },
+        {
+            "deporte": "futbol",
+            "resultadoMin": 0,
+            "resultadoMax": 12
+        }
+    ],
+    "datos": [
+        {
+            "nombreTorneo": "Mi torneo",
+            "deporte": "baloncesto",
+            "participantesRonda": 2,
+            "equipos": [
+                "Equipo 1",
+                "Equipo 2",
+                "Equipo 3",
+                "Equipo 4",
+                "Equipo 5",
+                "Equipo 6",
+                "Equipo 7",
+                "Equipo 8"
+            ]
+        }
+    ]
+}

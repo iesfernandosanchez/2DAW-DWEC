@@ -42,7 +42,7 @@ class Logistica {
         this.datosJSON["traking"].forEach(dias => {
 
             const $cardTemplate = document.importNode($template.content, true);
-            const $cardTitle =  $cardTemplate.querySelector(".card-title");
+            var $cardTitle =  $cardTemplate.querySelector(".card-title");
             $cardTitle.innerText = dias["dia"];
 
             $tracking.appendChild($cardTemplate);
