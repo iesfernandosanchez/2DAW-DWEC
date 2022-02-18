@@ -1,0 +1,46 @@
+[
+    {
+        "biblioteca":"Biblioteca Moratalaz",
+        "nombre":"Historia de españa",
+        "estado":"prestado", 
+        "ubicacion":"sala central"
+    },
+    {
+        "biblioteca":"Biblioteca Moratalaz",
+        "nombre":"Segunda guerra mundial",
+        "estado":"Prestado", 
+        "ubicacion":"Pasillo izquierdo"
+    },
+    {
+        "biblioteca":"Biblioteca Retiro",
+        "nombre":"Química básica",
+        "estado":"Libre", 
+        "ubicacion":"sala central"
+    },
+    {
+        "biblioteca":"Biblioteca La Latina",
+        "nombre":"Primera Guerra mundial",
+        "estado":"Prestado", 
+        "ubicacion":"Pasillo derecho"
+    },
+    {
+        "biblioteca":"Biblioteca Retiro",
+        "nombre":"Fisica avanzada",
+        "estado":"Prestado", 
+        "ubicacion":"Pasillo izquierdo"
+    },
+    {
+        "biblioteca":"Biblioteca Moratalaz",
+        "nombre":"Ingles avanzado",
+        "estado":"Libre", 
+        "ubicacion":"Pasillo central"
+    },
+    {
+        "biblioteca":"Biblioteca Retiro",
+        "nombre":"Guerras punicas",
+        "estado":"Prestado", 
+        "ubicacion":"Pasillo central"
+    }
+    
+    
+]
