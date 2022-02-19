@@ -1,0 +1,42 @@
+$imagenFondo: "../marmol.jpg";
+$negro: #212529;
+$verde: #7DFF33;
+$rojo: #FF3333;
+$naranja: #ffb833;
+
+body{
+  background-image: url($imagenFondo);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+//#barraNav{
+//  background-color: $negro;
+//  height: 60px;
+//  color: white;
+//  box-shadow: $negro 0 5px 15px;
+//}
+
+//#posicionNavegacion{
+//  position: relative;
+//}
+
+span:hover{
+  color: $naranja;
+}
+
+.card-descatalogado:hover{
+  box-shadow: $negro 0 5px 15px;
+}
+
+.card-extraviado:hover{
+  box-shadow: $naranja 0 5px 15px;
+}
+
+.card-disponible:hover{
+  box-shadow: $verde 0 5px 15px;
+}
+
+.card-prestado:hover{
+  box-shadow: $rojo 0 5px 15px;
+}

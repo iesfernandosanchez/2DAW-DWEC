@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Publicaciones JSON</title>
+    <script src="js/Biblioteca.js"></script>
+    <script src="js/Ejemplar.js"></script>
+    <script src="js/faker.js"></script>
+    <script src="js/Publicacion.js"></script>
+    <script src="js/Screen.js"></script>
+    <script src="js/Servicios.js"></script>
+</head>
+<body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let servicios = new Servicios()
+
+        servicios.generarDatos(5)
+        servicios.getJson("datos");
+
+
+    })
+
+
+</script>
+
+<pre>
+<div id="datos"></div>
+</pre>
+
+</body>
+</html>

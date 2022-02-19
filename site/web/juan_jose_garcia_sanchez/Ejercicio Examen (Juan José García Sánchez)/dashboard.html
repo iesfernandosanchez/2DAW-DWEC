@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Control de publicaciones</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+
+    <script src="js/Biblioteca.js"></script>
+    <script src="js/Ejemplar.js"></script>
+    <script src="js/faker.js"></script>
+    <script src="js/Publicacion.js"></script>
+    <script src="js/Screen.js"></script>
+    <script src="js/Servicios.js"></script>
+
+
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="vendor/simple-datatables/style.css" rel="stylesheet">
+
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styleSass.css">
+
+
+</head>
+<body>
+
+<script src='js/bootstrap/js/bootstrap.bundle.js'></script>
+<script src="js/echarts/echarts.min.js"></script>
+
+
+<script>
+    let servicios;
+    document.addEventListener("DOMContentLoaded", function (event) {
+        servicios = new Servicios()
+        servicios.generarDatos(5)
+        servicios.startScreenDashboard()
+    });
+</script>
+
+
+<ul class="sidebar-nav" id="sidebar-nav">
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="index.html">
+            <i class="bi bi-house"></i>
+            <span>Home</span>
+        </a>
+    </li><!-- End Profile Page Nav -->
+
+    <li class="nav-item">
+        <a class="nav-link " href="dashboard.html">
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+        </a>
+    </li><!-- End Dashboard Nav -->
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="publicacionesJson.html">
+            <i class="bi bi-journal-text"></i>
+            <span>Publicaciones to JSON</span>
+        </a>
+    </li><!-- End Profile Page Nav -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="carrito.html">
+            <i class="bi bi-cart"></i>
+            <span>Carrito</span>
+        </a>
+    </li><!-- End Profile Page Nav -->
+</ul>
+
+
+<main class="main" style="margin-right: 20px;margin-left: 20px">
+
+    <div class="pagetitle">
+        <h1>Dashboard</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+        <div class="row">
+
+            <!-- Left side columns -->
+            <div class="col-lg-8">
+                <div class="row">
+                    <!-- Recent Sales -->
+                    <div class="col-12">
+                        <div class="card recent-sales overflow-auto">
+                            <div class="card-body">
+                                <h5 class="card-title">Publicaciones</h5>
+                                <button type="button" class="btn btn-success"><i class="bi bi-plus-circle"></i></button>
+                                <table id="tablaPublicaciones"  class="table table-borderless datatable">
+                                </table>
+                            </div>
+                        </div>
+                    </div><!-- End Recent Sales -->
+                </div>
+            </div><!-- End Left side columns -->
+
+
+            <!-- Right side columns -->
+            <div class="col-lg-4">
+                <!-- Website Traffic -->
+                <div class="card">
+                    <div class="card-body pb-0">
+                        <h5 class="card-title">Número Ejemplares</h5>
+
+                        <div id="trafficChart" style="min-height: 700px;" class="echart"></div>
+
+                    </div>
+                </div><!-- End Website Traffic -->
+            </div><!-- End Right side columns -->
+
+
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card recent-sales overflow-auto">
+                            <div class="card-body">
+                                <h5 class="card-title">Ejemplares</h5>
+                                <button type="button" class="btn btn-success"><i class="bi bi-plus-circle"></i></button>
+                                <table id="tablaEjemplares" class="table table-borderless datatable">
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main><!-- End #main -->
+
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<script src="js/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="js/simple-datatables/simple-datatables.js"></script>
+<script src="vendor/main.js"></script>
+
+</body>
+</html>

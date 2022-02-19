@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Publicaciones</title>
+    <script src="js/Biblioteca.js"></script>
+    <script src="js/Ejemplar.js"></script>
+    <script src="js/faker.js"></script>
+    <script src="js/Publicacion.js"></script>
+    <script src="js/Servicios.js"></script>
+    <script src="js/Screen.js"></script>
+
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="vendor/simple-datatables/style.css" rel="stylesheet">
+
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styleSass.css">
+</head>
+<body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let servicios;
+        servicios = new Servicios()
+        servicios.generarDatos(10)
+        //servicios.getJson()
+        servicios.startScreenIndex()
+    })
+
+</script>
+
+<ul class="sidebar-nav" id="sidebar-nav">
+    <li class="nav-item">
+        <a class="nav-link " href="index.html">
+            <i class="bi bi-house"></i>
+            <span>Home</span>
+        </a>
+    </li><!-- End Profile Page Nav -->
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="dashboard.html">
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+        </a>
+    </li><!-- End Dashboard Nav -->
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="publicacionesJson.html">
+            <i class="bi bi-journal-text"></i>
+            <span>Publicaciones to JSON</span>
+        </a>
+    </li><!-- End Profile Page Nav -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="carrito.html">
+            <i class="bi bi-cart"></i>
+            <span>Carrito</span>
+        </a>
+    </li><!-- End Profile Page Nav -->
+</ul>
+<div id="carouselExampleControls" style="width: 1000px; margin-left: 200px; margin-top: 50px" class="carousel slide"
+     data-bs-ride="carousel">
+    <div class="carousel-inner" id="divCarrouselImages">
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<div id="cards" style="margin-top: 100px;padding-left: 100px" class="container row">
+
+</div>
+
+<div id="datos">
+
+</div>
+
+<template id="carrouselTemplate">
+    <div id="divImage" class="carousel-item">
+        <img id="imageCarrousel" src="1366_2000.jpeg" class="d-block w-100" alt="100px">
+    </div>
+</template>
+
+<template id="cardPublicacion">
+    <div class="card col-3" style="margin-left: 10px; margin-top: 20px;display: flex; left: 180px">
+        <img id="imagenCard" src="1366_2000.jpeg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 id="tituloCard" class="card-title"></h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at facilisis urna.
+                Nullam vulputate ipsum vel nisi euismod, vitae sodales libero fringilla. Cras lobortis leo vitae
+                consequat placerat. Nullam eu gravida nisi. Phasellus ut nulla velit. Aenean rhoncus egestas libero at
+                varius. Sed maximus, eros varius scelerisque pulvinar, diam risus dapibus ante, ac congue ante est vel
+                ligula. Praesent ut elementum leo, et euismod libero.</p>
+        </div>
+        <ul id="listaInfo" class="list-group list-group-flush">
+            <li id="generoCard" class="list-group-item">Género: </li>
+            <li id="isbnCard" class="list-group-item">ISBN: </li>
+            <li id="numeroEjemplaresCard" class="list-group-item">NumeroEjemplares: </li>
+        </ul>
+    </div>
+</template>
+
+<footer>
+
+</footer>
+<script src="js/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="js/simple-datatables/simple-datatables.js"></script>
+<script src="vendor/main.js"></script>
+</body>
+</html>

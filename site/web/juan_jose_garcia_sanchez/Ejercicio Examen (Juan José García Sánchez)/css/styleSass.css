@@ -1,0 +1,27 @@
+body {
+  background-image: url("../marmol.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+span:hover {
+  color: #ffb833;
+}
+
+.card-descatalogado:hover {
+  box-shadow: #212529 0 5px 15px;
+}
+
+.card-extraviado:hover {
+  box-shadow: #ffb833 0 5px 15px;
+}
+
+.card-disponible:hover {
+  box-shadow: #7DFF33 0 5px 15px;
+}
+
+.card-prestado:hover {
+  box-shadow: #FF3333 0 5px 15px;
+}
+
+/*# sourceMappingURL=styleSass.css.map */
